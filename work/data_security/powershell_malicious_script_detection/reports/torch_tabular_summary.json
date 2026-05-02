@@ -1,0 +1,345 @@
+{
+  "device": "cuda",
+  "torch_version": "2.7.0+cu126",
+  "features": [
+    "function_scope_level",
+    "branch_scope_level",
+    "loop_scope_level",
+    "parameter_block_presence",
+    "pipeline_usage_level",
+    "decode_activity_profile",
+    "network_command_profile",
+    "task_registry_profile",
+    "credential_runtime_profile",
+    "structure_rhythm_profile",
+    "layout_variation_profile",
+    "identifier_variation_profile",
+    "content_encoding_profile",
+    "command_surface_profile",
+    "extension_import_profile"
+  ],
+  "cardinalities": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    3,
+    2,
+    3,
+    3,
+    3,
+    2,
+    3,
+    3,
+    2,
+    2
+  ],
+  "configs": {
+    "torch_onehot_mlp_cv_v1": {
+      "kind": "onehot_mlp",
+      "oof_macro_f1": 0.7519127285517286,
+      "oof_counts": {
+        "0": 26365,
+        "1": 12624,
+        "2": 9076
+      },
+      "folds": [
+        {
+          "fold": 1,
+          "best_epoch": 45,
+          "valid_macro_f1": 0.7523668267851478,
+          "valid_counts": {
+            "0": 8716,
+            "1": 4184,
+            "2": 3122
+          }
+        },
+        {
+          "fold": 2,
+          "best_epoch": 60,
+          "valid_macro_f1": 0.7526591267904971,
+          "valid_counts": {
+            "0": 8848,
+            "1": 4235,
+            "2": 2939
+          }
+        },
+        {
+          "fold": 3,
+          "best_epoch": 85,
+          "valid_macro_f1": 0.7507373434332499,
+          "valid_counts": {
+            "0": 8801,
+            "1": 4205,
+            "2": 3015
+          }
+        }
+      ]
+    },
+    "torch_wide_mlp_cv_v1": {
+      "kind": "wide_mlp",
+      "oof_macro_f1": 0.7523322909169701,
+      "oof_counts": {
+        "0": 26217,
+        "1": 12643,
+        "2": 9205
+      },
+      "folds": [
+        {
+          "fold": 1,
+          "best_epoch": 55,
+          "valid_macro_f1": 0.7525156698435361,
+          "valid_counts": {
+            "0": 8609,
+            "1": 4209,
+            "2": 3204
+          }
+        },
+        {
+          "fold": 2,
+          "best_epoch": 45,
+          "valid_macro_f1": 0.753423682043512,
+          "valid_counts": {
+            "0": 8733,
+            "1": 4268,
+            "2": 3021
+          }
+        },
+        {
+          "fold": 3,
+          "best_epoch": 75,
+          "valid_macro_f1": 0.7510461234078211,
+          "valid_counts": {
+            "0": 8875,
+            "1": 4166,
+            "2": 2980
+          }
+        }
+      ]
+    },
+    "torch_emb_res_cv_v1": {
+      "kind": "emb_res",
+      "oof_macro_f1": 0.7526884776301016,
+      "oof_counts": {
+        "0": 25924,
+        "1": 12663,
+        "2": 9478
+      },
+      "folds": [
+        {
+          "fold": 1,
+          "best_epoch": 50,
+          "valid_macro_f1": 0.7528024751381787,
+          "valid_counts": {
+            "0": 8580,
+            "1": 4187,
+            "2": 3255
+          }
+        },
+        {
+          "fold": 2,
+          "best_epoch": 100,
+          "valid_macro_f1": 0.7525588047974816,
+          "valid_counts": {
+            "0": 8668,
+            "1": 4283,
+            "2": 3071
+          }
+        },
+        {
+          "fold": 3,
+          "best_epoch": 45,
+          "valid_macro_f1": 0.7527203678717265,
+          "valid_counts": {
+            "0": 8676,
+            "1": 4193,
+            "2": 3152
+          }
+        }
+      ]
+    },
+    "torch_tabtransformer_cv_v1": {
+      "kind": "tab_transformer",
+      "oof_macro_f1": 0.7518119995173844,
+      "oof_counts": {
+        "0": 26020,
+        "1": 12618,
+        "2": 9427
+      },
+      "folds": [
+        {
+          "fold": 1,
+          "best_epoch": 120,
+          "valid_macro_f1": 0.7526671033722067,
+          "valid_counts": {
+            "0": 8631,
+            "1": 4240,
+            "2": 3151
+          }
+        },
+        {
+          "fold": 2,
+          "best_epoch": 50,
+          "valid_macro_f1": 0.752942683455991,
+          "valid_counts": {
+            "0": 8695,
+            "1": 4200,
+            "2": 3127
+          }
+        },
+        {
+          "fold": 3,
+          "best_epoch": 45,
+          "valid_macro_f1": 0.7498134186660962,
+          "valid_counts": {
+            "0": 8694,
+            "1": 4178,
+            "2": 3149
+          }
+        }
+      ]
+    }
+  },
+  "candidates": {
+    "submission_torch_onehot_mlp_cv_v1.csv": {
+      "path": "submissions\\submission_torch_onehot_mlp_cv_v1.csv",
+      "weights": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "pred_counts": {
+        "0": 13272,
+        "1": 3332,
+        "2": 3396
+      },
+      "recipe": "onehot_mlp 3-fold torch CV ensemble"
+    },
+    "submission_torch_onehot_mlp_cv_v1_quota13500.csv": {
+      "path": "submissions\\submission_torch_onehot_mlp_cv_v1_quota13500.csv",
+      "pred_counts": {
+        "0": 13500,
+        "1": 3000,
+        "2": 3500
+      },
+      "recipe": "onehot_mlp 3-fold torch CV ensemble, least-loss quota 13500/3000/3500"
+    },
+    "submission_torch_wide_mlp_cv_v1.csv": {
+      "path": "submissions\\submission_torch_wide_mlp_cv_v1.csv",
+      "weights": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "pred_counts": {
+        "0": 13230,
+        "1": 3401,
+        "2": 3369
+      },
+      "recipe": "wide_mlp 3-fold torch CV ensemble"
+    },
+    "submission_torch_wide_mlp_cv_v1_quota13500.csv": {
+      "path": "submissions\\submission_torch_wide_mlp_cv_v1_quota13500.csv",
+      "pred_counts": {
+        "0": 13500,
+        "1": 3000,
+        "2": 3500
+      },
+      "recipe": "wide_mlp 3-fold torch CV ensemble, least-loss quota 13500/3000/3500"
+    },
+    "submission_torch_emb_res_cv_v1.csv": {
+      "path": "submissions\\submission_torch_emb_res_cv_v1.csv",
+      "weights": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "pred_counts": {
+        "0": 12971,
+        "1": 3346,
+        "2": 3683
+      },
+      "recipe": "emb_res 3-fold torch CV ensemble"
+    },
+    "submission_torch_emb_res_cv_v1_quota13500.csv": {
+      "path": "submissions\\submission_torch_emb_res_cv_v1_quota13500.csv",
+      "pred_counts": {
+        "0": 13500,
+        "1": 3000,
+        "2": 3500
+      },
+      "recipe": "emb_res 3-fold torch CV ensemble, least-loss quota 13500/3000/3500"
+    },
+    "submission_torch_tabtransformer_cv_v1.csv": {
+      "path": "submissions\\submission_torch_tabtransformer_cv_v1.csv",
+      "weights": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "pred_counts": {
+        "0": 13174,
+        "1": 3363,
+        "2": 3463
+      },
+      "recipe": "tab_transformer 3-fold torch CV ensemble"
+    },
+    "submission_torch_tabtransformer_cv_v1_quota13500.csv": {
+      "path": "submissions\\submission_torch_tabtransformer_cv_v1_quota13500.csv",
+      "pred_counts": {
+        "0": 13500,
+        "1": 3000,
+        "2": 3500
+      },
+      "recipe": "tab_transformer 3-fold torch CV ensemble, least-loss quota 13500/3000/3500"
+    },
+    "submission_torch_nn_ensemble_v1.csv": {
+      "path": "submissions\\submission_torch_nn_ensemble_v1.csv",
+      "weights": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "pred_counts": {
+        "0": 13221,
+        "1": 3356,
+        "2": 3423
+      },
+      "recipe": "mean of torch onehot/wide/emb_res/tabtransformer CV ensembles"
+    },
+    "submission_torch_nn_ensemble_quota13500_v1.csv": {
+      "path": "submissions\\submission_torch_nn_ensemble_quota13500_v1.csv",
+      "pred_counts": {
+        "0": 13500,
+        "1": 3000,
+        "2": 3500
+      },
+      "recipe": "mean torch ensemble, least-loss quota 13500/3000/3500"
+    },
+    "submission_torch_sklearn_nn_ensemble_v1.csv": {
+      "path": "submissions\\submission_torch_sklearn_nn_ensemble_v1.csv",
+      "weights": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "pred_counts": {
+        "0": 13255,
+        "1": 3320,
+        "2": 3425
+      },
+      "recipe": "0.5*torch_nn_ensemble + 0.5*sklearn_mlp_onehot"
+    },
+    "submission_torch_sklearn_nn_ensemble_quota13500_v1.csv": {
+      "path": "submissions\\submission_torch_sklearn_nn_ensemble_quota13500_v1.csv",
+      "pred_counts": {
+        "0": 13500,
+        "1": 3000,
+        "2": 3500
+      },
+      "recipe": "0.5*torch_nn_ensemble + 0.5*sklearn_mlp_onehot, least-loss quota 13500/3000/3500"
+    }
+  },
+  "seconds": 812.746
+}

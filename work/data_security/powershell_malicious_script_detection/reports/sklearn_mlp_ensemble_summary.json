@@ -1,0 +1,172 @@
+{
+  "online_reference": {
+    "submission_mlp_onehot_v1.csv": 0.70201
+  },
+  "models": [
+    {
+      "model": "models\\sklearn_mlp_ensemble_1.joblib",
+      "hidden": [
+        128,
+        64
+      ],
+      "alpha": 0.0001,
+      "seed": 20260602,
+      "n_iter": 36,
+      "test_counts": {
+        "0": 13392,
+        "1": 3384,
+        "2": 3224
+      }
+    },
+    {
+      "model": "models\\sklearn_mlp_ensemble_2.joblib",
+      "hidden": [
+        128,
+        64
+      ],
+      "alpha": 0.0003,
+      "seed": 20260603,
+      "n_iter": 29,
+      "test_counts": {
+        "0": 13320,
+        "1": 3409,
+        "2": 3271
+      }
+    },
+    {
+      "model": "models\\sklearn_mlp_ensemble_3.joblib",
+      "hidden": [
+        160,
+        80
+      ],
+      "alpha": 0.0001,
+      "seed": 20260604,
+      "n_iter": 53,
+      "test_counts": {
+        "0": 12925,
+        "1": 3377,
+        "2": 3698
+      }
+    },
+    {
+      "model": "models\\sklearn_mlp_ensemble_4.joblib",
+      "hidden": [
+        192,
+        96
+      ],
+      "alpha": 0.0001,
+      "seed": 20260605,
+      "n_iter": 51,
+      "test_counts": {
+        "0": 13049,
+        "1": 3344,
+        "2": 3607
+      }
+    },
+    {
+      "model": "models\\sklearn_mlp_ensemble_5.joblib",
+      "hidden": [
+        192,
+        96
+      ],
+      "alpha": 0.0003,
+      "seed": 20260606,
+      "n_iter": 59,
+      "test_counts": {
+        "0": 12809,
+        "1": 3412,
+        "2": 3779
+      }
+    },
+    {
+      "model": "models\\sklearn_mlp_ensemble_6.joblib",
+      "hidden": [
+        256,
+        128,
+        64
+      ],
+      "alpha": 0.0001,
+      "seed": 20260607,
+      "n_iter": 45,
+      "test_counts": {
+        "0": 13328,
+        "1": 3394,
+        "2": 3278
+      }
+    },
+    {
+      "model": "models\\sklearn_mlp_ensemble_7.joblib",
+      "hidden": [
+        256,
+        128,
+        64
+      ],
+      "alpha": 0.0003,
+      "seed": 20260608,
+      "n_iter": 51,
+      "test_counts": {
+        "0": 13218,
+        "1": 3390,
+        "2": 3392
+      }
+    },
+    {
+      "model": "models\\sklearn_mlp_ensemble_8.joblib",
+      "hidden": [
+        320,
+        160,
+        80
+      ],
+      "alpha": 0.0001,
+      "seed": 20260609,
+      "n_iter": 50,
+      "test_counts": {
+        "0": 13104,
+        "1": 3359,
+        "2": 3537
+      }
+    }
+  ],
+  "candidates": {
+    "submission_sklearn_mlp_ensemble_v1.csv": {
+      "path": "submissions\\submission_sklearn_mlp_ensemble_v1.csv",
+      "pred_counts": {
+        "0": 13214,
+        "1": 3375,
+        "2": 3411
+      },
+      "recipe": "mean of 8 sklearn MLP full-data models",
+      "diff_vs_mlp_onehot_v1": 669
+    },
+    "submission_sklearn_mlp_ensemble_quota13500_v1.csv": {
+      "path": "submissions\\submission_sklearn_mlp_ensemble_quota13500_v1.csv",
+      "pred_counts": {
+        "0": 13500,
+        "1": 3000,
+        "2": 3500
+      },
+      "recipe": "mean of 8 sklearn MLPs, least-loss quota 13500/3000/3500",
+      "diff_vs_mlp_onehot_v1": 913
+    },
+    "submission_sklearn_mlp_hybrid_v1.csv": {
+      "path": "submissions\\submission_sklearn_mlp_hybrid_v1.csv",
+      "pred_counts": {
+        "0": 13254,
+        "1": 3316,
+        "2": 3430
+      },
+      "recipe": "0.5*single best sklearn MLP + 0.5*8-model MLP ensemble",
+      "diff_vs_mlp_onehot_v1": 159
+    },
+    "submission_sklearn_mlp_hybrid_quota13500_v1.csv": {
+      "path": "submissions\\submission_sklearn_mlp_hybrid_quota13500_v1.csv",
+      "pred_counts": {
+        "0": 13500,
+        "1": 3000,
+        "2": 3500
+      },
+      "recipe": "0.5*single best sklearn MLP + 0.5*8-model MLP ensemble, quota 13500/3000/3500",
+      "diff_vs_mlp_onehot_v1": 475
+    }
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "em_alpha_0_01_counts": [
+    13411,
+    3125,
+    3464
+  ],
+  "em_alpha_0_1_counts": [
+    13417,
+    3169,
+    3414
+  ],
+  "base_blend_counts": {
+    "0": 12744,
+    "1": 3421,
+    "2": 3835
+  },
+  "candidates": {
+    "submission_prior_quota_em001_blend_v1.csv": {
+      "path": "submissions\\submission_prior_quota_em001_blend_v1.csv",
+      "recipe": "blend_v1 scores adjusted by least-loss flips to EM(alpha=0.01) prior",
+      "target_counts": {
+        "0": 13411,
+        "1": 3125,
+        "2": 3464
+      },
+      "pred_counts": {
+        "0": 13411,
+        "1": 3125,
+        "2": 3464
+      },
+      "diff_vs_submission_blend_v1": 667
+    },
+    "submission_prior_quota_em01_blend_v1.csv": {
+      "path": "submissions\\submission_prior_quota_em01_blend_v1.csv",
+      "recipe": "blend_v1 scores adjusted by least-loss flips to EM(alpha=0.1) prior",
+      "target_counts": {
+        "0": 13417,
+        "1": 3169,
+        "2": 3414
+      },
+      "pred_counts": {
+        "0": 13417,
+        "1": 3169,
+        "2": 3414
+      },
+      "diff_vs_submission_blend_v1": 673
+    },
+    "submission_prior_quota_13500_3000_3500_blend_v1.csv": {
+      "path": "submissions\\submission_prior_quota_13500_3000_3500_blend_v1.csv",
+      "recipe": "blend_v1 scores adjusted by least-loss flips to conservative prior 13500/3000/3500",
+      "target_counts": {
+        "0": 13500,
+        "1": 3000,
+        "2": 3500
+      },
+      "pred_counts": {
+        "0": 13500,
+        "1": 3000,
+        "2": 3500
+      },
+      "diff_vs_submission_blend_v1": 756
+    },
+    "submission_prior_quota_missing_14000_2500_3500_blend_v1.csv": {
+      "path": "submissions\\submission_prior_quota_missing_14000_2500_3500_blend_v1.csv",
+      "recipe": "blend_v1 scores adjusted by least-loss flips to name-gap prior 14000/2500/3500",
+      "target_counts": {
+        "0": 14000,
+        "1": 2500,
+        "2": 3500
+      },
+      "pred_counts": {
+        "0": 14000,
+        "1": 2500,
+        "2": 3500
+      },
+      "diff_vs_submission_blend_v1": 1256
+    },
+    "submission_prior_quota_em001_group_v1.csv": {
+      "path": "submissions\\submission_prior_quota_em001_group_v1.csv",
+      "recipe": "groupcv_blend scores adjusted by least-loss flips to EM(alpha=0.01) prior",
+      "target_counts": {
+        "0": 13411,
+        "1": 3125,
+        "2": 3464
+      },
+      "pred_counts": {
+        "0": 13411,
+        "1": 3125,
+        "2": 3464
+      },
+      "diff_vs_submission_blend_v1": 712
+    },
+    "submission_prior_quota_missing_14000_2500_3500_group_v1.csv": {
+      "path": "submissions\\submission_prior_quota_missing_14000_2500_3500_group_v1.csv",
+      "recipe": "groupcv_blend scores adjusted by least-loss flips to name-gap prior 14000/2500/3500",
+      "target_counts": {
+        "0": 14000,
+        "1": 2500,
+        "2": 3500
+      },
+      "pred_counts": {
+        "0": 14000,
+        "1": 2500,
+        "2": 3500
+      },
+      "diff_vs_submission_blend_v1": 1299
+    }
+  },
+  "group_blend_counts": {
+    "0": 12627,
+    "1": 3393,
+    "2": 3980
+  }
+}

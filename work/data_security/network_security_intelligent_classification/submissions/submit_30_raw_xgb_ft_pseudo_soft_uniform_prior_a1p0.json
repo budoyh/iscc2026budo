@@ -1,0 +1,24 @@
+{
+  "path": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\submissions\\submit_30_raw_xgb_ft_pseudo_soft_uniform_prior_a1p0.csv",
+  "upload_path": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\upload_ready\\submit_30_raw_xgb_ft_pseudo_soft_uniform_prior_a1p0.csv",
+  "row_count": 19440,
+  "columns_ok": true,
+  "id_order_ok": true,
+  "null_count": 0,
+  "duplicate_id_count": 0,
+  "labels_ok": true,
+  "label_counts": {
+    "class_0": 1818,
+    "class_1": 873,
+    "class_10": 1618,
+    "class_11": 1192,
+    "class_2": 2054,
+    "class_3": 1896,
+    "class_4": 1490,
+    "class_5": 1793,
+    "class_6": 1713,
+    "class_7": 1503,
+    "class_8": 1979,
+    "class_9": 1511
+  }
+}

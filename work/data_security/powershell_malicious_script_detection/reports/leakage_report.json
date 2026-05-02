@@ -1,0 +1,39 @@
+{
+  "name_numeric_pattern": true,
+  "min_num": 14000,
+  "max_num": 68064,
+  "train_label_runs_by_num": [
+    {
+      "start": 14000,
+      "end": 37707,
+      "label": 0,
+      "length": 23708
+    },
+    {
+      "start": 40208,
+      "end": 52885,
+      "label": 1,
+      "length": 12678
+    },
+    {
+      "start": 56386,
+      "end": 68064,
+      "label": 2,
+      "length": 11679
+    }
+  ],
+  "missing_intervals_inside_train_num_range": [
+    {
+      "start": 37708,
+      "end": 40207,
+      "length": 2500
+    },
+    {
+      "start": 52886,
+      "end": 56385,
+      "length": 3500
+    }
+  ],
+  "global_missing_count_0_to_max": 20000,
+  "note": "Training names are perfectly ordered by label. Treat as leakage risk, not as the default modeling route."
+}

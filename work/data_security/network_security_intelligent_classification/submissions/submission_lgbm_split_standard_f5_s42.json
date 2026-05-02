@@ -1,0 +1,20 @@
+{
+  "row_count": 19440,
+  "sample_row_count": 19440,
+  "columns_ok": true,
+  "id_order_ok": true,
+  "null_count": 0,
+  "duplicate_id_count": 0,
+  "labels_ok": true,
+  "local_macro_f1": 0.9298942313300412,
+  "weights": [
+    1.0
+  ],
+  "run_ids": [
+    "lgbm_base_split_standard_f5_s42"
+  ],
+  "output_path": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\submissions\\submission_lgbm_split_standard_f5_s42.csv",
+  "model_strategies": [
+    "lgbm_base"
+  ]
+}

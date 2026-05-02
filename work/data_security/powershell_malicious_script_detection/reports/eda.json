@@ -1,0 +1,33 @@
+{
+  "train_shape": [
+    48065,
+    17
+  ],
+  "test_shape": [
+    20000,
+    16
+  ],
+  "label_counts": {
+    "0": 23708,
+    "1": 12678,
+    "2": 11679
+  },
+  "feature_nunique": {
+    "function_scope_level": 2,
+    "branch_scope_level": 2,
+    "loop_scope_level": 2,
+    "parameter_block_presence": 2,
+    "pipeline_usage_level": 2,
+    "decode_activity_profile": 3,
+    "network_command_profile": 2,
+    "task_registry_profile": 3,
+    "credential_runtime_profile": 3,
+    "structure_rhythm_profile": 3,
+    "layout_variation_profile": 2,
+    "identifier_variation_profile": 3,
+    "content_encoding_profile": 3,
+    "command_surface_profile": 2,
+    "extension_import_profile": 2
+  },
+  "test_seen_combo_ratio": 0.94555
+}

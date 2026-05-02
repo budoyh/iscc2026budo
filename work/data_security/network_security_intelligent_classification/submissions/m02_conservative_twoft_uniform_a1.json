@@ -1,0 +1,42 @@
+{
+  "row_count": 19440,
+  "sample_row_count": 19440,
+  "columns_ok": true,
+  "id_order_ok": true,
+  "null_count": 0,
+  "duplicate_id_count": 0,
+  "labels_ok": true,
+  "label_counts": {
+    "class_0": 1816,
+    "class_1": 873,
+    "class_10": 1615,
+    "class_11": 1196,
+    "class_2": 2054,
+    "class_3": 1894,
+    "class_4": 1489,
+    "class_5": 1796,
+    "class_6": 1714,
+    "class_7": 1509,
+    "class_8": 1974,
+    "class_9": 1510
+  },
+  "output_path": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\upload_ready_main\\m02_conservative_twoft_uniform_a1.csv",
+  "mirror_path": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\submissions\\m02_conservative_twoft_uniform_a1.csv",
+  "local_macro_f1": 0.9318369336035782,
+  "run_ids": [
+    "lgbm_base_f5_s42",
+    "xgb_base_f5_s42",
+    "torch_ft_raw_dann010_cw_f5_s42",
+    "torch_ft_raw_dann030_cw_f5_s43",
+    "pseudo_lgbm_ftblend_uniform100_t098_w035_f5_s42"
+  ],
+  "weights": [
+    0.4299999999999999,
+    0.13999999999999999,
+    0.059999999999999984,
+    0.059999999999999984,
+    0.30999999999999994
+  ],
+  "soft_prior": "uniform",
+  "soft_alpha": 1.0
+}

@@ -1,0 +1,24 @@
+{
+  "path": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\submissions\\submit_10_raw_xgb_alpha_grid_quota_uniform_prior.csv",
+  "upload_path": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\upload_ready\\submit_10_raw_xgb_alpha_grid_quota_uniform_prior.csv",
+  "row_count": 19440,
+  "columns_ok": true,
+  "id_order_ok": true,
+  "null_count": 0,
+  "duplicate_id_count": 0,
+  "labels_ok": true,
+  "label_counts": {
+    "class_0": 1620,
+    "class_1": 1620,
+    "class_10": 1620,
+    "class_11": 1620,
+    "class_2": 1620,
+    "class_3": 1620,
+    "class_4": 1620,
+    "class_5": 1620,
+    "class_6": 1620,
+    "class_7": 1620,
+    "class_8": 1620,
+    "class_9": 1620
+  }
+}

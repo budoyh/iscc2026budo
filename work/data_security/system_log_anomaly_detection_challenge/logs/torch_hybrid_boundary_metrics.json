@@ -1,0 +1,60 @@
+{
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.49640057794538794,
+      "threshold": -4.0,
+      "decode_boundary_weight": 1.2,
+      "detect_f1": 1.0,
+      "loc_iou": 0.9570836635977481,
+      "type_f1": 0.999153772182883,
+      "final_score": 0.978245652062883
+    },
+    {
+      "epoch": 2,
+      "loss": 0.18815547021344253,
+      "threshold": 2.0,
+      "decode_boundary_weight": 1.2,
+      "detect_f1": 0.9984715209970982,
+      "loc_iou": 0.9503075118713886,
+      "type_f1": 0.9980789872981928,
+      "final_score": 0.9742521296396265
+    },
+    {
+      "epoch": 3,
+      "loss": 0.16247235525331943,
+      "threshold": -4.0,
+      "decode_boundary_weight": 1.2,
+      "detect_f1": 1.0,
+      "loc_iou": 0.9607848479767495,
+      "type_f1": 0.9980789872981928,
+      "final_score": 0.9797200695427422
+    },
+    {
+      "epoch": 4,
+      "loss": 0.14537961770003052,
+      "threshold": -2.0,
+      "decode_boundary_weight": 1.2,
+      "detect_f1": 0.9994906481731205,
+      "loc_iou": 0.9616617719040624,
+      "type_f1": 1.0,
+      "final_score": 0.9807544831779993
+    },
+    {
+      "epoch": 5,
+      "loss": 0.13670663380761244,
+      "threshold": -2.0,
+      "decode_boundary_weight": 1.2,
+      "detect_f1": 1.0,
+      "loc_iou": 0.9611823720098368,
+      "type_f1": 0.999153772182883,
+      "final_score": 0.9802950062689274
+    }
+  ],
+  "best": {
+    "detect_f1": 0.9994906481731205,
+    "loc_iou": 0.9616617719040624,
+    "type_f1": 1.0,
+    "final_score": 0.9807544831779993
+  }
+}

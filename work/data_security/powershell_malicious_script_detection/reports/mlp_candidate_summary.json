@@ -1,0 +1,90 @@
+{
+  "oof_macro_f1": 0.7489170342586083,
+  "fold_macro_f1": [
+    0.7492797237185229,
+    0.7488804834625148,
+    0.7485849722220782
+  ],
+  "base_blend_counts": {
+    "0": 12744,
+    "1": 3421,
+    "2": 3835
+  },
+  "candidates": {
+    "submission_mlp_onehot_v1.csv": {
+      "path": "submissions\\submission_mlp_onehot_v1.csv",
+      "weights": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "pred_counts": {
+        "0": 13183,
+        "1": 3318,
+        "2": 3499
+      },
+      "recipe": "MLP one-hot only",
+      "diff_vs_submission_blend_v1": 550
+    },
+    "submission_mlp_onehot_w100105_v1.csv": {
+      "path": "submissions\\submission_mlp_onehot_w100105_v1.csv",
+      "weights": [
+        1.0,
+        1.0,
+        1.05
+      ],
+      "pred_counts": {
+        "0": 13169,
+        "1": 3318,
+        "2": 3513
+      },
+      "recipe": "MLP one-hot, class 2 small boost",
+      "diff_vs_submission_blend_v1": 554
+    },
+    "submission_blend_mlp_a010_w105_v1.csv": {
+      "path": "submissions\\submission_blend_mlp_a010_w105_v1.csv",
+      "weights": [
+        1.0,
+        1.05,
+        1.0
+      ],
+      "pred_counts": {
+        "0": 12786,
+        "1": 3425,
+        "2": 3789
+      },
+      "recipe": "0.9*blend_v1_prob + 0.1*mlp, class weights [1,1.05,1]",
+      "diff_vs_submission_blend_v1": 54
+    },
+    "submission_blend_mlp_a020_w100105_v1.csv": {
+      "path": "submissions\\submission_blend_mlp_a020_w100105_v1.csv",
+      "weights": [
+        1.0,
+        1.0,
+        1.05
+      ],
+      "pred_counts": {
+        "0": 12775,
+        "1": 3403,
+        "2": 3822
+      },
+      "recipe": "0.8*blend_v1_prob + 0.2*mlp, class weights [1,1,1.05]",
+      "diff_vs_submission_blend_v1": 76
+    },
+    "submission_blend_mlp_a030_w115_v1.csv": {
+      "path": "submissions\\submission_blend_mlp_a030_w115_v1.csv",
+      "weights": [
+        1.0,
+        1.15,
+        1.0
+      ],
+      "pred_counts": {
+        "0": 13017,
+        "1": 3431,
+        "2": 3552
+      },
+      "recipe": "0.7*blend_v1_prob + 0.3*mlp, original class weights [1,1.15,1]",
+      "diff_vs_submission_blend_v1": 312
+    }
+  }
+}

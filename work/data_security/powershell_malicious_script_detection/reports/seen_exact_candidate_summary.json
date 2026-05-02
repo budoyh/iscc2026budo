@@ -1,0 +1,176 @@
+{
+  "train_shape": [
+    48065,
+    17
+  ],
+  "test_shape": [
+    20000,
+    16
+  ],
+  "features": [
+    "function_scope_level",
+    "branch_scope_level",
+    "loop_scope_level",
+    "parameter_block_presence",
+    "pipeline_usage_level",
+    "decode_activity_profile",
+    "network_command_profile",
+    "task_registry_profile",
+    "credential_runtime_profile",
+    "structure_rhythm_profile",
+    "layout_variation_profile",
+    "identifier_variation_profile",
+    "content_encoding_profile",
+    "command_surface_profile",
+    "extension_import_profile"
+  ],
+  "seen_rows": 18911,
+  "unseen_rows": 1089,
+  "seen_ratio": 0.94555,
+  "candidates": {
+    "submission_seen_exact_mode_group_v1.csv": {
+      "path": "submissions\\submission_seen_exact_mode_group_v1.csv",
+      "weights": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "pred_counts": {
+        "0": 13223,
+        "1": 3377,
+        "2": 3400
+      },
+      "recipe": "seen exact combo posterior without smoothing; unseen fallback = group rf/lgbm/xgb blend",
+      "fallback": "group",
+      "smoothing": 0.0,
+      "seen_rows": 18911,
+      "unseen_rows": 1089
+    },
+    "submission_seen_exact_s0_w120080090_group_v1.csv": {
+      "path": "submissions\\submission_seen_exact_s0_w120080090_group_v1.csv",
+      "weights": [
+        1.2,
+        0.8,
+        0.9
+      ],
+      "pred_counts": {
+        "0": 13655,
+        "1": 3091,
+        "2": 3254
+      },
+      "recipe": "seen exact combo posterior without smoothing; class weights [1.2,0.8,0.9]; unseen fallback = group blend",
+      "fallback": "group",
+      "smoothing": 0.0,
+      "seen_rows": 18911,
+      "unseen_rows": 1089
+    },
+    "submission_seen_exact_s1_w120080090_group_v1.csv": {
+      "path": "submissions\\submission_seen_exact_s1_w120080090_group_v1.csv",
+      "weights": [
+        1.2,
+        0.8,
+        0.9
+      ],
+      "pred_counts": {
+        "0": 13809,
+        "1": 3085,
+        "2": 3106
+      },
+      "recipe": "seen exact combo posterior with smoothing=1; class weights [1.2,0.8,0.9]; unseen fallback = group blend",
+      "fallback": "group",
+      "smoothing": 1.0,
+      "seen_rows": 18911,
+      "unseen_rows": 1089
+    },
+    "submission_seen_exact_s5_w115080090_group_v1.csv": {
+      "path": "submissions\\submission_seen_exact_s5_w115080090_group_v1.csv",
+      "weights": [
+        1.15,
+        0.8,
+        0.9
+      ],
+      "pred_counts": {
+        "0": 13973,
+        "1": 3066,
+        "2": 2961
+      },
+      "recipe": "seen exact combo posterior with smoothing=5; class weights [1.15,0.8,0.9]; unseen fallback = group blend",
+      "fallback": "group",
+      "smoothing": 5.0,
+      "seen_rows": 18911,
+      "unseen_rows": 1089
+    },
+    "submission_seen_exact_s5_w120080095_group_v1.csv": {
+      "path": "submissions\\submission_seen_exact_s5_w120080095_group_v1.csv",
+      "weights": [
+        1.2,
+        0.8,
+        0.95
+      ],
+      "pred_counts": {
+        "0": 13974,
+        "1": 3062,
+        "2": 2964
+      },
+      "recipe": "seen exact combo posterior with smoothing=5; class weights [1.2,0.8,0.95]; unseen fallback = group blend",
+      "fallback": "group",
+      "smoothing": 5.0,
+      "seen_rows": 18911,
+      "unseen_rows": 1089
+    },
+    "submission_seen_exact_s10_w120080105_group_v1.csv": {
+      "path": "submissions\\submission_seen_exact_s10_w120080105_group_v1.csv",
+      "weights": [
+        1.2,
+        0.8,
+        1.05
+      ],
+      "pred_counts": {
+        "0": 13959,
+        "1": 3030,
+        "2": 3011
+      },
+      "recipe": "seen exact combo posterior with smoothing=10; class weights [1.2,0.8,1.05]; unseen fallback = group blend",
+      "fallback": "group",
+      "smoothing": 10.0,
+      "seen_rows": 18911,
+      "unseen_rows": 1089
+    },
+    "submission_seen_exact_s5_w120080095_oldcore_v1.csv": {
+      "path": "submissions\\submission_seen_exact_s5_w120080095_oldcore_v1.csv",
+      "weights": [
+        1.2,
+        0.8,
+        0.95
+      ],
+      "pred_counts": {
+        "0": 13960,
+        "1": 3059,
+        "2": 2981
+      },
+      "recipe": "seen exact combo posterior with smoothing=5; class weights [1.2,0.8,0.95]; unseen fallback = mean(lgbm,xgb,hist,extra_trees)",
+      "fallback": "old_core",
+      "smoothing": 5.0,
+      "seen_rows": 18911,
+      "unseen_rows": 1089
+    },
+    "submission_seen_exact_s10_w120080105_oldcore_v1.csv": {
+      "path": "submissions\\submission_seen_exact_s10_w120080105_oldcore_v1.csv",
+      "weights": [
+        1.2,
+        0.8,
+        1.05
+      ],
+      "pred_counts": {
+        "0": 13947,
+        "1": 3027,
+        "2": 3026
+      },
+      "recipe": "seen exact combo posterior with smoothing=10; class weights [1.2,0.8,1.05]; unseen fallback = mean(lgbm,xgb,hist,extra_trees)",
+      "fallback": "old_core",
+      "smoothing": 10.0,
+      "seen_rows": 18911,
+      "unseen_rows": 1089
+    }
+  }
+}

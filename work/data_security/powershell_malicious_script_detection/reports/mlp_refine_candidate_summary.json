@@ -1,0 +1,84 @@
+{
+  "online_reference": {
+    "submission_mlp_onehot_v1.csv": 0.70201,
+    "submission_blend_mlp_a020_w100105_v1.csv": 0.69821,
+    "submission.csv_prior_quota_13500_3000_3500": 0.69772
+  },
+  "base_mlp_counts": {
+    "0": 13183,
+    "1": 3318,
+    "2": 3499
+  },
+  "candidates": {
+    "submission_mlp_w102000100_v1.csv": {
+      "path": "submissions\\submission_mlp_w102000100_v1.csv",
+      "pred_counts": {
+        "0": 13257,
+        "1": 3318,
+        "2": 3425
+      },
+      "recipe": "sklearn MLP proba class weights [1.02, 1.0, 1.0]",
+      "diff_vs_mlp_onehot_v1": 74
+    },
+    "submission_mlp_w108092100_v1.csv": {
+      "path": "submissions\\submission_mlp_w108092100_v1.csv",
+      "pred_counts": {
+        "0": 13386,
+        "1": 3277,
+        "2": 3337
+      },
+      "recipe": "sklearn MLP proba class weights [1.08, 0.92, 1.0]",
+      "diff_vs_mlp_onehot_v1": 206
+    },
+    "submission_mlp_w110090103_v1.csv": {
+      "path": "submissions\\submission_mlp_w110090103_v1.csv",
+      "pred_counts": {
+        "0": 13630,
+        "1": 3010,
+        "2": 3360
+      },
+      "recipe": "sklearn MLP proba class weights [1.1, 0.9, 1.03]",
+      "diff_vs_mlp_onehot_v1": 451
+    },
+    "submission_mlp_w115085105_v1.csv": {
+      "path": "submissions\\submission_mlp_w115085105_v1.csv",
+      "pred_counts": {
+        "0": 13723,
+        "1": 2944,
+        "2": 3333
+      },
+      "recipe": "sklearn MLP proba class weights [1.15, 0.85, 1.05]",
+      "diff_vs_mlp_onehot_v1": 544
+    },
+    "submission_mlp_quota_13500_3000_3500_v1.csv": {
+      "path": "submissions\\submission_mlp_quota_13500_3000_3500_v1.csv",
+      "pred_counts": {
+        "0": 13500,
+        "1": 3000,
+        "2": 3500
+      },
+      "recipe": "sklearn MLP least-loss quota adjustment to [13500, 3000, 3500]",
+      "diff_vs_mlp_onehot_v1": 318
+    },
+    "submission_mlp_quota_gap_14000_2500_3500_v1.csv": {
+      "path": "submissions\\submission_mlp_quota_gap_14000_2500_3500_v1.csv",
+      "pred_counts": {
+        "0": 14000,
+        "1": 2500,
+        "2": 3500
+      },
+      "recipe": "sklearn MLP least-loss quota adjustment to [14000, 2500, 3500]",
+      "diff_vs_mlp_onehot_v1": 818
+    },
+    "submission_mlp_quota_em001_13411_3125_3464_v1.csv": {
+      "path": "submissions\\submission_mlp_quota_em001_13411_3125_3464_v1.csv",
+      "pred_counts": {
+        "0": 13411,
+        "1": 3125,
+        "2": 3464
+      },
+      "recipe": "sklearn MLP least-loss quota adjustment to [13411, 3125, 3464]",
+      "diff_vs_mlp_onehot_v1": 228
+    }
+  }
+}

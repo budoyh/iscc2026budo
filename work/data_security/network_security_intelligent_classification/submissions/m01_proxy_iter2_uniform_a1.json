@@ -1,0 +1,46 @@
+{
+  "row_count": 19440,
+  "sample_row_count": 19440,
+  "columns_ok": true,
+  "id_order_ok": true,
+  "null_count": 0,
+  "duplicate_id_count": 0,
+  "labels_ok": true,
+  "label_counts": {
+    "class_0": 1825,
+    "class_1": 883,
+    "class_10": 1596,
+    "class_11": 1200,
+    "class_2": 2047,
+    "class_3": 1904,
+    "class_4": 1496,
+    "class_5": 1803,
+    "class_6": 1719,
+    "class_7": 1508,
+    "class_8": 1945,
+    "class_9": 1514
+  },
+  "output_path": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\upload_ready_main\\m01_proxy_iter2_uniform_a1.csv",
+  "mirror_path": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\submissions\\m01_proxy_iter2_uniform_a1.csv",
+  "local_macro_f1": 0.9319473752225488,
+  "run_ids": [
+    "lgbm_base_f5_s42",
+    "xgb_base_f5_s42",
+    "torch_ft_raw_dann010_cw_f5_s42",
+    "torch_ft_raw_dann030_cw_f5_s43",
+    "pseudo_lgbm_ftblend_t098_w035_f5_s42",
+    "pseudo_lgbm_ftblend_uniform100_t098_w035_f5_s42",
+    "pseudo_lgbm_iter2_twoft_uniform100_t097_w045_f5_s42"
+  ],
+  "weights": [
+    0.44962455037544957,
+    0.11302988697011301,
+    0.11168388831611167,
+    0.050831949168050825,
+    0.019177980822019176,
+    0.00412099587900412,
+    0.2515307484692515
+  ],
+  "soft_prior": "uniform",
+  "soft_alpha": 1.0
+}

@@ -1,0 +1,29 @@
+{
+  "row_count": 19440,
+  "sample_row_count": 19440,
+  "columns_ok": true,
+  "id_order_ok": true,
+  "null_count": 0,
+  "duplicate_id_count": 0,
+  "labels_ok": true,
+  "local_macro_f1": 0.9302382214333734,
+  "weights": [
+    0.5000000000000001,
+    0.20000000000000004,
+    0.20000000000000004,
+    0.10000000000000002
+  ],
+  "run_ids": [
+    "lgbm_base_f5_s42",
+    "xgb_base_f5_s42",
+    "lgbm_base_cw_balanced_n700_f5_s42",
+    "lgbm_base_combined_rank_n700_f5_s42"
+  ],
+  "output_path": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\submissions\\submission_blend_raw_xgb_cw_rank_50_20_20_10.csv",
+  "model_strategies": [
+    "lgbm_base",
+    "xgb_base",
+    "lgbm_base",
+    "lgbm_base"
+  ]
+}

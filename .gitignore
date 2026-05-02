@@ -1,0 +1,36 @@
+# Local dependency/runtime directories
+.deps/
+.tmp/
+.venv/
+.pwnconfig/
+catboost_info/
+
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Data security competition: keep code/docs/logs, exclude bulky data artifacts
+work/data_security/**/raw/
+work/data_security/**/data/
+work/data_security/**/processed/
+work/data_security/**/models/
+work/data_security/TEST_DATA_TASK/
+work/data_security/**/*.zip
+work/data_security/**/*.7z
+work/data_security/**/*.rar
+work/data_security/**/*.tar
+work/data_security/**/*.gz
+work/data_security/**/*.joblib
+work/data_security/**/*.pkl
+work/data_security/**/*.pickle
+work/data_security/**/*.npy
+work/data_security/**/*.npz
+work/data_security/**/*.parquet
+work/data_security/**/*.feather
+
+# Large root challenge datasets are not part of this upload scope
+*.zip
+*.7z
+*.rar
+*.apk
+*.so

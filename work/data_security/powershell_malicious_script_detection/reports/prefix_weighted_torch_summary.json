@@ -1,0 +1,49 @@
+{
+  "device": "cuda",
+  "epochs": 24,
+  "seeds": [
+    20260802,
+    20260803,
+    20260804,
+    20260805,
+    20260806
+  ],
+  "sample_weight": "exp(-1.5 * normalized_position_within_label)",
+  "class_weights": [
+    1.15,
+    0.75,
+    0.95
+  ],
+  "candidates": {
+    "sub_prefix_weighted_raw.csv": {
+      "path": "submissions\\sub_prefix_weighted_raw.csv",
+      "pred_counts": {
+        "0": 13562,
+        "1": 3253,
+        "2": 3185
+      },
+      "recipe": "5-seed prefix-weighted torch one-hot MLP ensemble raw",
+      "diff_vs_mlp_onehot_v1": 908
+    },
+    "sub_prefix_weighted_w.csv": {
+      "path": "submissions\\sub_prefix_weighted_w.csv",
+      "pred_counts": {
+        "0": 13845,
+        "1": 2951,
+        "2": 3204
+      },
+      "recipe": "5-seed prefix-weighted torch one-hot MLP ensemble, post weights [1,0.55,1]",
+      "diff_vs_mlp_onehot_v1": 1173
+    },
+    "sub_prefix_hybrid_w.csv": {
+      "path": "submissions\\sub_prefix_hybrid_w.csv",
+      "pred_counts": {
+        "0": 13796,
+        "1": 2965,
+        "2": 3239
+      },
+      "recipe": "0.65*online-best MLP + 0.35*prefix-weighted torch, post weights [1.05,0.75,1]",
+      "diff_vs_mlp_onehot_v1": 694
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "row_count": 19440,
+  "sample_row_count": 19440,
+  "columns_ok": true,
+  "id_order_ok": true,
+  "null_count": 0,
+  "duplicate_id_count": 0,
+  "labels_ok": true,
+  "local_macro_f1": 0.9305943747805822,
+  "weights": [
+    0.7200000000000001,
+    0.18000000000000002,
+    0.10000000000000002
+  ],
+  "run_ids": [
+    "lgbm_base_f5_s42",
+    "xgb_base_f5_s42",
+    "torch_ft_raw_dann010_cw_f5_s42"
+  ],
+  "output_path": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\submissions\\submission_blend_raw_xgb_ft10.csv",
+  "model_strategies": [
+    "lgbm_base",
+    "xgb_base",
+    "torch_fttransformer"
+  ]
+}

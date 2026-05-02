@@ -1,0 +1,42 @@
+{
+  "submission_leak_cons_base_v1.csv": {
+    "recipe": "Per-combo leakage thresholds alpha01=1.0 alpha12=1.0, unseen combo fallback = base_shift",
+    "pred_counts": {
+      "0": 15991,
+      "1": 3147,
+      "2": 862
+    }
+  },
+  "submission_leak_cons_block_v1.csv": {
+    "recipe": "Per-combo leakage thresholds alpha01=1.0 alpha12=1.0, unseen combo fallback = global block rule",
+    "pred_counts": {
+      "0": 16396,
+      "1": 3308,
+      "2": 296
+    }
+  },
+  "submission_leak_mid_block_v1.csv": {
+    "recipe": "Per-combo leakage thresholds alpha01=0.8 alpha12=0.9, unseen combo fallback = global block rule",
+    "pred_counts": {
+      "0": 16067,
+      "1": 3336,
+      "2": 597
+    }
+  },
+  "submission_leak_tuned_base_v1.csv": {
+    "recipe": "Per-combo leakage thresholds alpha01=0.7 alpha12=0.74, unseen combo fallback = base_shift",
+    "pred_counts": {
+      "0": 15276,
+      "1": 2907,
+      "2": 1817
+    }
+  },
+  "submission_leak_global01_v1.csv": {
+    "recipe": "High-risk global position rule: first 16500 rows -> 0, last 3500 rows -> 1",
+    "pred_counts": {
+      "0": 16500,
+      "1": 3500,
+      "2": 0
+    }
+  }
+}

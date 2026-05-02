@@ -1,0 +1,24 @@
+{
+  "submission_mlp_quota_13600_2900_3500_v1.csv": {
+    "counts": {
+      "0": 13600,
+      "1": 2900,
+      "2": 3500
+    },
+    "diff_vs_mlp": 418,
+    "sha256": "BB77C8A70C07DDF4D64B2A83BF68CC2CB126B8A1B624B62D71F9841611AA6E97",
+    "size": 148901,
+    "crlf": 0
+  },
+  "submission.csv": {
+    "counts": {
+      "0": 13600,
+      "1": 2900,
+      "2": 3500
+    },
+    "diff_vs_mlp": 418,
+    "sha256": "BB77C8A70C07DDF4D64B2A83BF68CC2CB126B8A1B624B62D71F9841611AA6E97",
+    "size": 148901,
+    "crlf": 0
+  }
+}
