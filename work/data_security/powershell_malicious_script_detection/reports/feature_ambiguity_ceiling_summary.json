@@ -1,0 +1,68 @@
+{
+  "features": [
+    "function_scope_level",
+    "branch_scope_level",
+    "loop_scope_level",
+    "parameter_block_presence",
+    "pipeline_usage_level",
+    "decode_activity_profile",
+    "network_command_profile",
+    "task_registry_profile",
+    "credential_runtime_profile",
+    "structure_rhythm_profile",
+    "layout_variation_profile",
+    "identifier_variation_profile",
+    "content_encoding_profile",
+    "command_surface_profile",
+    "extension_import_profile"
+  ],
+  "train_rows": 48065,
+  "test_rows": 20000,
+  "train_label_counts": {
+    "0": 23708,
+    "1": 12678,
+    "2": 11679
+  },
+  "train_unique_combos": 1593,
+  "train_combo_label_nunique": {
+    "1": 808,
+    "2": 485,
+    "3": 300
+  },
+  "train_rows_in_ambiguous_combos": 44734,
+  "train_majority_combo_accuracy": 0.7868511390824925,
+  "train_majority_combo_macro_f1": 0.762940163417718,
+  "test_seen_combo_rows": 18911,
+  "test_seen_combo_ratio": 0.94555,
+  "test_ambiguous_seen_combo_rows": 17109,
+  "test_ambiguous_seen_combo_ratio": 0.85545,
+  "test_unseen_combo_rows": 1089,
+  "test_seen_combo_majority_frac_quantiles": {
+    "0": 0.3333333333333333,
+    "0.25": 0.6904761904761905,
+    "0.5": 0.8333333333333334,
+    "0.75": 0.9433962264150944,
+    "0.9": 0.9974874371859297,
+    "0.99": 1.0,
+    "1.0": 1.0
+  },
+  "test_seen_combo_train_count_quantiles": {
+    "0": 1.0,
+    "0.25": 32.0,
+    "0.5": 104.0,
+    "0.75": 489.0,
+    "0.9": 1382.0,
+    "0.99": 2815.0,
+    "1.0": 2815.0
+  },
+  "test_seen_rows_train_posterior_sum": {
+    "0": 11379.852576777532,
+    "1": 3474.3982976389066,
+    "2": 4056.7491255840705
+  },
+  "interpretation": [
+    "The 15 official features are highly non-injective: most train rows share an exact feature combo with other labels.",
+    "Feature-only modeling has a low empirical ceiling unless the hidden test conditional distribution is much cleaner than train.",
+    "A score near 0.9 would require reliable hidden structure such as source domain/order, not ordinary IID classification on these columns."
+  ]
+}

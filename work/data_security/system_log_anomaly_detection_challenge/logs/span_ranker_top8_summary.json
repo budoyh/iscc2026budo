@@ -1,0 +1,21 @@
+{
+  "output_path": "submissions\\r8_3210.csv",
+  "force_count": 3210,
+  "train_candidates": 454210,
+  "target_mean": 0.15524743497371674,
+  "confidence_quantiles": {
+    "0.1": 1.098131815524539e-05,
+    "0.25": 1.8963553884532303e-05,
+    "0.5": 0.9050721526145935,
+    "0.75": 0.9781632423400879,
+    "0.9": 0.9993293881416321
+  },
+  "anomaly_count": 3210,
+  "variant_paths": [
+    "submissions\\r8_3210_c3204.csv",
+    "submissions\\r8_3210_c3208.csv",
+    "submissions\\r8_3210_c3212.csv",
+    "submissions\\r8_3210_c3214.csv"
+  ],
+  "confidence_output": "processed\\ranker_confidence_top8.csv"
+}

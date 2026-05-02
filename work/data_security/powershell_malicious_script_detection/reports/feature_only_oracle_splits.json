@@ -1,0 +1,159 @@
+{
+  "created_at": "2026-05-03T01:42:49+0800",
+  "features": [
+    "function_scope_level",
+    "branch_scope_level",
+    "loop_scope_level",
+    "parameter_block_presence",
+    "pipeline_usage_level",
+    "decode_activity_profile",
+    "network_command_profile",
+    "task_registry_profile",
+    "credential_runtime_profile",
+    "structure_rhythm_profile",
+    "layout_variation_profile",
+    "identifier_variation_profile",
+    "content_encoding_profile",
+    "command_surface_profile",
+    "extension_import_profile"
+  ],
+  "splits": {
+    "ratio_prefix": {
+      "valid_counts": {
+        "0": 8802,
+        "1": 2088,
+        "2": 2693
+      },
+      "unique_combos": 987,
+      "hard_feature_oracle": {
+        "macro_f1": 0.836922298323033,
+        "per_class_f1": {
+          "0": 0.9065363469761759,
+          "1": 0.8772644927536232,
+          "2": 0.7269660552393
+        },
+        "pred_counts": {
+          "0": 9205,
+          "1": 2328,
+          "2": 2050
+        }
+      },
+      "train_combo_majority": {
+        "macro_f1": 0.7359509241987805,
+        "per_class_f1": {
+          "0": 0.846813654942145,
+          "1": 0.837968561064087,
+          "2": 0.5230705565901097
+        },
+        "pred_counts": {
+          "0": 8569,
+          "1": 2874,
+          "2": 2140
+        }
+      }
+    },
+    "actual_prefix": {
+      "valid_counts": {
+        "0": 11854,
+        "1": 2500,
+        "2": 3500
+      },
+      "unique_combos": 1128,
+      "hard_feature_oracle": {
+        "macro_f1": 0.8181808937482903,
+        "per_class_f1": {
+          "0": 0.9034620235140962,
+          "1": 0.8797709923664122,
+          "2": 0.6713096653643622
+        },
+        "pred_counts": {
+          "0": 12727,
+          "1": 2740,
+          "2": 2387
+        }
+      },
+      "train_combo_majority": {
+        "macro_f1": 0.7088724343094829,
+        "per_class_f1": {
+          "0": 0.8077078198521174,
+          "1": 0.8347301374455246,
+          "2": 0.4841793456308065
+        },
+        "pred_counts": {
+          "0": 10461,
+          "1": 3466,
+          "2": 3927
+        }
+      }
+    },
+    "middle_ratio": {
+      "valid_counts": {
+        "0": 8802,
+        "1": 2088,
+        "2": 2693
+      },
+      "unique_combos": 960,
+      "hard_feature_oracle": {
+        "macro_f1": 0.8173589364913553,
+        "per_class_f1": {
+          "0": 0.8999615025023373,
+          "1": 0.871689497716895,
+          "2": 0.6804258092548338
+        },
+        "pred_counts": {
+          "0": 9381,
+          "1": 2292,
+          "2": 1910
+        }
+      },
+      "train_combo_majority": {
+        "macro_f1": 0.6982799225254368,
+        "per_class_f1": {
+          "0": 0.7980596478620194,
+          "1": 0.8086482117599515,
+          "2": 0.48813190795433953
+        },
+        "pred_counts": {
+          "0": 7896,
+          "1": 2861,
+          "2": 2826
+        }
+      }
+    },
+    "suffix_ratio": {
+      "valid_counts": {
+        "0": 8802,
+        "1": 2088,
+        "2": 2693
+      },
+      "unique_combos": 912,
+      "hard_feature_oracle": {
+        "macro_f1": 0.6325626646902606,
+        "per_class_f1": {
+          "0": 0.8770479094526848,
+          "1": 0.4785714285714286,
+          "2": 0.5420686560466682
+        },
+        "pred_counts": {
+          "0": 10547,
+          "1": 1272,
+          "2": 1764
+        }
+      },
+      "train_combo_majority": {
+        "macro_f1": 0.38957855472499764,
+        "per_class_f1": {
+          "0": 0.7342390995395373,
+          "1": 0.057007125890736345,
+          "2": 0.37748943874471935
+        },
+        "pred_counts": {
+          "0": 8789,
+          "1": 859,
+          "2": 3935
+        }
+      }
+    }
+  },
+  "conclusion": "Hard feature oracle assigns one label per exact 15-feature combo using validation truth. Scores far below 0.9 indicate feature-only deterministic classification cannot reach the requested level on prefix-like proxies."
+}

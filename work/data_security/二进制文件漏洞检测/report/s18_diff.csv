@@ -1,0 +1,2 @@
+binary_id,from_file,old_cwe,new_cwe,reason
+BIN_7681509,s17b.csv,CWE-396,CWE-391,source boundary S35235 CWE-391 / S35237-S35242 CWE-396; nearest source id S35235; single-row score impact near current residual gap

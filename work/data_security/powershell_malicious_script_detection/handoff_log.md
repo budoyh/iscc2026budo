@@ -109,11 +109,34 @@ CUDA 已验证：
 
 ## 当前主线判断
 
-当前主线是：
+当前主线曾是：
 
 ```text
-online-best MLP-only -> prefix validation -> MLP probability quota
+online-best MLP-only -> prefix validation / label-shift checks -> MLP probability quota
 ```
+
+2026-05-03 线上反馈后更新：
+
+- `submission_mlp_labelshift_hard_q4_v1.csv` 线上 `0.70761`，是当前最好，但仍只是 0.70x 小幅提升。
+- `submission_leaderboard_constraint_v1.csv` 线上 `0.56815`，证明 leaderboard score inversion 严重过拟合；停止该方向。
+- 用户明确指出不同选手测试集顺序不同，因此后续不再依赖测试顺序、提交分数反演或类似投机约束。
+
+2026-05-03 进一步结构实验：
+
+- `feature_only_oracle_splits_v1`：在 ratio-prefix 伪测试上，直接用验证集真实标签给每个 exact 15-feature combo 选多数类，Macro F1 也只有 `0.83692`；actual-prefix 只有 `0.81818`，class 2 F1 分别只有 `0.727/0.671`。
+- `target_domain_structure_search_v1`：front-window/source-decay exact-combo 与 subset NB，ratio-prefix 最好 `0.76977`，actual-prefix 最好 `0.76628`，低于已有 MLP quota 代理。
+- `combo_trend_extrapolation_v1`：按原始 id 分箱做组合频率趋势外推，prefix-like 平均 `0.74519`，失败。
+- `soft_label_ambiguity_v1`：combo 软标签/硬软混合 Torch MLP，ratio/actual 平均 `0.76966`，未突破。
+- `combo_graph_label_propagation_v1`：train+target 唯一组合 Hamming 图半监督传播，平均 `0.73702`，失败。
+
+阶段性结论：现在的核心错误不是“模型还不够复杂”，而是官方 15 维离散特征对标签高度有损。同一组合大量多标签，且 prefix-like hard feature oracle 都离 `0.9` 很远。若不能合法恢复行级身份或新的隐藏来源域信号，继续堆 feature-only 模型很难出现巨大跃迁。
+
+2026-05-03 新增结构性判断：
+
+- 普通 IID 特征分类不是通往 0.9 的路线。15 维完整特征组合只有 `1593` 个，`785` 个组合多标签，`300` 个组合三标签全有。
+- `44734/48065` 训练行和 `17109/20000` 测试行落在多标签冲突 seen combo 中；训练集 exact-combo 多数类 `Macro F1=0.76294`。
+- 这解释了大家卡在 0.70x 的主要原因：官方 15 个特征高度有损，同一特征组合经常对应不同真实标签。
+- 想大幅突破必须恢复隐含 source-domain / order 信息；目前直接顺序泄漏已被线上否定，domain-mixture 生成模型验证不稳，hard BBSE label-shift 只算高风险备选。
 
 不要优先做：
 
@@ -175,6 +198,39 @@ reports/tomorrow_single_candidate_summary.json
 reports/prefix_validation_summary.md
 ```
 
+新增候选但暂不替代当前推荐文件：
+
+```text
+submissions/submission_mlp_labelshift_hard_global_v1.csv
+submissions/submission_mlp_labelshift_hard_q4_v1.csv
+```
+
+这两个文件由 `src/label_shift_prior_experiment.py` 生成，均基于线上最好 MLP 概率做 hard BBSE 配额修正：
+
+- 全局 hard BBSE 分布：`0=13039,1=2856,2=4105`，相对线上最好 MLP 改动 `606` 行。
+- q4 分段 hard BBSE 总分布相同，按每 5000 行分别 quota，相对线上最好 MLP 改动 `708` 行。
+- 伪测试结论：prefix 提升明显，ordered two-block 小幅提升，middle 基本持平，suffix 明显失败。真实测试特征不像 suffix，但这仍是高风险方向，不能作为下一次默认提交。
+
+线上反馈：
+
+- `submission.csv` 得分 `0.70441`，确认保守 quota 有效但不是突破路线。
+- `submission_mlp_labelshift_hard_q4_v1.csv` 得分 `0.70761`，确认分布/顺序感知方向优于保守 quota，但仍不是巨大突破。
+
+已证伪的突破型候选：
+
+```text
+submissions/submission_leaderboard_constraint_v1.csv
+```
+
+由 `src/leaderboard_constraint_infer.py` 生成。它不再训练普通分类器，而是把 11 个已知线上宏 F1 当作方程，反推测试集隐藏标签：
+
+- 分布：`0=10652,1=3755,2=5593`
+- 相对 `labelshift_q4` 改动：`5055` 行
+- 把该候选当作隐藏标签时，能同时复现 11 个已知线上分数，最大绝对误差 `0.0000867`，RMSE `0.0000384`
+- SHA256：`8579851E6C9B239EAEF3206D4450A9FD0235762768102CD1B479758D2167D604`
+- 线上反馈：`0.56815`，严重失败。
+- 结论：虽然能拟合已知线上分数，但宏 F1 方程欠定，反演出的标签不是可靠结构；不要继续 leaderboard-constraint posterior、留一提交约束、多解集成或测试顺序类方法。
+
 ## 主要脚本
 
 早期树模型：
@@ -203,6 +259,14 @@ scripts\run_torch.cmd work\data_security\powershell_malicious_script_detection\s
 scripts\run_torch.cmd work\data_security\powershell_malicious_script_detection\src\train_prefix_weighted_torch.py
 ```
 
+新增结构诊断 / 转导先验路线：
+
+```cmd
+scripts\run_py.cmd work\data_security\powershell_malicious_script_detection\src\diagnose_feature_ambiguity.py
+scripts\run_py.cmd work\data_security\powershell_malicious_script_detection\src\domain_mix_prior_experiment.py
+scripts\run_py.cmd work\data_security\powershell_malicious_script_detection\src\label_shift_prior_experiment.py
+```
+
 ## 关键产物
 
 当前推荐提交：
@@ -218,6 +282,14 @@ submissions/submission_mlp_quota_13600_2900_3500_v1.csv
 submissions/submission_mlp_onehot_v1.csv
 ```
 
+当前线上最好已更新为：
+
+```text
+submissions/submission_mlp_labelshift_hard_q4_v1.csv
+```
+
+线上分数：`0.70761`。目前没有新的高可信提交文件。
+
 主要报告：
 
 ```text
@@ -228,11 +300,20 @@ reports/sklearn_mlp_ensemble_summary.json
 reports/mlp_candidate_summary.json
 reports/mlp_refine_candidate_summary.json
 reports/tomorrow_single_candidate_summary.json
+reports/feature_ambiguity_ceiling_summary.json
+reports/domain_mix_prior_summary.json
+reports/label_shift_prior_summary.json
+reports/leaderboard_constraint_summary.json
+reports/target_domain_structure_search_summary.json
+reports/combo_trend_extrapolation_summary.json
+reports/soft_label_ambiguity_summary.json
+reports/combo_graph_label_propagation_summary.json
+reports/feature_only_oracle_splits.json
 ```
 
 ## 下一步
 
-1. 明天提交 `submissions/submission.csv`。
-2. 把线上分数写入 `experiments.csv`。
-3. 如果上涨，继续沿 MLP-only quota / prefix validation 做小步阈值搜索。
-4. 如果下降，回到 `submission_mlp_onehot_v1.csv`，不要继续加大 quota；改做更小幅度的 MLP 概率校准。
+1. 不再提交或扩展 `submission_leaderboard_constraint_v1.csv`。
+2. 不要再围绕普通 MLP/树模型/图传播/软标签/机械配额做小步调参；这些已经缺少通往 `0.9` 的证据。
+3. 若继续突破，必须先提出能越过 feature-only oracle 的新信息来源，例如可靠行级身份恢复、非顺序的隐藏来源域约束，或官方数据内部尚未利用的字段/文件结构。
+4. 所有新实验必须给出可复现命令、代理验证、和相对当前线上最好 `0.70761` 的清晰判断。

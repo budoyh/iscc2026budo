@@ -5,10 +5,10 @@
 - 题目：网络安全智能分类挑战
 - 任务：12 类网络安全事件分类，标签为 `class_0` 到 `class_11`
 - 指标：宏平均 F1
-- 当前已知最高线上分：`b01_target_aug_high.csv = 0.70584`
+- 当前已知最高线上分：`c03_c01_target_b01_proxy_reblend.csv = 0.71059`
 - 当前榜首参考：`0.71968`
-- 当前主推方向：继续围绕 `b01` 做迭代伪标签和目标域增强
-- 当前备选未提交候选：`upload_ready_breakthrough\b02_target_aug_mid.csv`
+- 当前主推未提交候选：暂无；`c03` 已提交且仅小幅提升，需要重新找机制。
+- 当前备选未提交候选：暂无强备选。
 - 每日提交次数有限，后续每轮只给 1 个主提交和最多 1 个备选。
 
 ## 环境边界
@@ -58,7 +58,8 @@ device: NVIDIA GeForce RTX 4060 Laptop GPU
 | n 系列 | `n13_target_class1_11_high.csv` | `0.69186` | 手工类别偏置无效 |
 | d 系列 | `d02_raw_xgb_ft_pseudo_uniform_a1p0.csv` | `0.69616` | 深度模型 + 伪标签 + uniform 有效 |
 | m 系列 | `m01_proxy_iter2_uniform_a1.csv` | `0.69848` | 迭代伪标签有效 |
-| b 系列 | `b01_target_aug_high.csv` | `0.70584` | 当前已知最高，目标域增强有效 |
+| b 系列 | `b01_target_aug_high.csv` | `0.70584` | 目标域增强有效 |
+| c 系列 | `c01_b01_iter_target_aug_high.csv` | `0.71035` | 当前已知最高，b01 教师迭代有效 |
 
 ## 实验记录摘要
 
@@ -80,8 +81,25 @@ device: NVIDIA GeForce RTX 4060 Laptop GPU
 | `catboost_raw_bal_d6_lr005_f5_s42` | CatBoost | `0.9102305212` | 弱，未进入最终 |
 | `target_aug_lgbm_m01_pow2_aug045_t097_w035_f5_s42` | 目标域矩增强 | `0.9313765419` | 9740 个伪标签 |
 | `target_aug_lgbm_m01_pow1p5_aug060_t095_w045_f5_s42` | 更激进目标域矩增强 | `0.9316003006` | 11035 个伪标签 |
-| `b01_target_aug_high` | 目标域增强融合 | `0.9328080314` | A 榜 `0.70584`，当前已知最高 |
+| `b01_target_aug_high` | 目标域增强融合 | `0.9328080314` | A 榜 `0.70584` |
 | `b02_target_aug_mid` | 目标域增强融合 | `0.9326931022` | 当前备选 |
+| `pseudo_lgbm_iter3_b01_uniform100_t095_w050_f5_s42` | 三代伪标签 LGBM | `0.9312698260` | 11928 个伪标签 |
+| `target_aug_lgbm_b01_pow1p2_aug080_t093_w055_f5_s42` | b01 教师目标域增强 | `0.9323161136` | 12785 个伪标签 |
+| `target_aug_lgbm_b01_pow0p8_aug100_t090_w065_f5_s42` | 更激进目标域增强 | `0.9318755648` | 13670 个伪标签，偏弱 |
+| `c01_b01_iter_target_aug_high` | b01 迭代目标增强融合 | `0.9330872501` | A 榜 `0.71035`，当前已知最高 |
+| `c02_b01_iter_target_aug_safe` | b01 迭代目标增强融合 | `0.9330908438` | 旧备选，diff_vs_b01=136 |
+| `local_cluster_diag_c01_k3_pow1p2_aug075_t093_w055_n700_f5_s42` | 子簇级目标增强 | `0.9318447231` | 单模弱，target-like proxy 弱，不单独提交 |
+| `target_aug_domain_c01_pow1p2_aug080_t093_w055_g050_n700_f5_s42` | domain-focus 目标增强 | `0.9321018054` | 单模未超过 c01，不单独提交 |
+| `lgbm_stable_drop10_smdstd_n700_f5_s42` | 删除最漂移特征 | `0.9073602925` | 证明漂移特征同时承载强类别信号，删除不可行 |
+| `c03_c01_target_b01_proxy_reblend` | c01 与目标增强单模代理重融合 | `0.9332779796` | 新主推；target-like proxy top20/top30 明显高于 c01，diff_vs_c01=130 |
+
+## 2026-05-03 突破诊断
+
+- 新增 `src\analyze_breakthrough.py`：domain classifier AUC `0.908819`，随机 OOF 仍不可直接信；top20/top30 目标相似训练子集更能区分 b01/c01。
+- 普通无监督 KMeans 不适合直接簇到类别匹配：`k=96` 时训练簇多数类 F1 仅 `0.355`，簇纯度低。
+- 三个颠覆方向被本地否掉：子簇目标增强单模、domain-focus 单模、删除漂移特征稳定子集，均未超过 c01 的目标相似代理。
+- EM/BBSE/test prior 估计没有超过 c01 的 uniform prior；c01 的 uniform alpha=1.0 仍是当前最稳的概率校准。
+- 代理重融合显示 `0.6*c01_raw + 0.4*target_aug_lgbm_b01_pow1p2` 后再做 uniform prior 最强：top20 `0.925217`、top30 `0.924993`，高于 c01 的 top20 `0.923573`、top30 `0.923755`。
 
 ## 方法结论
 
@@ -102,26 +120,22 @@ device: NVIDIA GeForce RTX 4060 Laptop GPU
 - kNN/标签传播过弱。
 - 测试 kNN 图平滑代理验证下降。
 - `id` 或行顺序没有可利用规律。
+- 普通 KMeans/子簇直接匹配纯度太低，不能作为直接标签分配突破口。
+- 简单删除最漂移特征会严重伤类别信号，不建议继续做粗暴特征剔除。
 
 ## 当前推荐提交
 
 只建议先提交：
 
 ```text
-upload_ready_breakthrough\b01_target_aug_high.csv
+upload_ready_breakthrough3\c03_c01_target_b01_proxy_reblend.csv
 ```
 
-如果 `b01` 没有提升或下降，再提交：
-
-```text
-upload_ready_breakthrough\b02_target_aug_mid.csv
-```
-
-不要同时提交多个旧目录候选。`d02/m01` 已有线上反馈，旧文件继续提交价值较低。
+该文件相对 `c01` 改动 `130` 行，属于较保守但代理验证显著更好的新候选。不要同时提交多个旧目录候选；`d02/m01/b01/c01` 已有线上反馈，旧文件继续提交价值较低。
 
 ## 文件格式校验
 
-`b01` 和 `b02` 均已校验通过：
+`c03_c01_target_b01_proxy_reblend.csv` 已校验通过：
 
 - 行数：`19440`
 - 列名：`id,label`
@@ -131,14 +145,8 @@ upload_ready_breakthrough\b02_target_aug_mid.csv
 - 标签合法：全部属于 `class_0` 到 `class_11`
 - 文件头示例：
 
-```csv
-id,label
-0,class_6
-1,class_8
-2,class_4
-3,class_9
-4,class_5
-```
+- 相对 `c01` 改动：`130` 行
+- 标签计数：`class_0=1789, class_1=871, class_10=1556, class_11=1205, class_2=2026, class_3=1931, class_4=1517, class_5=1818, class_6=1753, class_7=1532, class_8=1877, class_9=1565`
 
 不要上传同名 `.json` 报告文件。
 
@@ -184,11 +192,11 @@ C:\budostudy\only_for_codex\iscc\scripts\run_py.cmd src\write_blend_submission.p
 
 ## 下一步计划
 
-收到 `b01/b02` 线上分数后：
+收到 `c03` 线上分数后：
 
-1. 如果 `b01` 明显提升，围绕目标域增强继续搜索 `aug_weight`、`target_power`、伪标签阈值和目标增强权重。
-2. 如果 `b01` 持平但 `b02` 更好，说明目标增强方向有效但过激，需要降低目标增强权重。
-3. 如果二者下降，回到 `m01`，重点改进伪标签质量而不是继续扩大目标域增强。
+1. 如果 `c03` 高于 `0.71035`，继续使用 target-like proxy 优化目标增强家族权重，并考虑训练完整树数的子簇增强模型作多样性源。
+2. 如果 `c03` 持平或小降，说明代理验证仍有噪声，回到 `c01` 作为教师，不再扩大 `target_b01_pow1p2` 权重。
+3. 如果 `c03` 明显下降，停止这条代理重融合路线，优先研究更强的验证体系或自监督深度模型。
 4. 所有新线上分数必须同步写入 `experiments.csv` 和本文档。
 
 ## 注意事项
@@ -196,4 +204,4 @@ C:\budostudy\only_for_codex\iscc\scripts\run_py.cmd src\write_blend_submission.p
 - 每轮最多给一个主提交和一个备选，避免浪费每日次数。
 - 本地 OOF 高不代表线上高，必须结合线上反馈。
 - 不要上传 `.json`。
-- 不要从 `submissions` 目录随意挑旧文件上传，优先使用当前明确推荐的 `upload_ready_breakthrough`。
+- 不要从 `submissions` 目录随意挑旧文件上传，优先使用当前明确推荐的 `upload_ready_breakthrough3`。

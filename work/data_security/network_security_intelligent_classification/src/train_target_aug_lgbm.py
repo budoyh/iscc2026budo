@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 from lightgbm import LGBMClassifier
 from sklearn.metrics import f1_score
-from sklearn.model_selection import StratifiedKFold
+from sklearn.model_selection import KFold, StratifiedKFold
 from sklearn.preprocessing import LabelEncoder
 
 
@@ -27,6 +27,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--aug-weight", type=float, default=0.45)
     parser.add_argument("--pseudo-threshold", type=float, default=0.97)
     parser.add_argument("--pseudo-weight", type=float, default=0.35)
+    parser.add_argument("--domain-focus-gamma", type=float, default=0.0)
+    parser.add_argument("--domain-weight-clip", type=float, default=5.0)
     parser.add_argument("--folds", type=int, default=5)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--n-estimators", type=int, default=1400)
@@ -70,6 +72,40 @@ def weighted_target_stats(x_test: np.ndarray, test_proba: np.ndarray, power: flo
     second = weights.T @ (x_test * x_test)
     var = np.maximum(second - mean * mean, 1e-8)
     return mean, np.sqrt(var)
+
+
+def build_domain_focus_weights(
+    x_train: np.ndarray,
+    x_test: np.ndarray,
+    gamma: float,
+    clip: float,
+    seed: int,
+) -> tuple[np.ndarray, np.ndarray | None]:
+    if gamma <= 0:
+        return np.ones(len(x_train), dtype=np.float64), None
+    domain_x = np.vstack([x_train, x_test])
+    domain_y = np.r_[np.zeros(len(x_train), dtype=np.int64), np.ones(len(x_test), dtype=np.int64)]
+    scores = np.zeros(len(domain_x), dtype=np.float64)
+    cv = KFold(n_splits=3, shuffle=True, random_state=seed)
+    for tr_idx, va_idx in cv.split(domain_x):
+        model = LGBMClassifier(
+            objective="binary",
+            n_estimators=500,
+            learning_rate=0.06,
+            num_leaves=63,
+            subsample=0.85,
+            colsample_bytree=0.85,
+            random_state=seed,
+            n_jobs=-1,
+            verbosity=-1,
+        )
+        model.fit(domain_x[tr_idx], domain_y[tr_idx])
+        scores[va_idx] = model.predict_proba(domain_x[va_idx])[:, 1]
+    train_scores = scores[: len(x_train)]
+    odds = train_scores / np.maximum(1.0 - train_scores, 1e-6)
+    weights = np.clip(odds**gamma, 1.0 / clip, clip)
+    weights /= weights.mean()
+    return weights.astype(np.float64), train_scores
 
 
 def augment_to_target(
@@ -131,6 +167,13 @@ def main() -> None:
     source_test = apply_uniform_prior(source_test, args.soft_alpha)
 
     target_mean, target_std = weighted_target_stats(x_test, source_test, args.target_power)
+    domain_focus_weights, domain_scores = build_domain_focus_weights(
+        x,
+        x_test,
+        gamma=args.domain_focus_gamma,
+        clip=args.domain_weight_clip,
+        seed=args.seed,
+    )
     pseudo_conf = source_test.max(axis=1)
     pseudo_mask = pseudo_conf >= args.pseudo_threshold
     pseudo_y = source_test[pseudo_mask].argmax(axis=1)
@@ -155,10 +198,11 @@ def main() -> None:
 
         train_x = np.concatenate([fold_x, aug_x, pseudo_x], axis=0)
         train_y = np.concatenate([fold_y, fold_y, pseudo_y], axis=0)
+        fold_domain_weights = domain_focus_weights[tr_idx]
         weights = np.concatenate(
             [
-                np.ones(len(fold_x), dtype=np.float64),
-                np.full(len(aug_x), args.aug_weight, dtype=np.float64),
+                fold_domain_weights,
+                args.aug_weight * fold_domain_weights,
                 args.pseudo_weight * np.clip(pseudo_conf[pseudo_mask], 0.5, 1.0),
             ]
         )
@@ -195,6 +239,12 @@ def main() -> None:
         "aug_weight": args.aug_weight,
         "pseudo_threshold": args.pseudo_threshold,
         "pseudo_weight": args.pseudo_weight,
+        "domain_focus_gamma": args.domain_focus_gamma,
+        "domain_weight_clip": args.domain_weight_clip,
+        "domain_score_quantiles": np.quantile(domain_scores, [0, 0.1, 0.2, 0.5, 0.8, 0.9, 1]).tolist()
+        if domain_scores is not None
+        else None,
+        "domain_weight_quantiles": np.quantile(domain_focus_weights, [0, 0.1, 0.2, 0.5, 0.8, 0.9, 1]).tolist(),
         "pseudo_count": int(pseudo_mask.sum()),
         "pseudo_confidence_mean": float(pseudo_conf[pseudo_mask].mean()) if np.any(pseudo_mask) else None,
         "seed": args.seed,

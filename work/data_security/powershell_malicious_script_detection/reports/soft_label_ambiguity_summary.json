@@ -1,0 +1,131 @@
+{
+  "created_at": "2026-05-03T01:38:38+0800",
+  "runtime_seconds": 242.129,
+  "device": "cuda",
+  "configs": [
+    {
+      "alpha": 1.0,
+      "soft_weight": 1.0,
+      "source_decay": 0.0,
+      "dropout": 0.05
+    },
+    {
+      "alpha": 1.0,
+      "soft_weight": 0.7,
+      "source_decay": 3.0,
+      "dropout": 0.08
+    }
+  ],
+  "top_by_quota_average": [
+    {
+      "config_id": 1,
+      "alpha": 1.0,
+      "soft_weight": 0.7,
+      "source_decay": 3.0,
+      "dropout": 0.08,
+      "mean": 0.7696599365,
+      "std": 0.0175239167,
+      "min": 0.7572686561,
+      "max": 0.7820512168
+    },
+    {
+      "config_id": 0,
+      "alpha": 1.0,
+      "soft_weight": 1.0,
+      "source_decay": 0.0,
+      "dropout": 0.05,
+      "mean": 0.76297325,
+      "std": 0.0134011377,
+      "min": 0.7534972146,
+      "max": 0.7724492854
+    }
+  ],
+  "records": [
+    {
+      "split": "ratio_prefix",
+      "config_id": 0,
+      "alpha": 1.0,
+      "soft_weight": 1.0,
+      "source_decay": 0.0,
+      "dropout": 0.05,
+      "best_epoch": 20,
+      "raw_macro_f1": 0.7686074559198365,
+      "quota_macro_f1": 0.7534972146226554,
+      "raw_counts": {
+        "0": 8592,
+        "1": 2775,
+        "2": 2216
+      },
+      "quota_counts": {
+        "0": 8802,
+        "1": 2088,
+        "2": 2693
+      }
+    },
+    {
+      "split": "ratio_prefix",
+      "config_id": 1,
+      "alpha": 1.0,
+      "soft_weight": 0.7,
+      "source_decay": 3.0,
+      "dropout": 0.08,
+      "best_epoch": 40,
+      "raw_macro_f1": 0.775543790759885,
+      "quota_macro_f1": 0.7572686561353629,
+      "raw_counts": {
+        "0": 8611,
+        "1": 2739,
+        "2": 2233
+      },
+      "quota_counts": {
+        "0": 8802,
+        "1": 2088,
+        "2": 2693
+      }
+    },
+    {
+      "split": "actual_prefix",
+      "config_id": 0,
+      "alpha": 1.0,
+      "soft_weight": 1.0,
+      "source_decay": 0.0,
+      "dropout": 0.05,
+      "best_epoch": 24,
+      "raw_macro_f1": 0.73040223807956,
+      "quota_macro_f1": 0.772449285352744,
+      "raw_counts": {
+        "0": 10228,
+        "1": 3345,
+        "2": 4281
+      },
+      "quota_counts": {
+        "0": 11854,
+        "1": 2500,
+        "2": 3500
+      }
+    },
+    {
+      "split": "actual_prefix",
+      "config_id": 1,
+      "alpha": 1.0,
+      "soft_weight": 0.7,
+      "source_decay": 3.0,
+      "dropout": 0.08,
+      "best_epoch": 24,
+      "raw_macro_f1": 0.7351026464591678,
+      "quota_macro_f1": 0.7820512167883856,
+      "raw_counts": {
+        "0": 10155,
+        "1": 3300,
+        "2": 4399
+      },
+      "quota_counts": {
+        "0": 11854,
+        "1": 2500,
+        "2": 3500
+      }
+    }
+  ],
+  "result_csv": "reports\\soft_label_ambiguity_results.csv",
+  "conclusion": "Soft combo-label training tests whether hard labels inside ambiguous feature combos are the main modeling error."
+}

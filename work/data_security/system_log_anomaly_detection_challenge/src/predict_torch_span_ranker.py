@@ -37,6 +37,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--variant-count", action="append", type=int, default=[])
     parser.add_argument("--confidence-output", type=str, default="")
     parser.add_argument("--top-per-label", type=int, default=5)
+    parser.add_argument("--top-per-length", type=int, default=2)
     parser.add_argument("--sample-neg-ratio", type=int, default=4)
     parser.add_argument("--seed", type=int, default=42)
     return parser.parse_args()
@@ -93,6 +94,7 @@ def candidate_features(
     output: dict[str, np.ndarray],
     priors: dict[str, dict[int, float]],
     top_per_label: int,
+    top_per_length: int,
     include_target: bool,
 ) -> tuple[np.ndarray, np.ndarray | None, list[tuple[int, int, str, float]]]:
     logits = output["line_logits"]
@@ -123,7 +125,7 @@ def candidate_features(
             raw_score = sum_diff + 1.5 * (start_log_probs[starts] + end_log_probs[ends])
             if len(raw_score) == 0:
                 continue
-            top_k = min(2, len(raw_score))
+            top_k = min(top_per_length, len(raw_score))
             top_idx = np.argpartition(raw_score, -top_k)[-top_k:]
             for idx in top_idx:
                 start = int(starts[idx])
@@ -191,13 +193,21 @@ def build_training_matrix(
     outputs: dict[int, dict[str, np.ndarray]],
     priors: dict[str, dict[int, float]],
     top_per_label: int,
+    top_per_length: int,
     sample_neg_ratio: int,
     seed: int,
 ) -> tuple[np.ndarray, np.ndarray]:
     feature_parts: list[np.ndarray] = []
     target_parts: list[np.ndarray] = []
     for row in train_df.itertuples(index=False):
-        features, targets, _ = candidate_features(row, outputs[int(row.id)], priors, top_per_label, include_target=True)
+        features, targets, _ = candidate_features(
+            row,
+            outputs[int(row.id)],
+            priors,
+            top_per_label,
+            top_per_length,
+            include_target=True,
+        )
         if len(features) == 0 or targets is None:
             continue
         feature_parts.append(features)
@@ -252,11 +262,19 @@ def predict_raw_submission(
     priors: dict[str, dict[int, float]],
     models: list[object],
     top_per_label: int,
+    top_per_length: int,
 ) -> tuple[pd.DataFrame, np.ndarray]:
     rows: list[dict[str, object]] = []
     confidences: list[float] = []
     for row in test_df.itertuples(index=False):
-        features, _, metas = candidate_features(row, outputs[int(row.id)], priors, top_per_label, include_target=False)
+        features, _, metas = candidate_features(
+            row,
+            outputs[int(row.id)],
+            priors,
+            top_per_label,
+            top_per_length,
+            include_target=False,
+        )
         if len(features) == 0:
             rows.append(empty_prediction(int(row.id)))
             confidences.append(-1.0)
@@ -298,6 +316,7 @@ def main() -> None:
         train_outputs,
         priors,
         top_per_label=args.top_per_label,
+        top_per_length=args.top_per_length,
         sample_neg_ratio=args.sample_neg_ratio,
         seed=args.seed,
     )
@@ -309,6 +328,7 @@ def main() -> None:
         priors,
         models,
         top_per_label=args.top_per_label,
+        top_per_length=args.top_per_length,
     )
     submission = apply_force_count(raw_submission, confidences, args.force_count)
     errors = validate_submission(submission, expected_rows=len(test_df))
@@ -341,6 +361,8 @@ def main() -> None:
                 "output_path": str(output_path),
                 "force_count": int(args.force_count),
                 "train_candidates": int(features.shape[0]),
+                "top_per_label": int(args.top_per_label),
+                "top_per_length": int(args.top_per_length),
                 "target_mean": float(targets.mean()),
                 "confidence_quantiles": {
                     str(q): float(np.quantile(confidences, q)) for q in [0.1, 0.25, 0.5, 0.75, 0.9]
