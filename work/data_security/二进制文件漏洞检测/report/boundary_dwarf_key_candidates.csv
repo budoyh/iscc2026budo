@@ -1,0 +1,4 @@
+binary_id,sid,current,pred,side,support,cols,examples,left_cwe,right_cwe,ldist,rdist
+BIN_1455492,4916,CWE-126,CWE-121,R,2,left_cwe+right_cwe+entry_line+var_lines+ptr_sig+struct_size_sig+member_sig+char_first_type+line_seq_compact,BIN_1874889|BIN_3686945,CWE-126,CWE-121,1,2
+BIN_1455492,4916,CWE-126,CWE-121,R,2,left_cwe+right_cwe+entry_line+var_lines+ptr_sig+struct_size_sig+line_seq_compact,BIN_1874889|BIN_3686945,CWE-126,CWE-121,1,2
+BIN_1455492,4916,CWE-126,CWE-121,R,2,left_cwe+right_cwe+ptr_sig+struct_size_sig+member_sig+char_first_type+line_seq_compact,BIN_1874889|BIN_3686945,CWE-126,CWE-121,1,2

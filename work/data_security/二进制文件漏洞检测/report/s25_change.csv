@@ -1,0 +1,2 @@
+﻿binary_id,old_cwe,new_cwe,reason
+BIN_1812963,CWE-121,CWE-126,fixed disasm key_op_full exact train support + DWARF/source boundary side evidence

@@ -1,0 +1,3 @@
+binary_id,old_cwe,new_cwe
+BIN_1938615,CWE-126,CWE-122
+BIN_2038451,CWE-121,CWE-122

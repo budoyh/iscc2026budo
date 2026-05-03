@@ -1,0 +1,2 @@
+binary_id,old_cwe,new_cwe,reason
+BIN_1938615,CWE-126,CWE-122,local source + DWARF key support=4 pure

@@ -1,0 +1,436 @@
+{
+  "created_at": "2026-05-03T14:26:16+0800",
+  "hypothesis": "Use order-free target source-mixture posterior only as a row ranking signal, then force a breakthrough-sized but bounded class-count target around 13620/2860/3520.",
+  "parameters": {
+    "n_bins": 30,
+    "combo_top": 1500,
+    "pair_top": 2200,
+    "beta": 25.0,
+    "alpha": 20.0,
+    "score_blend": "0.48*mlp + 0.24*soft + 0.18*catboost + 0.10*prefix in log-space, then posterior weight 0.35"
+  },
+  "online_feedback_used": {
+    "q4_online": 0.70761,
+    "q4_gated_online": 0.71,
+    "failed_combo_online": 0.63703,
+    "interpretation": "large score-inversion jumps failed; q4-gated confirmed that reducing q4 class-2 overprediction is beneficial, but class-1 expansion must be bounded."
+  },
+  "mixture": {
+    "prior": [
+      0.6721058382902322,
+      0.09502726700380884,
+      0.23286689470595898
+    ],
+    "counts": [
+      13442,
+      1901,
+      4657
+    ],
+    "l1_error": 0.0025992872697595173,
+    "top_domains": [
+      {
+        "domain": "L0D3",
+        "label": 0,
+        "weight": 0.17936055949312243,
+        "start": 16373,
+        "end": 17163
+      },
+      {
+        "domain": "L0D5",
+        "label": 0,
+        "weight": 0.15264340970829135,
+        "start": 17955,
+        "end": 18745
+      },
+      {
+        "domain": "L2D11",
+        "label": 2,
+        "weight": 0.1199124575410546,
+        "start": 60674,
+        "end": 61062
+      },
+      {
+        "domain": "L0D7",
+        "label": 0,
+        "weight": 0.11265325099741788,
+        "start": 19537,
+        "end": 20327
+      },
+      {
+        "domain": "L0D2",
+        "label": 0,
+        "weight": 0.1091948123136819,
+        "start": 15582,
+        "end": 16372
+      },
+      {
+        "domain": "L2D17",
+        "label": 2,
+        "weight": 0.0854120801298358,
+        "start": 63008,
+        "end": 63396
+      },
+      {
+        "domain": "L1D3",
+        "label": 1,
+        "weight": 0.05651571945939895,
+        "start": 41477,
+        "end": 41899
+      },
+      {
+        "domain": "L0D27",
+        "label": 0,
+        "weight": 0.046650173201492735,
+        "start": 35338,
+        "end": 36127
+      },
+      {
+        "domain": "L0D11",
+        "label": 0,
+        "weight": 0.04575316578022655,
+        "start": 22698,
+        "end": 23487
+      },
+      {
+        "domain": "L1D14",
+        "label": 1,
+        "weight": 0.02986422086257418,
+        "start": 46130,
+        "end": 46552
+      },
+      {
+        "domain": "L2D21",
+        "label": 2,
+        "weight": 0.015869524765601384,
+        "start": 64564,
+        "end": 64952
+      },
+      {
+        "domain": "L0D12",
+        "label": 0,
+        "weight": 0.011868713019044618,
+        "start": 23488,
+        "end": 24277
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "name": "target_mixture_quota_13650_2850_3500_v1",
+      "path": "submissions\\submission_target_mixture_quota_13650_2850_3500_v1.csv",
+      "target_counts": [
+        13650,
+        2850,
+        3500
+      ],
+      "counts": [
+        13650,
+        2850,
+        3500
+      ],
+      "diff_vs_q4": 1166,
+      "diff_vs_q4_gated": 1134,
+      "diff_vs_pair_swap": 1112,
+      "diff_vs_failed_combo": 2604,
+      "transition_from_q4_gated": {
+        "0->0": 13001,
+        "0->1": 3,
+        "0->2": 244,
+        "1->0": 207,
+        "1->1": 2627,
+        "1->2": 18,
+        "2->0": 442,
+        "2->1": 220,
+        "2->2": 3238
+      },
+      "segment_counts_5000": [
+        [
+          3329,
+          876,
+          795
+        ],
+        [
+          3371,
+          825,
+          804
+        ],
+        [
+          3475,
+          595,
+          930
+        ],
+        [
+          3475,
+          554,
+          971
+        ]
+      ],
+      "selection_score": 0.5935999999999997
+    },
+    {
+      "name": "target_mixture_quota_13620_2860_3520_v1",
+      "path": "submissions\\submission_target_mixture_quota_13620_2860_3520_v1.csv",
+      "target_counts": [
+        13620,
+        2860,
+        3520
+      ],
+      "counts": [
+        13620,
+        2860,
+        3520
+      ],
+      "diff_vs_q4": 1154,
+      "diff_vs_q4_gated": 1120,
+      "diff_vs_pair_swap": 1098,
+      "diff_vs_failed_combo": 2603,
+      "transition_from_q4_gated": {
+        "0->0": 12986,
+        "0->1": 12,
+        "0->2": 250,
+        "1->0": 192,
+        "1->1": 2642,
+        "1->2": 18,
+        "2->0": 442,
+        "2->1": 206,
+        "2->2": 3252
+      },
+      "segment_counts_5000": [
+        [
+          3314,
+          890,
+          796
+        ],
+        [
+          3356,
+          829,
+          815
+        ],
+        [
+          3475,
+          592,
+          933
+        ],
+        [
+          3475,
+          549,
+          976
+        ]
+      ],
+      "selection_score": 0.5760999999999998
+    },
+    {
+      "name": "target_mixture_quota_13550_2860_3590_v1",
+      "path": "submissions\\submission_target_mixture_quota_13550_2860_3590_v1.csv",
+      "target_counts": [
+        13550,
+        2860,
+        3590
+      ],
+      "counts": [
+        13550,
+        2860,
+        3590
+      ],
+      "diff_vs_q4": 1137,
+      "diff_vs_q4_gated": 1103,
+      "diff_vs_pair_swap": 1081,
+      "diff_vs_failed_combo": 2665,
+      "transition_from_q4_gated": {
+        "0->0": 12960,
+        "0->1": 8,
+        "0->2": 280,
+        "1->0": 189,
+        "1->1": 2645,
+        "1->2": 18,
+        "2->0": 401,
+        "2->1": 207,
+        "2->2": 3292
+      },
+      "segment_counts_5000": [
+        [
+          3290,
+          892,
+          818
+        ],
+        [
+          3343,
+          825,
+          832
+        ],
+        [
+          3444,
+          594,
+          962
+        ],
+        [
+          3473,
+          549,
+          978
+        ]
+      ],
+      "selection_score": 0.5990999999999997,
+      "canonical_path": "submissions\\submission_target_mixture_quota_v1.csv",
+      "root_submission": "submission.csv"
+    },
+    {
+      "name": "target_mixture_quota_13480_2860_3660_v1",
+      "path": "submissions\\submission_target_mixture_quota_13480_2860_3660_v1.csv",
+      "target_counts": [
+        13480,
+        2860,
+        3660
+      ],
+      "counts": [
+        13480,
+        2860,
+        3660
+      ],
+      "diff_vs_q4": 1108,
+      "diff_vs_q4_gated": 1074,
+      "diff_vs_pair_swap": 1046,
+      "diff_vs_failed_combo": 2732,
+      "transition_from_q4_gated": {
+        "0->0": 12945,
+        "0->1": 15,
+        "0->2": 288,
+        "1->0": 179,
+        "1->1": 2641,
+        "1->2": 32,
+        "2->0": 356,
+        "2->1": 204,
+        "2->2": 3340
+      },
+      "segment_counts_5000": [
+        [
+          3273,
+          898,
+          829
+        ],
+        [
+          3337,
+          826,
+          837
+        ],
+        [
+          3429,
+          590,
+          981
+        ],
+        [
+          3441,
+          546,
+          1013
+        ]
+      ],
+      "selection_score": 0.5311999999999999
+    },
+    {
+      "name": "target_mixture_quota_13400_2750_3850_v1",
+      "path": "submissions\\submission_target_mixture_quota_13400_2750_3850_v1.csv",
+      "target_counts": [
+        13400,
+        2750,
+        3850
+      ],
+      "counts": [
+        13400,
+        2750,
+        3850
+      ],
+      "diff_vs_q4": 1034,
+      "diff_vs_q4_gated": 1000,
+      "diff_vs_pair_swap": 972,
+      "diff_vs_failed_combo": 2813,
+      "transition_from_q4_gated": {
+        "0->0": 12944,
+        "0->1": 3,
+        "0->2": 301,
+        "1->0": 179,
+        "1->1": 2590,
+        "1->2": 83,
+        "2->0": 277,
+        "2->1": 157,
+        "2->2": 3466
+      },
+      "segment_counts_5000": [
+        [
+          3270,
+          863,
+          867
+        ],
+        [
+          3332,
+          799,
+          869
+        ],
+        [
+          3358,
+          563,
+          1079
+        ],
+        [
+          3440,
+          525,
+          1035
+        ]
+      ],
+      "selection_score": 0.35910000000000003
+    }
+  ],
+  "selected": {
+    "name": "target_mixture_quota_13550_2860_3590_v1",
+    "path": "submissions\\submission_target_mixture_quota_13550_2860_3590_v1.csv",
+    "target_counts": [
+      13550,
+      2860,
+      3590
+    ],
+    "counts": [
+      13550,
+      2860,
+      3590
+    ],
+    "diff_vs_q4": 1137,
+    "diff_vs_q4_gated": 1103,
+    "diff_vs_pair_swap": 1081,
+    "diff_vs_failed_combo": 2665,
+    "transition_from_q4_gated": {
+      "0->0": 12960,
+      "0->1": 8,
+      "0->2": 280,
+      "1->0": 189,
+      "1->1": 2645,
+      "1->2": 18,
+      "2->0": 401,
+      "2->1": 207,
+      "2->2": 3292
+    },
+    "segment_counts_5000": [
+      [
+        3290,
+        892,
+        818
+      ],
+      [
+        3343,
+        825,
+        832
+      ],
+      [
+        3444,
+        594,
+        962
+      ],
+      [
+        3473,
+        549,
+        978
+      ]
+    ],
+    "selection_score": 0.5990999999999997,
+    "canonical_path": "submissions\\submission_target_mixture_quota_v1.csv",
+    "root_submission": "submission.csv"
+  },
+  "runtime_seconds": 7.611
+}

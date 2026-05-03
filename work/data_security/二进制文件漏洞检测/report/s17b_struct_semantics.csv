@@ -1,0 +1,20 @@
+binary_id,sid,old_cwe,new_cwe,dist,struct_pred,struct_old_prob,struct_new_prob,call_malloc,call_free,call_memcpy,malloc_20,malloc_30,memcpy_20,memcpy_30,stack_store,heap_store,byte_store_stack,word_store_stack,byte_store_heap,word_store_heap,call_sig
+BIN_1812963,4913,CWE-126,CWE-121,1,CWE-121,0.0,1.0,0,0,1,0,0,0,1,2,0,0,1,0,0,printWLine memcpy printWLine printWLine
+BIN_1938615,10838,CWE-122,CWE-126,1,CWE-122,1.0,0.0,1,1,1,0,1,0,1,1,2,0,0,0,1,malloc exit printWLine memcpy printWLine printWLine free
+BIN_3049998,506,CWE-126,CWE-121,1,CWE-126,0.8985850568066999,0.014347971159087827,0,0,1,0,0,1,0,2,0,1,0,0,0,globalReturnsTrue printLine memcpy printLine printLine
+BIN_4025173,10855,CWE-126,CWE-122,1,CWE-126,1.0,0.0,1,0,0,0,1,0,0,1,7,0,0,0,1, malloc exit printWLine printWLine printWLine
+BIN_4615687,4970,CWE-126,CWE-122,3,CWE-126,0.868,0.132,1,0,0,1,0,0,0,1,5,0,0,1,0,malloc exit printLine printLine printLine
+BIN_6244783,4961,CWE-126,CWE-122,1,CWE-122,0.0,1.0,1,1,1,1,0,1,0,1,2,0,0,1,0,malloc exit printLine memcpy printLine printLine free
+BIN_8249526,504,CWE-126,CWE-121,1,CWE-121,0.0,1.0,0,0,1,0,0,1,0,2,0,1,0,0,0,printLine memcpy printLine printLine
+BIN_8264883,520,CWE-126,CWE-121,1,CWE-121,0.156,0.844,0,0,0,0,0,0,0,2,3,1,0,0,0,printLine printLine printLine
+BIN_1455492,4916,CWE-121,CWE-126,1,CWE-126,0.21359552572706994,0.7864044742729381,0,0,1,0,0,0,1,2,0,0,1,0,0,printWLine memcpy printWLine printWLine
+BIN_2254329,525,CWE-126,CWE-121,1,CWE-126,0.8399928411633116,0.06800715883668908,0,0,0,0,0,0,0,6,3,2,0,0,0,globalReturnsTrueOrFalse printLine printLine printLine printLine printLine printLine
+BIN_2334733,4943,CWE-126,CWE-121,1,CWE-126,0.5819131991051509,0.4180868008948516,0,0,0,0,0,0,0,2,5,0,1,0,0,printWLine printWLine printWLine
+BIN_2902601,4969,CWE-126,CWE-122,2,CWE-126,0.964,0.036,1,0,0,1,0,0,0,1,5,0,0,1,0, malloc exit printLine printLine printLine
+BIN_3790413,517,CWE-126,CWE-121,1,CWE-121,0.20799373601789706,0.7920062639821024,0,0,0,0,0,0,0,2,3,1,0,0,0,printLine printLine printLine
+BIN_4198219,10834,CWE-122,CWE-126,1,CWE-122,0.508,0.492,1,1,1,0,1,0,1,1,2,0,0,0,1,malloc exit printWLine memcpy printWLine printWLine free
+BIN_4280528,4977,CWE-126,CWE-122,1,CWE-122,0.0,1.0,1,0,0,1,0,0,0,1,5,0,0,1,0,malloc exit printLine printLine printLine
+BIN_4860053,4966,CWE-126,CWE-122,1,CWE-122,0.0,1.0,1,0,0,1,0,0,0,1,5,0,0,1,0,malloc exit printLine printLine printLine
+BIN_4942051,10844,CWE-122,CWE-126,1,CWE-126,0.0,1.0,1,1,1,0,1,0,1,1,2,0,0,0,1,malloc exit printWLine memcpy printWLine printWLine free
+BIN_8227758,4968,CWE-126,CWE-122,1,CWE-122,0.126,0.874,1,0,0,1,0,0,0,1,5,0,0,1,0,malloc exit printLine printLine printLine
+BIN_9335771,10850,CWE-126,CWE-122,1,CWE-126,1.0,0.0,1,0,0,0,1,0,0,1,7,0,0,0,1,malloc exit printWLine printWLine printWLine

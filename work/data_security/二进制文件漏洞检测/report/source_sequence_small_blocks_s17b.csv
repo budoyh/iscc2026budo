@@ -1,0 +1,12 @@
+i,start,end,cwe,sid_count,has_train_pos,has_token,test_current_count,left_cwe,left_end,right_cwe,right_start,sids,sources
+19,525,526,CWE-121,2,True,False,1,CWE-126,524,CWE-126,527,525|526,test_pos_current|train_pos
+22,530,531,CWE-126,2,True,False,1,CWE-121,529,CWE-121,532,530|531,test_pos_current|train_pos
+128,4917,4918,CWE-121,2,True,False,1,CWE-126,4916,CWE-126,4919,4917|4918,test_pos_current|train_pos
+129,4919,4920,CWE-126,2,True,False,1,CWE-121,4918,CWE-121,4921,4919|4920,test_pos_current|train_pos
+140,4976,4977,CWE-122,2,True,False,1,CWE-126,4975,CWE-126,4978,4976|4977,test_pos_current|train_pos
+265,10833,10834,CWE-126,2,True,False,1,CWE-122,10832,CWE-122,10835,10833|10834,test_pos_current|train_pos
+266,10835,10836,CWE-122,2,True,False,1,CWE-126,10834,CWE-126,10837,10835|10836,test_pos_current|train_pos
+267,10837,10838,CWE-126,2,True,False,1,CWE-122,10836,CWE-122,10839,10837|10838,test_pos_current|train_pos
+269,10844,10845,CWE-126,2,True,False,1,CWE-122,10843,CWE-122,10846,10844|10845,test_pos_current|train_pos
+961,41948,41949,CWE-561,2,True,False,1,CWE-546,41947,CWE-562,41950,41948|41949,test_pos_current|train_pos
+1077,46427,46428,CWE-674,2,True,False,1,CWE-672,46407,CWE-675,46429,46427|46428,test_pos_current|train_pos

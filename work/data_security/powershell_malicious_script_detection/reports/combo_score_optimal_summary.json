@@ -1,0 +1,76 @@
+{
+  "created_at": "2026-05-03T08:48:00+0800",
+  "runtime_seconds": 93.763,
+  "device": "cuda",
+  "n_groups": 1018,
+  "inferred_truth_counts": [
+    14000,
+    2500,
+    3500
+  ],
+  "soft_best_expected_macro": 0.7967196702957153,
+  "soft_best_pred_counts": [
+    13657.01171875,
+    2864.990234375,
+    3477.99755859375
+  ],
+  "soft_best_f1": [
+    0.9018326997756958,
+    0.7325238585472107,
+    0.7558022141456604
+  ],
+  "rounded_expected_macro": 0.7967209183304275,
+  "refined_expected_macro": 0.7967209183304275,
+  "refined_pred_counts": [
+    13657,
+    2865,
+    3478
+  ],
+  "refine": {
+    "best_expected_macro": 0.7967209183304275,
+    "tried_moves": 2036,
+    "accepted_moves": 0,
+    "improvements": 0,
+    "runtime_seconds": 0.073
+  },
+  "comparisons": {
+    "submission_mlp_labelshift_hard_q4_v1.csv": {
+      "expected_macro_under_inferred_truth": 0.7076131957568599,
+      "diff": 2896,
+      "counts": [
+        13039,
+        2856,
+        4105
+      ]
+    },
+    "submission_mlp_quota_13600_2900_3500_v1.csv": {
+      "expected_macro_under_inferred_truth": 0.704413203230836,
+      "diff": 2703,
+      "counts": [
+        13600,
+        2900,
+        3500
+      ]
+    },
+    "submission_mlp_onehot_v1.csv": {
+      "expected_macro_under_inferred_truth": 0.7020264358715632,
+      "diff": 3029,
+      "counts": [
+        13183,
+        3318,
+        3499
+      ]
+    },
+    "submission_combo_score_constrained_v1.csv": {
+      "expected_macro_under_inferred_truth": 0.7150606636440231,
+      "diff": 2927,
+      "counts": [
+        14000,
+        2500,
+        3500
+      ]
+    }
+  },
+  "generated_submission": "submissions\\submission_combo_score_optimal_v1.csv",
+  "conclusion": "Optimizes macro-F1 directly under the leaderboard-consistent exact-combo truth distribution; validity depends on whether combo-level inversion generalizes beyond fitted submissions."
+}

@@ -1,0 +1,98 @@
+{
+  "base_report": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\upload_ready_breakthrough5\\c10_c04_patternshuffle_s43_25.json",
+  "base_output_path": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\upload_ready_breakthrough5\\c10_c04_patternshuffle_s43_25.csv",
+  "features": "template",
+  "k": 768,
+  "min_count": 25,
+  "smooth": 15.0,
+  "ratio_clip": 1.8,
+  "chosen_alpha": 1.2,
+  "grid": [
+    {
+      "alpha": 0.8,
+      "base_oof_macro_f1": 0.9354188187469475,
+      "adjusted_oof_macro_f1": 0.9358771082017019,
+      "changed_oof_rows": 249,
+      "covered_oof_rows": 50171,
+      "changed_accuracy": 0.5020080321285141,
+      "base_changed_accuracy": 0.40562248995983935
+    },
+    {
+      "alpha": 0.9,
+      "base_oof_macro_f1": 0.9354188187469475,
+      "adjusted_oof_macro_f1": 0.9361826807006756,
+      "changed_oof_rows": 293,
+      "covered_oof_rows": 50171,
+      "changed_accuracy": 0.5290102389078498,
+      "base_changed_accuracy": 0.3890784982935154
+    },
+    {
+      "alpha": 1.0,
+      "base_oof_macro_f1": 0.9354188187469475,
+      "adjusted_oof_macro_f1": 0.9364040577480099,
+      "changed_oof_rows": 332,
+      "covered_oof_rows": 50171,
+      "changed_accuracy": 0.536144578313253,
+      "base_changed_accuracy": 0.3825301204819277
+    },
+    {
+      "alpha": 1.1,
+      "base_oof_macro_f1": 0.9354188187469475,
+      "adjusted_oof_macro_f1": 0.9363254301873729,
+      "changed_oof_rows": 371,
+      "covered_oof_rows": 50171,
+      "changed_accuracy": 0.522911051212938,
+      "base_changed_accuracy": 0.39622641509433965
+    },
+    {
+      "alpha": 1.2,
+      "base_oof_macro_f1": 0.9354188187469475,
+      "adjusted_oof_macro_f1": 0.9365995004498061,
+      "changed_oof_rows": 412,
+      "covered_oof_rows": 50171,
+      "changed_accuracy": 0.5364077669902912,
+      "base_changed_accuracy": 0.3883495145631068
+    }
+  ],
+  "test_covered_rows": 17494,
+  "changed_test_rows": 274,
+  "label_counts": {
+    "class_0": 1794,
+    "class_1": 843,
+    "class_10": 1522,
+    "class_11": 1241,
+    "class_2": 2008,
+    "class_3": 1909,
+    "class_4": 1522,
+    "class_5": 1832,
+    "class_6": 1741,
+    "class_7": 1548,
+    "class_8": 1873,
+    "class_9": 1607
+  },
+  "output_path": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\upload_ready_breakthrough6\\c12_c10_template_prior_k768_a120_s15.csv",
+  "mirror_path": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\submissions\\c12_c10_template_prior_k768_a120_s15.csv",
+  "submission_validation": {
+    "row_count": 19440,
+    "sample_row_count": 19440,
+    "columns_ok": true,
+    "id_order_ok": true,
+    "null_count": 0,
+    "duplicate_id_count": 0,
+    "labels_ok": true,
+    "label_counts": {
+      "class_0": 1794,
+      "class_1": 843,
+      "class_10": 1522,
+      "class_11": 1241,
+      "class_2": 2008,
+      "class_3": 1909,
+      "class_4": 1522,
+      "class_5": 1832,
+      "class_6": 1741,
+      "class_7": 1548,
+      "class_8": 1873,
+      "class_9": 1607
+    }
+  }
+}

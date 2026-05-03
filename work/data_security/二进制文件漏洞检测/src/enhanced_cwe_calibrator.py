@@ -185,7 +185,7 @@ def disasm_tokens(
         tokens.append(f"op:{mnemonic}")
         tokens.append(f"ins:{mnemonic}:{op_text}")
         if op_text:
-            for part in re.split(r"[,\\[\\]+*:-]", op_text):
+            for part in re.split(r"[,\\[\\]\+\*:\-]", op_text):
                 if part and part != "n":
                     tokens.append(f"opnd:{part}")
         if insn_count >= max_insns:

@@ -1,0 +1,2 @@
+binary_id,current,key_pred,support,purity,columns,examples,entry_line,high_pc,var_lines,line_seq_compact,sid,min_ex_dist,max_ex_dist,ex_sids
+BIN_1938615,CWE-126,CWE-122,4,1.0,entry_line+var_lines+ptr_sig+struct_size_sig+member_sig+char_first_type+line_seq_compact,BIN_1054821|BIN_2739460|BIN_3056539|BIN_5683592,30,169,35,31|32|35|36|37|39|41|42|43|44|45|48,10838,1,5,10842|10840|10839|10843

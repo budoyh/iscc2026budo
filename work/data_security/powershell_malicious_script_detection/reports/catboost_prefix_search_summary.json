@@ -1,0 +1,423 @@
+{
+  "created_at": "2026-05-03T09:26:56+0800",
+  "runtime_seconds": 795.92,
+  "features": [
+    "function_scope_level",
+    "branch_scope_level",
+    "loop_scope_level",
+    "parameter_block_presence",
+    "pipeline_usage_level",
+    "decode_activity_profile",
+    "network_command_profile",
+    "task_registry_profile",
+    "credential_runtime_profile",
+    "structure_rhythm_profile",
+    "layout_variation_profile",
+    "identifier_variation_profile",
+    "content_encoding_profile",
+    "command_surface_profile",
+    "extension_import_profile",
+    "decode_activity_profile__content_encoding_profile",
+    "network_command_profile__command_surface_profile",
+    "credential_runtime_profile__task_registry_profile",
+    "structure_rhythm_profile__layout_variation_profile",
+    "identifier_variation_profile__content_encoding_profile",
+    "function_scope_level__pipeline_usage_level"
+  ],
+  "results": [
+    {
+      "mode": "ratio_prefix",
+      "config": "d5_lr035_l2",
+      "best_iter": 516,
+      "raw": {
+        "macro": 0.7589433244484515,
+        "per_class": [
+          0.8587279798673072,
+          0.8500102312257009,
+          0.5680917622523461
+        ],
+        "counts": [
+          8682,
+          2799,
+          2102
+        ]
+      },
+      "quota": {
+        "macro": 0.739713632156949,
+        "per_class": [
+          0.8609406952965235,
+          0.8208812260536399,
+          0.5373189751206833
+        ],
+        "counts": [
+          8802,
+          2088,
+          2693
+        ]
+      }
+    },
+    {
+      "mode": "ratio_prefix",
+      "config": "d7_lr025_l2",
+      "best_iter": 527,
+      "raw": {
+        "macro": 0.7623294180409305,
+        "per_class": [
+          0.8573400034500603,
+          0.8545566755811561,
+          0.575091575091575
+        ],
+        "counts": [
+          8589,
+          2773,
+          2221
+        ]
+      },
+      "quota": {
+        "macro": 0.7528426469194783,
+        "per_class": [
+          0.8651442853896841,
+          0.8419540229885057,
+          0.5514296323802451
+        ],
+        "counts": [
+          8802,
+          2088,
+          2693
+        ]
+      }
+    },
+    {
+      "mode": "ratio_prefix",
+      "config": "d8_lr018_l2",
+      "best_iter": 195,
+      "raw": {
+        "macro": 0.7538457988573852,
+        "per_class": [
+          0.862849383274867,
+          0.841742654508612,
+          0.5569453587886768
+        ],
+        "counts": [
+          8872,
+          2847,
+          1864
+        ]
+      },
+      "quota": {
+        "macro": 0.7309405747522222,
+        "per_class": [
+          0.8591229266075892,
+          0.8060344827586207,
+          0.5276643148904567
+        ],
+        "counts": [
+          8802,
+          2088,
+          2693
+        ]
+      }
+    },
+    {
+      "mode": "ratio_prefix",
+      "config": "d6_lr03_l2hi",
+      "best_iter": 1047,
+      "raw": {
+        "macro": 0.763686326618886,
+        "per_class": [
+          0.8583112544637714,
+          0.8521025641025641,
+          0.5806451612903226
+        ],
+        "counts": [
+          8560,
+          2787,
+          2236
+        ]
+      },
+      "quota": {
+        "macro": 0.7535079408785187,
+        "per_class": [
+          0.8659395591910929,
+          0.835727969348659,
+          0.558856294095804
+        ],
+        "counts": [
+          8802,
+          2088,
+          2693
+        ]
+      }
+    },
+    {
+      "mode": "actual_prefix",
+      "config": "d5_lr035_l2",
+      "best_iter": 314,
+      "raw": {
+        "macro": 0.7351680351765605,
+        "per_class": [
+          0.8300447833991044,
+          0.8388401888064734,
+          0.5366191333241036
+        ],
+        "counts": [
+          10699,
+          3432,
+          3723
+        ]
+      },
+      "quota": {
+        "macro": 0.7626432484112255,
+        "per_class": [
+          0.8531297452336764,
+          0.8988,
+          0.536
+        ],
+        "counts": [
+          11854,
+          2500,
+          3500
+        ]
+      }
+    },
+    {
+      "mode": "actual_prefix",
+      "config": "d7_lr025_l2",
+      "best_iter": 639,
+      "raw": {
+        "macro": 0.7453021259428977,
+        "per_class": [
+          0.8333407226778985,
+          0.8497179004958112,
+          0.5528477546549836
+        ],
+        "counts": [
+          10701,
+          3349,
+          3804
+        ]
+      },
+      "quota": {
+        "macro": 0.7707558115805795,
+        "per_class": [
+          0.8570102918845959,
+          0.9004,
+          0.5548571428571428
+        ],
+        "counts": [
+          11854,
+          2500,
+          3500
+        ]
+      }
+    },
+    {
+      "mode": "actual_prefix",
+      "config": "d8_lr018_l2",
+      "best_iter": 232,
+      "raw": {
+        "macro": 0.7414638206286955,
+        "per_class": [
+          0.8419950255269014,
+          0.8393520080998987,
+          0.5430444282592862
+        ],
+        "counts": [
+          11063,
+          3426,
+          3365
+        ]
+      },
+      "quota": {
+        "macro": 0.756945259386022,
+        "per_class": [
+          0.8518643495866374,
+          0.8744,
+          0.5445714285714286
+        ],
+        "counts": [
+          11854,
+          2500,
+          3500
+        ]
+      }
+    },
+    {
+      "mode": "actual_prefix",
+      "config": "d6_lr03_l2hi",
+      "best_iter": 63,
+      "raw": {
+        "macro": 0.7346879529908387,
+        "per_class": [
+          0.8587742672249714,
+          0.8191137566137566,
+          0.5261758351337876
+        ],
+        "counts": [
+          11789,
+          3548,
+          2517
+        ]
+      },
+      "quota": {
+        "macro": 0.742131880739473,
+        "per_class": [
+          0.8614813565041336,
+          0.8492,
+          0.5157142857142857
+        ],
+        "counts": [
+          11854,
+          2500,
+          3500
+        ]
+      }
+    },
+    {
+      "mode": "middle_ratio",
+      "config": "d5_lr035_l2",
+      "best_iter": 119,
+      "raw": {
+        "macro": 0.7088451940344257,
+        "per_class": [
+          0.8265217642638303,
+          0.8034222045364107,
+          0.4965916133030366
+        ],
+        "counts": [
+          8497,
+          2938,
+          2148
+        ]
+      },
+      "quota": {
+        "macro": 0.6947512754912344,
+        "per_class": [
+          0.8240172688025449,
+          0.774904214559387,
+          0.48533234311177126
+        ],
+        "counts": [
+          8802,
+          2088,
+          2693
+        ]
+      }
+    },
+    {
+      "mode": "middle_ratio",
+      "config": "d7_lr025_l2",
+      "best_iter": 121,
+      "raw": {
+        "macro": 0.7176412325864744,
+        "per_class": [
+          0.8229391517414386,
+          0.8116870122073244,
+          0.5182975338106603
+        ],
+        "counts": [
+          8339,
+          2909,
+          2335
+        ]
+      },
+      "quota": {
+        "macro": 0.6963912144231101,
+        "per_class": [
+          0.8159509202453987,
+          0.771551724137931,
+          0.5016709988860008
+        ],
+        "counts": [
+          8802,
+          2088,
+          2693
+        ]
+      }
+    },
+    {
+      "mode": "middle_ratio",
+      "config": "d8_lr018_l2",
+      "best_iter": 67,
+      "raw": {
+        "macro": 0.715264712637258,
+        "per_class": [
+          0.8278409418826109,
+          0.8054947242683655,
+          0.5124584717607974
+        ],
+        "counts": [
+          8525,
+          2935,
+          2123
+        ]
+      },
+      "quota": {
+        "macro": 0.6815730111152106,
+        "per_class": [
+          0.8243581004317201,
+          0.7461685823754789,
+          0.47419235053843295
+        ],
+        "counts": [
+          8802,
+          2088,
+          2693
+        ]
+      }
+    },
+    {
+      "mode": "middle_ratio",
+      "config": "d6_lr03_l2hi",
+      "best_iter": 81,
+      "raw": {
+        "macro": 0.7105027044146798,
+        "per_class": [
+          0.8352760561778586,
+          0.7998401917698762,
+          0.4963918652963044
+        ],
+        "counts": [
+          8785,
+          2918,
+          1880
+        ]
+      },
+      "quota": {
+        "macro": 0.6842802146875823,
+        "per_class": [
+          0.8359463758236765,
+          0.757183908045977,
+          0.4597103601930932
+        ],
+        "counts": [
+          8802,
+          2088,
+          2693
+        ]
+      }
+    }
+  ],
+  "best_config": "d7_lr025_l2",
+  "final_iterations": 600,
+  "generated": {
+    "raw": {
+      "path": "submissions\\submission_catboost_prefix_raw_v1.csv",
+      "counts": [
+        13996,
+        3369,
+        2635
+      ],
+      "diff_vs_q4": 1872
+    },
+    "quota": {
+      "path": "submissions\\submission_catboost_prefix_quota_v1.csv",
+      "counts": [
+        13600,
+        2800,
+        3600
+      ],
+      "diff_vs_q4": 1630
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "created_at": "2026-05-03T08:51:56+0800",
+  "splits": {
+    "ratio_prefix": {
+      "valid_counts": [
+        8802,
+        2088,
+        2693
+      ],
+      "unique_predictions": 75,
+      "best_bank": {
+        "name": "exact_decay2.5_a4",
+        "actual_macro": 0.757047011266199,
+        "expected_macro": 0.757047011266199
+      },
+      "fit_info": {
+        "soft_loss": 0.9314075112342834,
+        "soft_max_abs_score_error": 0.004354238510131836,
+        "soft_counts": [
+          8802.0,
+          2088.096923828125,
+          2692.9033203125
+        ]
+      },
+      "group_count_l1": 4008.0,
+      "group_count_l1_per_row": 0.2950747257601414,
+      "optimized_expected_under_inferred_truth": 0.8491896160416109,
+      "optimized_expected_under_actual_truth": 0.7538680063035542,
+      "oracle_optimized_expected_under_actual_truth": 0.8410677543492827,
+      "pred_counts_from_inferred": [
+        9007,
+        2237,
+        2339
+      ],
+      "pred_counts_oracle": [
+        8868,
+        2332,
+        2383
+      ]
+    },
+    "actual_prefix": {
+      "valid_counts": [
+        11854,
+        2500,
+        3500
+      ],
+      "unique_predictions": 73,
+      "best_bank": {
+        "name": "exactq_decay2.5_a1",
+        "actual_macro": 0.7620835177195562,
+        "expected_macro": 0.7317175465112972
+      },
+      "fit_info": {
+        "soft_loss": 1.4813989400863647,
+        "soft_max_abs_score_error": 0.007335245609283447,
+        "soft_counts": [
+          11853.9970703125,
+          2500.05322265625,
+          3499.94970703125
+        ]
+      },
+      "group_count_l1": 5960.0,
+      "group_count_l1_per_row": 0.33381875210036965,
+      "optimized_expected_under_inferred_truth": 0.8549723018172335,
+      "optimized_expected_under_actual_truth": 0.7252972691309855,
+      "oracle_optimized_expected_under_actual_truth": 0.8249181527706674,
+      "pred_counts_from_inferred": [
+        11859,
+        2752,
+        3243
+      ],
+      "pred_counts_oracle": [
+        11685,
+        3044,
+        3125
+      ]
+    }
+  },
+  "runtime_seconds": 620.322,
+  "conclusion": "Validation of score-constrained combo inference on prefix splits. The oracle prior row is diagnostic; if inferred optimization fails to approach actual combo oracle, leaderboard fitting is underdetermined."
+}

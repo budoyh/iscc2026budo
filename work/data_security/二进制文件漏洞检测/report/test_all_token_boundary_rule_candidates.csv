@@ -1,0 +1,2 @@
+binary_id,sid,current,pred,rule,left_cwe,right_cwe,ldist,rdist,val_n,cnt,purity
+BIN_1574217,41949,CWE-561,CWE-562,pair,CWE-561,CWE-562,1,2,1,{'R': 1},1.0

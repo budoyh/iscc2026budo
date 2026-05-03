@@ -1,0 +1,5 @@
+binary_id,sid,current,pred,side,key,left_cwe,right_cwe,ldist,rdist,train_n,purity,cnt
+BIN_1812963,4913,CWE-121,CWE-126,R,left_cwe+right_cwe+ldist+rdist,CWE-121,CWE-126,1,1,2,1.0,{'R': 2}
+BIN_3049998,506,CWE-121,CWE-126,R,left_cwe+right_cwe+ldist+rdist,CWE-121,CWE-126,1,1,2,1.0,{'R': 2}
+BIN_8264883,520,CWE-121,CWE-126,R,left_cwe+right_cwe+ldist+rdist,CWE-121,CWE-126,1,1,2,1.0,{'R': 2}
+BIN_2334733,4943,CWE-121,CWE-126,R,left_cwe+right_cwe+ldist+rdist,CWE-121,CWE-126,1,1,2,1.0,{'R': 2}

@@ -95,6 +95,7 @@ def main() -> None:
     }
 
     sources = {
+        "c03": load_report(ROOT / "upload_ready_breakthrough3" / "c03_c01_target_b01_proxy_reblend.json", classes),
         "c01": load_report(ROOT / "upload_ready_breakthrough2" / "c01_b01_iter_target_aug_high.json", classes),
         "c02": load_report(ROOT / "upload_ready_breakthrough2" / "c02_b01_iter_target_aug_safe.json", classes),
         "target_b01_pow1p2": load_run("target_aug_lgbm_b01_pow1p2_aug080_t093_w055_f5_s42", classes),
@@ -103,6 +104,12 @@ def main() -> None:
     optional_runs = [
         "target_aug_domain_c01_pow1p2_aug080_t093_w055_g050_n700_f5_s42",
         "local_cluster_diag_c01_k3_pow1p2_aug075_t093_w055_n700_f5_s42",
+        "target_aug_drop_pattern_c03_pow1p2_aug080_t090_w060_n700_f5_s42",
+        "target_aug_drop_pattern_c03_pow1p2_aug080_t090_w060_f5_s42",
+        "quantile_aug_c03_pow1_q201_aug070_t088_w060_n700_f5_s42",
+        "lgbm_engineered_invariant_n700_f5_s42",
+        "target_aug_stablepseudo_c03_3view2_pow1p2_aug080_t088_w060_n700_f5_s42",
+        "target_aug_drop_pattern_stablepseudo_c03_pow1p2_aug080_t088_w060_n700_f5_s42",
     ]
     for run_id in optional_runs:
         if (MODELS / run_id / "metadata.json").exists():
@@ -110,18 +117,18 @@ def main() -> None:
 
     rows = []
     weight_grid = [0.0, 0.03, 0.05, 0.08, 0.1, 0.15, 0.2, 0.3, 0.4, 0.5]
-    base_oof, base_test = sources["c01"]
+    base_oof, base_test = sources["c03"]
     for name, (other_oof, other_test) in sources.items():
         if name == "c01":
             continue
         for other_weight in weight_grid:
-            c01_weight = 1.0 - other_weight
-            oof = c01_weight * base_oof + other_weight * other_oof
-            test_proba = c01_weight * base_test + other_weight * other_test
+            c03_weight = 1.0 - other_weight
+            oof = c03_weight * base_oof + other_weight * other_oof
+            test_proba = c03_weight * base_test + other_weight * other_test
             oof = apply_uniform_prior(oof, 1.0)
             test_proba = apply_uniform_prior(test_proba, 1.0)
             pred = oof.argmax(axis=1)
-            row = {"members": f"c01+{name}", "weights": f"{c01_weight:.4f},{other_weight:.4f}"}
+            row = {"members": f"c03+{name}", "weights": f"{c03_weight:.4f},{other_weight:.4f}"}
             for mask_name, mask in masks.items():
                 row[mask_name] = f1_score(y[mask], pred[mask], average="macro")
             row["test_entropy"] = float(

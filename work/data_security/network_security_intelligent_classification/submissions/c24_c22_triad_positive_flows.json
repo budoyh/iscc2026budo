@@ -1,0 +1,126 @@
+{
+  "base_report": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\upload_ready_breakthrough5\\c10_c04_patternshuffle_s43_25.json",
+  "features": "triad_combo",
+  "triad": [
+    "class_0",
+    "class_10",
+    "class_11"
+  ],
+  "flow_whitelist": [
+    "class_10:class_11",
+    "class_11:class_10"
+  ],
+  "pre_source": "class_3",
+  "pre_target": "class_8",
+  "pre_threshold": 0.9,
+  "grid": [
+    {
+      "threshold": 0.75,
+      "margin": 0.0,
+      "score": 0.9372692222855422,
+      "changed_oof_rows": 42,
+      "changed_test_rows": 8,
+      "new_acc": 0.5,
+      "before_acc": 0.5
+    },
+    {
+      "threshold": 0.8,
+      "margin": 0.0,
+      "score": 0.9373836096058552,
+      "changed_oof_rows": 21,
+      "changed_test_rows": 4,
+      "new_acc": 0.6190476190476191,
+      "before_acc": 0.38095238095238093
+    },
+    {
+      "threshold": 0.85,
+      "margin": 0.0,
+      "score": 0.9374293578716552,
+      "changed_oof_rows": 13,
+      "changed_test_rows": 2,
+      "new_acc": 0.7692307692307693,
+      "before_acc": 0.23076923076923078
+    },
+    {
+      "threshold": 0.9,
+      "margin": 0.0,
+      "score": 0.9372450945794419,
+      "changed_oof_rows": 3,
+      "changed_test_rows": 1,
+      "new_acc": 0.3333333333333333,
+      "before_acc": 0.6666666666666666
+    },
+    {
+      "threshold": 0.95,
+      "margin": 0.0,
+      "score": 0.9372910210817715,
+      "changed_oof_rows": 1,
+      "changed_test_rows": 1,
+      "new_acc": 1.0,
+      "before_acc": 0.0
+    }
+  ],
+  "chosen_threshold": 0.85,
+  "chosen_margin": 0.0,
+  "current_oof_macro_f1": 0.9372681548301594,
+  "final_oof_macro_f1": 0.9374293578716552,
+  "changed_oof_rows": 13,
+  "changed_test_rows": 2,
+  "changed_oof_new_acc": 0.7692307692307693,
+  "changed_oof_before_acc": 0.23076923076923078,
+  "flow_details": [
+    {
+      "flow": "class_10:class_11",
+      "changed_oof_rows": 4,
+      "changed_test_rows": 1,
+      "new_acc": 0.75,
+      "before_acc": 0.25
+    },
+    {
+      "flow": "class_11:class_10",
+      "changed_oof_rows": 9,
+      "changed_test_rows": 1,
+      "new_acc": 0.7777777777777778,
+      "before_acc": 0.2222222222222222
+    }
+  ],
+  "test_label_counts": {
+    "class_0": 1794,
+    "class_1": 846,
+    "class_10": 1537,
+    "class_11": 1226,
+    "class_2": 2012,
+    "class_3": 1858,
+    "class_4": 1520,
+    "class_5": 1817,
+    "class_6": 1745,
+    "class_7": 1540,
+    "class_8": 1948,
+    "class_9": 1597
+  },
+  "output_path": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\upload_ready_breakthrough7\\c24_c22_triad_positive_flows.csv",
+  "mirror_path": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\submissions\\c24_c22_triad_positive_flows.csv",
+  "submission_validation": {
+    "row_count": 19440,
+    "sample_row_count": 19440,
+    "columns_ok": true,
+    "id_order_ok": true,
+    "null_count": 0,
+    "duplicate_id_count": 0,
+    "labels_ok": true,
+    "label_counts": {
+      "class_0": 1794,
+      "class_1": 846,
+      "class_10": 1537,
+      "class_11": 1226,
+      "class_2": 2012,
+      "class_3": 1858,
+      "class_4": 1520,
+      "class_5": 1817,
+      "class_6": 1745,
+      "class_7": 1540,
+      "class_8": 1948,
+      "class_9": 1597
+    }
+  }
+}

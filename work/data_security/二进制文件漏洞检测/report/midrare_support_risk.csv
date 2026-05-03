@@ -1,0 +1,5 @@
+﻿binary_id,sid,cwe,class_count,nearest_cwe,nearest_dist,near_same,exact_same_strict,exact_same_loose,exact_same_marker,other_strict,other_loose,has_token,calls,ptr_sig,body_len,insn_count
+BIN_1574217,41949,CWE-561,1,CWE-561,1,1,0,0,0,,,False,printline,,30,10
+BIN_8585579,46427,CWE-674,1,CWE-674,1,1,0,0,0,,,False,helperbad,,20,8
+BIN_3711506,41950,CWE-562,2,CWE-562,1,1,0,0,0,,,False,helperbad|printline,,28,10
+BIN_3228938,41952,CWE-562,2,CWE-562,1,1,0,0,0,,,False,helperbad|printline,,28,10

@@ -1,0 +1,257 @@
+{
+  "created_at": "2026-05-03T14:20:50+0800",
+  "hypothesis": "Amplify the online-positive q4_gated_consensus changes without changing class counts: add balanced high-score 0->2 and 2->0 pair swaps, with optional tiny 2->1 budget.",
+  "base": {
+    "q4_counts": [
+      13039,
+      2856,
+      4105
+    ],
+    "q4_gated_counts": [
+      13248,
+      2852,
+      3900
+    ],
+    "q4_gated_online_score": 0.71,
+    "q4_gated_diff_vs_q4": 264
+  },
+  "move_pool_sizes": {
+    "unused_0_to_2_votes1_scorepos_bad0": 39,
+    "unused_2_to_0_votes2_bad0": 262,
+    "unused_2_to_1_votes2_bad0": 296
+  },
+  "candidates": [
+    {
+      "k02": 20,
+      "k20": 20,
+      "k21": 0,
+      "counts": [
+        13248,
+        2852,
+        3900
+      ],
+      "diff_vs_q4": 304,
+      "diff_vs_base": 40,
+      "extra_transition_counts": {
+        "0->2": 20,
+        "2->0": 20
+      },
+      "selected_pool_meta": [
+        {
+          "name": "0->2",
+          "requested": 20,
+          "selected": 20,
+          "min_score": 0.058920921108205265,
+          "mean_score": 0.3572574121726338,
+          "min_votes": 1
+        },
+        {
+          "name": "2->0",
+          "requested": 20,
+          "selected": 20,
+          "min_score": 0.4576523632249766,
+          "mean_score": 0.4584020730877037,
+          "min_votes": 2
+        },
+        {
+          "name": "2->1",
+          "requested": 0,
+          "selected": 0,
+          "min_score": null,
+          "mean_score": null,
+          "min_votes": null
+        }
+      ],
+      "name": "q4_pair_swap_k20_v1",
+      "path": "submissions\\submission_q4_pair_swap_k20_v1.csv",
+      "selection_score": 0.18089721043608378
+    },
+    {
+      "k02": 30,
+      "k20": 30,
+      "k21": 0,
+      "counts": [
+        13248,
+        2852,
+        3900
+      ],
+      "diff_vs_q4": 324,
+      "diff_vs_base": 60,
+      "extra_transition_counts": {
+        "0->2": 30,
+        "2->0": 30
+      },
+      "selected_pool_meta": [
+        {
+          "name": "0->2",
+          "requested": 30,
+          "selected": 30,
+          "min_score": 0.030789023377888303,
+          "mean_score": 0.24937235413049993,
+          "min_votes": 1
+        },
+        {
+          "name": "2->0",
+          "requested": 30,
+          "selected": 30,
+          "min_score": 0.4560671318504578,
+          "mean_score": 0.4580993191155088,
+          "min_votes": 2
+        },
+        {
+          "name": "2->1",
+          "requested": 0,
+          "selected": 0,
+          "min_score": null,
+          "mean_score": null,
+          "min_votes": null
+        }
+      ],
+      "name": "q4_pair_swap_k30_v1",
+      "path": "submissions\\submission_q4_pair_swap_k30_v1.csv",
+      "selection_score": 0.25873042665607526,
+      "canonical_path": "submissions\\submission_q4_pair_swap_v1.csv",
+      "root_submission": "submission.csv"
+    },
+    {
+      "k02": 20,
+      "k20": 20,
+      "k21": 4,
+      "counts": [
+        13244,
+        2856,
+        3900
+      ],
+      "diff_vs_q4": 312,
+      "diff_vs_base": 48,
+      "extra_transition_counts": {
+        "0->2": 24,
+        "2->0": 20,
+        "2->1": 4
+      },
+      "selected_pool_meta": [
+        {
+          "name": "0->2",
+          "requested": 24,
+          "selected": 24,
+          "min_score": 0.030789058942620184,
+          "mean_score": 0.30401818089119753,
+          "min_votes": 1
+        },
+        {
+          "name": "2->0",
+          "requested": 20,
+          "selected": 20,
+          "min_score": 0.4576523632249766,
+          "mean_score": 0.4584020730877037,
+          "min_votes": 2
+        },
+        {
+          "name": "2->1",
+          "requested": 4,
+          "selected": 4,
+          "min_score": 3.2838794191767264,
+          "mean_score": 3.2838794191767264,
+          "min_votes": 3
+        }
+      ],
+      "name": "q4_pair_swap_k20_plus4_v1",
+      "path": "submissions\\submission_q4_pair_swap_k20_plus4_v1.csv",
+      "selection_score": 0.21183242581045508
+    },
+    {
+      "k02": 20,
+      "k20": 20,
+      "k21": 8,
+      "counts": [
+        13240,
+        2860,
+        3900
+      ],
+      "diff_vs_q4": 320,
+      "diff_vs_base": 56,
+      "extra_transition_counts": {
+        "0->2": 28,
+        "2->0": 20,
+        "2->1": 8
+      },
+      "selected_pool_meta": [
+        {
+          "name": "0->2",
+          "requested": 28,
+          "selected": 28,
+          "min_score": 0.030789058942620184,
+          "mean_score": 0.2649854491842579,
+          "min_votes": 1
+        },
+        {
+          "name": "2->0",
+          "requested": 20,
+          "selected": 20,
+          "min_score": 0.4576523632249766,
+          "mean_score": 0.4584020730877037,
+          "min_votes": 2
+        },
+        {
+          "name": "2->1",
+          "requested": 8,
+          "selected": 8,
+          "min_score": 3.2838794191767264,
+          "mean_score": 3.2838794191767264,
+          "min_votes": 3
+        }
+      ],
+      "name": "q4_pair_swap_k20_plus8_v1",
+      "path": "submissions\\submission_q4_pair_swap_k20_plus8_v1.csv",
+      "selection_score": 0.24305177117631627
+    }
+  ],
+  "selected": {
+    "k02": 30,
+    "k20": 30,
+    "k21": 0,
+    "counts": [
+      13248,
+      2852,
+      3900
+    ],
+    "diff_vs_q4": 324,
+    "diff_vs_base": 60,
+    "extra_transition_counts": {
+      "0->2": 30,
+      "2->0": 30
+    },
+    "selected_pool_meta": [
+      {
+        "name": "0->2",
+        "requested": 30,
+        "selected": 30,
+        "min_score": 0.030789023377888303,
+        "mean_score": 0.24937235413049993,
+        "min_votes": 1
+      },
+      {
+        "name": "2->0",
+        "requested": 30,
+        "selected": 30,
+        "min_score": 0.4560671318504578,
+        "mean_score": 0.4580993191155088,
+        "min_votes": 2
+      },
+      {
+        "name": "2->1",
+        "requested": 0,
+        "selected": 0,
+        "min_score": null,
+        "mean_score": null,
+        "min_votes": null
+      }
+    ],
+    "name": "q4_pair_swap_k30_v1",
+    "path": "submissions\\submission_q4_pair_swap_k30_v1.csv",
+    "selection_score": 0.25873042665607526,
+    "canonical_path": "submissions\\submission_q4_pair_swap_v1.csv",
+    "root_submission": "submission.csv"
+  },
+  "runtime_seconds": 0.531
+}

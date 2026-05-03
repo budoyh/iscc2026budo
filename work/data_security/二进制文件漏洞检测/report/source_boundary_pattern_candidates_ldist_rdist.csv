@@ -1,0 +1,3 @@
+binary_id,sid,current,pred,side,key,left_cwe,right_cwe,ldist,rdist,train_n,purity,cnt
+BIN_9428082,41955,CWE-563,CWE-562,L,ldist+rdist,CWE-562,CWE-563,4,2,2,1.0,{'L': 2}
+BIN_2011998,35182,CWE-391,CWE-390,L,ldist+rdist,CWE-390,CWE-391,4,2,2,1.0,{'L': 2}

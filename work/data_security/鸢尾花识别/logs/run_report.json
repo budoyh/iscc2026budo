@@ -1,0 +1,87 @@
+{
+  "seed": 2026,
+  "raw_dir": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\鸢尾花识别\\raw\\鸢尾花识别",
+  "input": {
+    "train_shape": [
+      120,
+      6
+    ],
+    "test_shape": [
+      90,
+      5
+    ],
+    "sample_rows": 30,
+    "class_counts": {
+      "0": 44,
+      "1": 40,
+      "2": 36
+    },
+    "train_id_range": [
+      1,
+      150
+    ],
+    "test_id_range": [
+      1,
+      90
+    ]
+  },
+  "sklearn_loo": [
+    {
+      "model": "lda",
+      "loo_f1_macro": 0.9736431420149124,
+      "loo_errors": 3
+    },
+    {
+      "model": "qda",
+      "loo_f1_macro": 0.9736431420149124,
+      "loo_errors": 3
+    },
+    {
+      "model": "qda_reg002",
+      "loo_f1_macro": 0.9736431420149124,
+      "loo_errors": 3
+    },
+    {
+      "model": "logreg_c10",
+      "loo_f1_macro": 0.9648148148148148,
+      "loo_errors": 4
+    },
+    {
+      "model": "knn11_distance",
+      "loo_f1_macro": 0.9472222222222223,
+      "loo_errors": 6
+    },
+    {
+      "model": "extra_trees",
+      "loo_f1_macro": 0.9473319473319474,
+      "loo_errors": 6
+    }
+  ],
+  "mlp": {
+    "torch_version": "2.7.0+cu126",
+    "cuda_available": true,
+    "device": "cuda",
+    "cv_f1_macro_scores": [
+      0.9293844367015098,
+      0.9207094418362024,
+      0.9132646547446533
+    ],
+    "cv_f1_macro_mean": 0.9211195110941218
+  },
+  "submission": {
+    "path": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\鸢尾花识别\\submissions\\evaluation_public.csv",
+    "rows": 90,
+    "columns": [
+      "Id",
+      "target"
+    ],
+    "empty_values": 0,
+    "duplicate_id": 0,
+    "target_counts": {
+      "0": 21,
+      "1": 55,
+      "2": 14
+    },
+    "sample_rows": 30
+  }
+}

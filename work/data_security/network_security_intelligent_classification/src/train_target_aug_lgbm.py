@@ -10,7 +10,9 @@ import pandas as pd
 from lightgbm import LGBMClassifier
 from sklearn.metrics import f1_score
 from sklearn.model_selection import KFold, StratifiedKFold
+from sklearn.decomposition import PCA
 from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import StandardScaler
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -27,8 +29,18 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--aug-weight", type=float, default=0.45)
     parser.add_argument("--pseudo-threshold", type=float, default=0.97)
     parser.add_argument("--pseudo-weight", type=float, default=0.35)
+    parser.add_argument("--pseudo-agree-runs", nargs="*", default=[])
+    parser.add_argument("--pseudo-agree-min", type=int, default=0)
+    parser.add_argument("--pseudo-agree-mode", choices=["argmax", "top2"], default="argmax")
     parser.add_argument("--domain-focus-gamma", type=float, default=0.0)
     parser.add_argument("--domain-weight-clip", type=float, default=5.0)
+    parser.add_argument("--drop-features", nargs="*", default=[])
+    parser.add_argument("--replace-aug-features", nargs="*", default=[])
+    parser.add_argument("--replace-aug-power", type=float, default=2.0)
+    parser.add_argument("--shuffle-aug-features", nargs="*", default=[])
+    parser.add_argument("--pca-residual-features", nargs="*", default=[])
+    parser.add_argument("--pca-drop-components", type=int, default=0)
+    parser.add_argument("--source-weight", type=float, default=1.0)
     parser.add_argument("--folds", type=int, default=5)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--n-estimators", type=int, default=1400)
@@ -55,6 +67,14 @@ def load_source_blend(run_ids: list[str], weights: list[float]) -> tuple[list[st
         test += weight * np.load(run_dir / "test_proba.npy")
     assert classes is not None and oof is not None and test is not None
     return classes, oof, test
+
+
+def load_single_run(run_id: str, expected_classes: list[str]) -> tuple[np.ndarray, np.ndarray]:
+    run_dir = MODELS / run_id
+    meta = json.loads((run_dir / "metadata.json").read_text(encoding="utf-8"))
+    if meta["classes"] != expected_classes:
+        raise ValueError(f"class order mismatch for {run_id}")
+    return np.load(run_dir / "oof_proba.npy").astype(np.float64), np.load(run_dir / "test_proba.npy").astype(np.float64)
 
 
 def apply_uniform_prior(proba: np.ndarray, alpha: float) -> np.ndarray:
@@ -133,6 +153,71 @@ def augment_to_target(
     return out
 
 
+def replace_augmented_features(
+    aug_x: np.ndarray,
+    y_fold: np.ndarray,
+    x_test: np.ndarray,
+    test_proba: np.ndarray,
+    replace_indices: list[int],
+    power: float,
+    rng: np.random.Generator,
+) -> np.ndarray:
+    if not replace_indices:
+        return aug_x
+    out = aug_x.copy()
+    num_classes = test_proba.shape[1]
+    for cls in range(num_classes):
+        row_idx = np.flatnonzero(y_fold == cls)
+        if len(row_idx) == 0:
+            continue
+        weights = np.clip(test_proba[:, cls], 1e-9, 1.0) ** power
+        weights /= np.clip(weights.sum(), 1e-12, None)
+        sampled = rng.choice(len(x_test), size=len(row_idx), replace=True, p=weights)
+        out[np.ix_(row_idx, replace_indices)] = x_test[np.ix_(sampled, replace_indices)]
+    return out
+
+
+def shuffle_augmented_features(
+    aug_x: np.ndarray,
+    y_fold: np.ndarray,
+    shuffle_indices: list[int],
+    rng: np.random.Generator,
+) -> np.ndarray:
+    if not shuffle_indices:
+        return aug_x
+    out = aug_x.copy()
+    for cls in np.unique(y_fold):
+        row_idx = np.flatnonzero(y_fold == cls)
+        if len(row_idx) <= 1:
+            continue
+        permuted = rng.permutation(row_idx)
+        # Move the selected columns as a block so near-deterministic feature correlations remain realistic.
+        out[np.ix_(row_idx, shuffle_indices)] = aug_x[np.ix_(permuted, shuffle_indices)]
+    return out
+
+
+def residualize_feature_pca(
+    x: np.ndarray,
+    x_test: np.ndarray,
+    indices: list[int],
+    drop_components: int,
+) -> tuple[np.ndarray, np.ndarray, list[float] | None]:
+    if not indices or drop_components <= 0:
+        return x, x_test, None
+    x_out = x.copy()
+    x_test_out = x_test.copy()
+    combined = np.vstack([x[:, indices], x_test[:, indices]]).astype(np.float64)
+    scaler = StandardScaler()
+    combined_scaled = scaler.fit_transform(combined)
+    pca = PCA(n_components=len(indices), random_state=0)
+    scores = pca.fit_transform(combined_scaled)
+    scores[:, : min(drop_components, scores.shape[1])] = 0.0
+    residual = scaler.inverse_transform(pca.inverse_transform(scores)).astype(np.float32)
+    x_out[:, indices] = residual[: len(x)]
+    x_test_out[:, indices] = residual[len(x) :]
+    return x_out, x_test_out, pca.explained_variance_ratio_.tolist()
+
+
 def build_model(seed: int, num_classes: int, n_estimators: int) -> LGBMClassifier:
     return LGBMClassifier(
         objective="multiclass",
@@ -155,9 +240,34 @@ def main() -> None:
     MODELS.mkdir(parents=True, exist_ok=True)
     train = pd.read_csv(RAW / "train_data.csv")
     test = pd.read_csv(RAW / "test_data.csv")
-    features = [col for col in train.columns if col not in {"id", "label"}]
+    drop_features = set(args.drop_features)
+    missing_drop = sorted(drop_features - set(train.columns))
+    if missing_drop:
+        raise ValueError(f"drop features not found: {missing_drop}")
+    features = [col for col in train.columns if col not in {"id", "label"} and col not in drop_features]
+    replace_features = [col for col in args.replace_aug_features if col in features]
+    missing_replace = sorted(set(args.replace_aug_features) - set(replace_features))
+    if missing_replace:
+        raise ValueError(f"replace features not available after drop: {missing_replace}")
+    replace_indices = [features.index(col) for col in replace_features]
+    shuffle_features = [col for col in args.shuffle_aug_features if col in features]
+    missing_shuffle = sorted(set(args.shuffle_aug_features) - set(shuffle_features))
+    if missing_shuffle:
+        raise ValueError(f"shuffle features not available after drop: {missing_shuffle}")
+    shuffle_indices = [features.index(col) for col in shuffle_features]
+    pca_residual_features = [col for col in args.pca_residual_features if col in features]
+    missing_pca = sorted(set(args.pca_residual_features) - set(pca_residual_features))
+    if missing_pca:
+        raise ValueError(f"PCA residual features not available after drop: {missing_pca}")
+    pca_residual_indices = [features.index(col) for col in pca_residual_features]
     x = train[features].to_numpy(dtype=np.float32)
     x_test = test[features].to_numpy(dtype=np.float32)
+    x, x_test, pca_explained = residualize_feature_pca(
+        x,
+        x_test,
+        pca_residual_indices,
+        args.pca_drop_components,
+    )
 
     encoder = LabelEncoder()
     y = encoder.fit_transform(train["label"]).astype(np.int64)
@@ -176,6 +286,21 @@ def main() -> None:
     )
     pseudo_conf = source_test.max(axis=1)
     pseudo_mask = pseudo_conf >= args.pseudo_threshold
+    if args.pseudo_agree_runs:
+        if args.pseudo_agree_min <= 0:
+            args.pseudo_agree_min = len(args.pseudo_agree_runs)
+        teacher_argmax = source_test.argmax(axis=1)
+        teacher_top2 = np.argsort(source_test, axis=1)[:, -2:]
+        agree_count = np.zeros(len(test), dtype=np.int64)
+        for run_id in args.pseudo_agree_runs:
+            _, agree_test = load_single_run(run_id, classes)
+            agree_test = apply_uniform_prior(agree_test, args.soft_alpha)
+            if args.pseudo_agree_mode == "argmax":
+                agree_count += agree_test.argmax(axis=1) == teacher_argmax
+            else:
+                agree_pred = agree_test.argmax(axis=1)
+                agree_count += (agree_pred == teacher_top2[:, 0]) | (agree_pred == teacher_top2[:, 1])
+        pseudo_mask &= agree_count >= args.pseudo_agree_min
     pseudo_y = source_test[pseudo_mask].argmax(axis=1)
     pseudo_x = x_test[pseudo_mask]
 
@@ -195,13 +320,24 @@ def main() -> None:
         fold_x = x[tr_idx]
         fold_y = y[tr_idx]
         aug_x = augment_to_target(fold_x, fold_y, len(classes), target_mean, target_std)
+        rng = np.random.default_rng(args.seed * 1000 + fold)
+        aug_x = shuffle_augmented_features(aug_x, fold_y, shuffle_indices, rng)
+        aug_x = replace_augmented_features(
+            aug_x,
+            fold_y,
+            x_test,
+            source_test,
+            replace_indices,
+            args.replace_aug_power,
+            rng,
+        )
 
         train_x = np.concatenate([fold_x, aug_x, pseudo_x], axis=0)
         train_y = np.concatenate([fold_y, fold_y, pseudo_y], axis=0)
         fold_domain_weights = domain_focus_weights[tr_idx]
         weights = np.concatenate(
             [
-                fold_domain_weights,
+                args.source_weight * fold_domain_weights,
                 args.aug_weight * fold_domain_weights,
                 args.pseudo_weight * np.clip(pseudo_conf[pseudo_mask], 0.5, 1.0),
             ]
@@ -239,8 +375,18 @@ def main() -> None:
         "aug_weight": args.aug_weight,
         "pseudo_threshold": args.pseudo_threshold,
         "pseudo_weight": args.pseudo_weight,
+        "pseudo_agree_runs": args.pseudo_agree_runs,
+        "pseudo_agree_min": args.pseudo_agree_min,
+        "pseudo_agree_mode": args.pseudo_agree_mode,
         "domain_focus_gamma": args.domain_focus_gamma,
         "domain_weight_clip": args.domain_weight_clip,
+        "replace_aug_features": replace_features,
+        "replace_aug_power": args.replace_aug_power,
+        "shuffle_aug_features": shuffle_features,
+        "pca_residual_features": pca_residual_features,
+        "pca_drop_components": args.pca_drop_components,
+        "pca_explained_variance_ratio": pca_explained,
+        "source_weight": args.source_weight,
         "domain_score_quantiles": np.quantile(domain_scores, [0, 0.1, 0.2, 0.5, 0.8, 0.9, 1]).tolist()
         if domain_scores is not None
         else None,
@@ -251,6 +397,7 @@ def main() -> None:
         "folds": args.folds,
         "classes": classes,
         "features": features,
+        "dropped_features": sorted(drop_features),
         "train_rows": int(len(train)),
         "test_rows": int(len(test)),
         "feature_count": len(features),

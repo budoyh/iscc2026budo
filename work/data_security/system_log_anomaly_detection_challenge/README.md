@@ -4,13 +4,16 @@
 
 ## 当前状态
 
-- 当前已提交线上最高分：`final.csv`，A 榜 `0.96187`。
-- 之前线上关键分数：`0.73166 -> 0.77684 -> 0.85031 -> 0.85941 -> 0.92494 -> 0.93531 -> 0.94666 -> 0.96187`。
+- 当前已提交线上最高分：`push.csv`，A 榜 `0.96233`。
+- 之前线上关键分数：`0.73166 -> 0.77684 -> 0.85031 -> 0.85941 -> 0.92494 -> 0.93531 -> 0.94666 -> 0.96187 -> 0.96208 -> 0.96233`；`try.csv` 回落到 `0.96153`，`up.csv` 回落到 `0.96229`。
 - 当前榜首参考分：`0.96258`。
-- 当前下一版推荐提交：[next.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/next.csv)。
-- `next.csv` 是 `final.csv` 的 count 校准版，只去掉 4 个最低置信异常，异常数从 `3214` 调整为 `3210`。
+- 当前下一版冲刺提交：[go.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/go.csv)。
+- `try.csv` 已验证降分，说明整体 top16 边界重排 public 过拟合；后续不再推荐。
+- `push.csv` 以 `next.csv` 为锚，只接受 43 行 b4h3 高置信边界门控变化，并额外删除 2 个最低置信异常，异常数为 `3208`，线上已验证有效。
+- `up.csv` 保留 `push.csv` 全部改动，只额外加入 4 个 p2 中的收缩类边界变化，线上 `0.96229`，说明“弱前兆/恢复语句一律收缩”不可靠。
+- `go.csv` 以 `push.csv` 为锚，只改 8 行边界，不改检测计数和类型；候选来自 `txt/b4h3/b5h3` 分歧行，并用训练集边界模板证据过滤。
 
-`final.csv` 使用候选 span 排序器生成，检测异常数保持和已验证高分 `s1.csv` 相同，均为 `3214/5000`。线上 `0.96187` 证明 ranker 方向正确。`next.csv` 针对最后 `0.00071` 差距做最小风险修正：只把 ranker 置信度最低的 4 个异常判回正常。
+`final.csv` 使用候选 span 排序器生成，检测异常数保持和已验证高分 `s1.csv` 相同，均为 `3214/5000`。`next.csv` 将 count 校准到 `3210/5000` 后线上提升到 `0.96208`，证明低置信样本筛除有效。`try.csv` 失败后，当前策略改为“保守门控 + 小幅 count 下调”，避免再次大面积改动高置信边界。
 
 ## 题目与评分
 
@@ -81,7 +84,11 @@ scripts\run_torch_py.cmd -c "import torch; print(torch.__version__, torch.cuda.i
 | DL v2 | boundary 三模型 | `0.97911` | `0.93531` | start/end 边界头有效 |
 | DL v3 | mixed 40/60 | `0.98350` proxy | `0.94666` | 已验证当前最高线上分 |
 | DL v4 | span ranker | `0.98643` proxy | `0.96187` | 当前线上最高 |
-| DL v5 | span ranker count=3210 | `0.98643` proxy | 待提交 | 当前下一版推荐 |
+| DL v5 | span ranker count=3210 | `0.98643` proxy | `0.96208` | 当前已提交最高分 |
+| DL v6 | top16 span ranker count=3210 | `0.98659` proxy | `0.96153` | public 过拟合，弃用 |
+| DL v7 | 7-model gated ranker + count=3208 | 轻量验证 | `0.96233` | 当前最高 |
+| DL v8 | push + shrink-only extras | 轻量验证 | `0.96229` | 已降分，弃用 |
+| DL v9 | text/meta boundary gate | 训练模板证据 + 多模型一致性 | 待提交 | 当前冲刺推荐 |
 
 ## 模型演进
 
@@ -229,7 +236,18 @@ scripts\run_torch_py.cmd -c "import torch; print(torch.__version__, torch.cuda.i
 
 当前下一版推荐：
 
-[next.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/next.csv)
+[go.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/go.csv)
+
+备选版本：
+
+- [mc4.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/mc4.csv)：最保守的 meta gate，只改 4 行。
+- [mc6.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/mc6.csv)：比 `mc4` 多 2 行 duplicate_event 起点修正。
+- [mc10.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/mc10.csv)：更激进，只改 10 行，但弱前兆/恢复边界更多，风险高于 `go.csv`。
+- [p2.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/p2.csv)：比 `push.csv` 多 7 行门控变化，包含 `up.csv` 已证伪的 4 个收缩变化，不推荐。
+- [trim.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/trim.csv)：从 `push.csv` 回退 4 个低增量扩边，较保守。
+- [best.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/best.csv)：`trim.csv` 再叠加 4 个收缩类新增变化。
+- [safe8.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/safe8.csv)：更保守，只接受 17 行边界变化并删除 2 个低置信异常。
+- [hard.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/hard.csv)：更激进，接受 72 行边界变化并删除 2 个低置信异常。
 
 ## 复现命令
 
@@ -246,6 +264,39 @@ scripts\run_torch_py.cmd work\data_security\system_log_anomaly_detection_challen
   --output-path work\data_security\system_log_anomaly_detection_challenge\submissions\final.csv `
   --force-count 3214 `
   --variant-count 3210
+```
+
+生成已弃用的 top16 诊断版本：
+
+```powershell
+scripts\run_torch_py.cmd work\data_security\system_log_anomaly_detection_challenge\src\predict_torch_span_ranker.py `
+  --boundary-artifact work\data_security\system_log_anomaly_detection_challenge\models\torch_boundary_full_model.pt `
+  --boundary-artifact work\data_security\system_log_anomaly_detection_challenge\models\torch_boundary_full_seed43_model.pt `
+  --boundary-artifact work\data_security\system_log_anomaly_detection_challenge\models\torch_boundary_full_seed44_model.pt `
+  --hybrid-artifact work\data_security\system_log_anomaly_detection_challenge\models\torch_hybrid_boundary_full_model.pt `
+  --hybrid-artifact work\data_security\system_log_anomaly_detection_challenge\models\torch_hybrid_boundary_full_seed43_model.pt `
+  --hybrid-artifact work\data_security\system_log_anomaly_detection_challenge\models\torch_hybrid_boundary_full_seed44_model.pt `
+  --output-path work\data_security\system_log_anomaly_detection_challenge\submissions\t16.csv `
+  --force-count 3206 `
+  --variant-count 3210 `
+  --confidence-output work\data_security\system_log_anomaly_detection_challenge\processed\ranker_confidence_top16.csv `
+  --summary-path work\data_security\system_log_anomaly_detection_challenge\logs\span_ranker_top16_summary.json `
+  --top-per-label 16
+```
+
+生成当前推荐的 meta boundary gate 版本：
+
+```powershell
+scripts\run_py.cmd work\data_security\system_log_anomaly_detection_challenge\src\build_meta_boundary_candidates.py `
+  --output-prefix work\data_security\system_log_anomaly_detection_challenge\submissions\mc `
+  --summary-path work\data_security\system_log_anomaly_detection_challenge\logs\meta_boundary_clean_summary.json `
+  --rows-path work\data_security\system_log_anomaly_detection_challenge\processed\meta_boundary_clean_candidates.csv `
+  --min-evidence 1.0
+
+Copy-Item `
+  -LiteralPath work\data_security\system_log_anomaly_detection_challenge\submissions\mc8.csv `
+  -Destination work\data_security\system_log_anomaly_detection_challenge\submissions\go.csv `
+  -Force
 ```
 
 重训 boundary 三模型：
@@ -268,12 +319,28 @@ scripts\run_torch_py.cmd work\data_security\system_log_anomaly_detection_challen
 
 推荐提交：
 
+- [go.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/go.csv)
+- [mc8.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/mc8.csv)
+- [mc6.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/mc6.csv)
+- [mc4.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/mc4.csv)
+- [push.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/push.csv)
+- [p2.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/p2.csv)
+- [trim.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/trim.csv)
+- [best.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/best.csv)
+- [safe8.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/safe8.csv)
+- [hard.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/hard.csv)
+- [try.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/try.csv)
+- [risk.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/risk.csv)
 - [next.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/next.csv)
 - [final.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/final.csv)
 - [s6.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/s6.csv)
 
 已提交高分：
 
+- [next.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/next.csv)，线上 `0.96208`。
+- [push.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/push.csv)，线上 `0.96233`。
+- [up.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/up.csv)，线上 `0.96229`，已判定不推荐。
+- [try.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/try.csv)，线上 `0.96153`，已判定不推荐。
 - [final.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/final.csv)，线上 `0.96187`。
 - [s1.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/submissions/s1.csv)，线上 `0.94666`。
 
@@ -288,6 +355,8 @@ scripts\run_torch_py.cmd work\data_security\system_log_anomaly_detection_challen
 
 日志：
 
+- [meta_boundary_clean_summary.json](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/logs/meta_boundary_clean_summary.json)
+- [meta_boundary_candidates.csv](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/processed/meta_boundary_clean_candidates.csv)
 - [span_ranker_summary.json](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/logs/span_ranker_summary.json)
 - [final_submission_decision_20260502.md](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/logs/final_submission_decision_20260502.md)
 - [hybrid_boundary_run_summary_20260502.md](/C:/budostudy/only_for_codex/iscc/work/data_security/system_log_anomaly_detection_challenge/logs/hybrid_boundary_run_summary_20260502.md)
@@ -300,5 +369,7 @@ scripts\run_torch_py.cmd work\data_security\system_log_anomaly_detection_challen
 
 ## 未验证风险
 
-- `next.csv` 尚未线上提交验证。
-- `next.csv` 与 `final.csv` 只差 4 个检测行；如果这 4 行中有真实异常，会损失少量检测分，但如果它们是低置信误报或低 IoU 样本，可能补上当前 `0.00071` 差距。
+- `go.csv` 尚未线上提交验证。
+- `go.csv` 的风险来自 8 个新增边界修正；它保留 `push.csv` 全部已验证收益，且不改检测计数和类型，但仍可能受 public/private 分布差异影响。
+- `up.csv` 已线上验证低于 `push.csv`，不再作为推荐提交。
+- `safe8.csv` 更稳但潜在提升幅度较小；`hard.csv` 潜在提升更大但更可能重复边界过拟合问题。

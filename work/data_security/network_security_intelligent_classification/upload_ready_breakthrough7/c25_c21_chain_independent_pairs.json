@@ -1,0 +1,51 @@
+{
+  "base_report": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\upload_ready_breakthrough5\\c10_c04_patternshuffle_s43_25.json",
+  "pre_proposals": [
+    "class_3:class_8:0.90",
+    "class_8:class_1:0.90",
+    "class_6:class_5:0.95",
+    "class_11:class_10:0.80"
+  ],
+  "proposal_features": "template_top10",
+  "final_oof_macro_f1": 0.9374502086570738,
+  "test_label_counts": {
+    "class_0": 1794,
+    "class_1": 899,
+    "class_10": 1560,
+    "class_11": 1203,
+    "class_2": 2012,
+    "class_3": 1858,
+    "class_4": 1520,
+    "class_5": 1823,
+    "class_6": 1739,
+    "class_7": 1540,
+    "class_8": 1895,
+    "class_9": 1597
+  },
+  "best": [],
+  "output_path": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\upload_ready_breakthrough7\\c25_c21_chain_independent_pairs.csv",
+  "mirror_path": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\submissions\\c25_c21_chain_independent_pairs.csv",
+  "submission_validation": {
+    "row_count": 19440,
+    "sample_row_count": 19440,
+    "columns_ok": true,
+    "id_order_ok": true,
+    "null_count": 0,
+    "duplicate_id_count": 0,
+    "labels_ok": true,
+    "label_counts": {
+      "class_0": 1794,
+      "class_1": 899,
+      "class_10": 1560,
+      "class_11": 1203,
+      "class_2": 2012,
+      "class_3": 1858,
+      "class_4": 1520,
+      "class_5": 1823,
+      "class_6": 1739,
+      "class_7": 1540,
+      "class_8": 1895,
+      "class_9": 1597
+    }
+  }
+}

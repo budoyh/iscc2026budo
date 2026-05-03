@@ -1,0 +1,6 @@
+columns,keys,covered,abstain,correct,wrong,accuracy
+entry_line+high_pc+var_lines+ptr_sig+struct_size_sig+member_sig+char_first_type+line_seq_compact,2144,2592,1543,2351,241,0.9070216049382716
+entry_line+var_lines+ptr_sig+struct_size_sig+member_sig+char_first_type+line_seq_compact,1147,3660,475,3401,259,0.9292349726775956
+entry_line+var_lines+ptr_sig+struct_size_sig+member_sig+char_first_type+line_seq_compact,1147,3660,475,3401,259,0.9292349726775956
+entry_line+var_lines+ptr_sig+struct_size_sig+line_seq_compact,1147,3660,475,3401,259,0.9292349726775956
+ptr_sig+struct_size_sig+member_sig+char_first_type+line_seq_compact,1147,3660,475,3401,259,0.9292349726775956

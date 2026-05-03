@@ -1,0 +1,102 @@
+{
+  "base_report": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\upload_ready_breakthrough5\\c10_c04_patternshuffle_s43_25.json",
+  "stages": [
+    {
+      "features": "template",
+      "k": 768,
+      "alpha": 1.2,
+      "min_count": 25,
+      "smooth": 15.0,
+      "ratio_clip": 1.8
+    },
+    {
+      "features": "pattern6",
+      "k": 512,
+      "alpha": 0.2,
+      "min_count": 25,
+      "smooth": 20.0,
+      "ratio_clip": 1.8
+    }
+  ],
+  "stage_reports": [
+    {
+      "features": "template",
+      "k": 768,
+      "alpha": 1.2,
+      "min_count": 25,
+      "smooth": 15.0,
+      "ratio_clip": 1.8,
+      "before_oof_macro_f1": 0.9354188187469475,
+      "after_oof_macro_f1": 0.9365995004498061,
+      "changed_oof_rows": 412,
+      "covered_oof_rows": 50171,
+      "changed_oof_new_acc": 0.5364077669902912,
+      "changed_oof_before_acc": 0.3883495145631068,
+      "changed_oof_before_margin_mean": 0.15056219579944463,
+      "changed_test_rows": 274,
+      "test_covered_rows": 17494,
+      "stage_index": 1
+    },
+    {
+      "features": "pattern6",
+      "k": 512,
+      "alpha": 0.2,
+      "min_count": 25,
+      "smooth": 20.0,
+      "ratio_clip": 1.8,
+      "before_oof_macro_f1": 0.9365995004498061,
+      "after_oof_macro_f1": 0.9366280256249864,
+      "changed_oof_rows": 58,
+      "covered_oof_rows": 52463,
+      "changed_oof_new_acc": 0.43103448275862066,
+      "changed_oof_before_acc": 0.39655172413793105,
+      "changed_oof_before_margin_mean": 0.013274166884606364,
+      "changed_test_rows": 21,
+      "test_covered_rows": 14939,
+      "stage_index": 2
+    }
+  ],
+  "base_oof_macro_f1": 0.9354188187469475,
+  "final_oof_macro_f1": 0.9366280256249864,
+  "changed_oof_rows_vs_base": 428,
+  "changed_test_rows_vs_base": 273,
+  "test_label_counts": {
+    "class_0": 1795,
+    "class_1": 846,
+    "class_10": 1518,
+    "class_11": 1244,
+    "class_2": 2006,
+    "class_3": 1909,
+    "class_4": 1522,
+    "class_5": 1832,
+    "class_6": 1740,
+    "class_7": 1550,
+    "class_8": 1872,
+    "class_9": 1606
+  },
+  "output_path": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\upload_ready_breakthrough7\\c19_c12_exact_pattern6_prior_k512_a020.csv",
+  "mirror_path": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\submissions\\c19_c12_exact_pattern6_prior_k512_a020.csv",
+  "submission_validation": {
+    "row_count": 19440,
+    "sample_row_count": 19440,
+    "columns_ok": true,
+    "id_order_ok": true,
+    "null_count": 0,
+    "duplicate_id_count": 0,
+    "labels_ok": true,
+    "label_counts": {
+      "class_0": 1795,
+      "class_1": 846,
+      "class_10": 1518,
+      "class_11": 1244,
+      "class_2": 2006,
+      "class_3": 1909,
+      "class_4": 1522,
+      "class_5": 1832,
+      "class_6": 1740,
+      "class_7": 1550,
+      "class_8": 1872,
+      "class_9": 1606
+    }
+  }
+}

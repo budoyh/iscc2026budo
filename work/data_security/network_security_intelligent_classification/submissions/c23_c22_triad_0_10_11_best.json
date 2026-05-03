@@ -1,0 +1,555 @@
+{
+  "base_report": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\upload_ready_breakthrough5\\c10_c04_patternshuffle_s43_25.json",
+  "features": "triad_combo",
+  "triad": [
+    "class_0",
+    "class_10",
+    "class_11"
+  ],
+  "pre_source": "class_3",
+  "pre_target": "class_8",
+  "pre_threshold": 0.9,
+  "grid": [
+    {
+      "threshold": 0.45,
+      "margin": 0.0,
+      "score": 0.9338789351788406,
+      "changed_oof_rows": 839,
+      "changed_test_rows": 401,
+      "new_acc": 0.3730631704410012,
+      "before_acc": 0.5566150178784267
+    },
+    {
+      "threshold": 0.45,
+      "margin": 0.05,
+      "score": 0.9342192460937149,
+      "changed_oof_rows": 749,
+      "changed_test_rows": 343,
+      "new_acc": 0.3724966622162884,
+      "before_acc": 0.5567423230974633
+    },
+    {
+      "threshold": 0.45,
+      "margin": 0.1,
+      "score": 0.9347092971705683,
+      "changed_oof_rows": 667,
+      "changed_test_rows": 303,
+      "new_acc": 0.3793103448275862,
+      "before_acc": 0.5487256371814093
+    },
+    {
+      "threshold": 0.45,
+      "margin": 0.15,
+      "score": 0.934993437769058,
+      "changed_oof_rows": 587,
+      "changed_test_rows": 251,
+      "new_acc": 0.3833049403747871,
+      "before_acc": 0.5536626916524702
+    },
+    {
+      "threshold": 0.45,
+      "margin": 0.2,
+      "score": 0.9353273231766194,
+      "changed_oof_rows": 508,
+      "changed_test_rows": 207,
+      "new_acc": 0.38779527559055116,
+      "before_acc": 0.5531496062992126
+    },
+    {
+      "threshold": 0.5,
+      "margin": 0.0,
+      "score": 0.9342205521909838,
+      "changed_oof_rows": 736,
+      "changed_test_rows": 348,
+      "new_acc": 0.37771739130434784,
+      "before_acc": 0.5652173913043478
+    },
+    {
+      "threshold": 0.5,
+      "margin": 0.05,
+      "score": 0.9343315466024933,
+      "changed_oof_rows": 688,
+      "changed_test_rows": 316,
+      "new_acc": 0.373546511627907,
+      "before_acc": 0.565406976744186
+    },
+    {
+      "threshold": 0.5,
+      "margin": 0.1,
+      "score": 0.934699103799567,
+      "changed_oof_rows": 627,
+      "changed_test_rows": 283,
+      "new_acc": 0.3763955342902711,
+      "before_acc": 0.5582137161084529
+    },
+    {
+      "threshold": 0.5,
+      "margin": 0.15,
+      "score": 0.9350418558791128,
+      "changed_oof_rows": 568,
+      "changed_test_rows": 243,
+      "new_acc": 0.38380281690140844,
+      "before_acc": 0.5563380281690141
+    },
+    {
+      "threshold": 0.5,
+      "margin": 0.2,
+      "score": 0.9353342477495099,
+      "changed_oof_rows": 503,
+      "changed_test_rows": 206,
+      "new_acc": 0.38767395626242546,
+      "before_acc": 0.5546719681908548
+    },
+    {
+      "threshold": 0.55,
+      "margin": 0.0,
+      "score": 0.9349627552074536,
+      "changed_oof_rows": 562,
+      "changed_test_rows": 231,
+      "new_acc": 0.3879003558718861,
+      "before_acc": 0.5658362989323843
+    },
+    {
+      "threshold": 0.55,
+      "margin": 0.05,
+      "score": 0.9349627552074536,
+      "changed_oof_rows": 562,
+      "changed_test_rows": 231,
+      "new_acc": 0.3879003558718861,
+      "before_acc": 0.5658362989323843
+    },
+    {
+      "threshold": 0.55,
+      "margin": 0.1,
+      "score": 0.9349627552074536,
+      "changed_oof_rows": 562,
+      "changed_test_rows": 231,
+      "new_acc": 0.3879003558718861,
+      "before_acc": 0.5658362989323843
+    },
+    {
+      "threshold": 0.55,
+      "margin": 0.15,
+      "score": 0.935134860980226,
+      "changed_oof_rows": 527,
+      "changed_test_rows": 215,
+      "new_acc": 0.3889943074003795,
+      "before_acc": 0.5654648956356736
+    },
+    {
+      "threshold": 0.55,
+      "margin": 0.2,
+      "score": 0.9353689336997396,
+      "changed_oof_rows": 474,
+      "changed_test_rows": 190,
+      "new_acc": 0.3924050632911392,
+      "before_acc": 0.5654008438818565
+    },
+    {
+      "threshold": 0.6,
+      "margin": 0.0,
+      "score": 0.9359112155883945,
+      "changed_oof_rows": 412,
+      "changed_test_rows": 172,
+      "new_acc": 0.4174757281553398,
+      "before_acc": 0.5533980582524272
+    },
+    {
+      "threshold": 0.6,
+      "margin": 0.05,
+      "score": 0.9359112155883945,
+      "changed_oof_rows": 412,
+      "changed_test_rows": 172,
+      "new_acc": 0.4174757281553398,
+      "before_acc": 0.5533980582524272
+    },
+    {
+      "threshold": 0.6,
+      "margin": 0.1,
+      "score": 0.9359112155883945,
+      "changed_oof_rows": 412,
+      "changed_test_rows": 172,
+      "new_acc": 0.4174757281553398,
+      "before_acc": 0.5533980582524272
+    },
+    {
+      "threshold": 0.6,
+      "margin": 0.15,
+      "score": 0.9359112155883945,
+      "changed_oof_rows": 412,
+      "changed_test_rows": 172,
+      "new_acc": 0.4174757281553398,
+      "before_acc": 0.5533980582524272
+    },
+    {
+      "threshold": 0.6,
+      "margin": 0.2,
+      "score": 0.9359112155883945,
+      "changed_oof_rows": 412,
+      "changed_test_rows": 172,
+      "new_acc": 0.4174757281553398,
+      "before_acc": 0.5533980582524272
+    },
+    {
+      "threshold": 0.65,
+      "margin": 0.0,
+      "score": 0.9362036364303568,
+      "changed_oof_rows": 287,
+      "changed_test_rows": 117,
+      "new_acc": 0.4181184668989547,
+      "before_acc": 0.5679442508710801
+    },
+    {
+      "threshold": 0.65,
+      "margin": 0.05,
+      "score": 0.9362036364303568,
+      "changed_oof_rows": 287,
+      "changed_test_rows": 117,
+      "new_acc": 0.4181184668989547,
+      "before_acc": 0.5679442508710801
+    },
+    {
+      "threshold": 0.65,
+      "margin": 0.1,
+      "score": 0.9362036364303568,
+      "changed_oof_rows": 287,
+      "changed_test_rows": 117,
+      "new_acc": 0.4181184668989547,
+      "before_acc": 0.5679442508710801
+    },
+    {
+      "threshold": 0.65,
+      "margin": 0.15,
+      "score": 0.9362036364303568,
+      "changed_oof_rows": 287,
+      "changed_test_rows": 117,
+      "new_acc": 0.4181184668989547,
+      "before_acc": 0.5679442508710801
+    },
+    {
+      "threshold": 0.65,
+      "margin": 0.2,
+      "score": 0.9362036364303568,
+      "changed_oof_rows": 287,
+      "changed_test_rows": 117,
+      "new_acc": 0.4181184668989547,
+      "before_acc": 0.5679442508710801
+    },
+    {
+      "threshold": 0.7,
+      "margin": 0.0,
+      "score": 0.936712457768309,
+      "changed_oof_rows": 180,
+      "changed_test_rows": 84,
+      "new_acc": 0.42777777777777776,
+      "before_acc": 0.5555555555555556
+    },
+    {
+      "threshold": 0.7,
+      "margin": 0.05,
+      "score": 0.936712457768309,
+      "changed_oof_rows": 180,
+      "changed_test_rows": 84,
+      "new_acc": 0.42777777777777776,
+      "before_acc": 0.5555555555555556
+    },
+    {
+      "threshold": 0.7,
+      "margin": 0.1,
+      "score": 0.936712457768309,
+      "changed_oof_rows": 180,
+      "changed_test_rows": 84,
+      "new_acc": 0.42777777777777776,
+      "before_acc": 0.5555555555555556
+    },
+    {
+      "threshold": 0.7,
+      "margin": 0.15,
+      "score": 0.936712457768309,
+      "changed_oof_rows": 180,
+      "changed_test_rows": 84,
+      "new_acc": 0.42777777777777776,
+      "before_acc": 0.5555555555555556
+    },
+    {
+      "threshold": 0.7,
+      "margin": 0.2,
+      "score": 0.936712457768309,
+      "changed_oof_rows": 180,
+      "changed_test_rows": 84,
+      "new_acc": 0.42777777777777776,
+      "before_acc": 0.5555555555555556
+    },
+    {
+      "threshold": 0.75,
+      "margin": 0.0,
+      "score": 0.9369084928070577,
+      "changed_oof_rows": 110,
+      "changed_test_rows": 56,
+      "new_acc": 0.41818181818181815,
+      "before_acc": 0.5636363636363636
+    },
+    {
+      "threshold": 0.75,
+      "margin": 0.05,
+      "score": 0.9369084928070577,
+      "changed_oof_rows": 110,
+      "changed_test_rows": 56,
+      "new_acc": 0.41818181818181815,
+      "before_acc": 0.5636363636363636
+    },
+    {
+      "threshold": 0.75,
+      "margin": 0.1,
+      "score": 0.9369084928070577,
+      "changed_oof_rows": 110,
+      "changed_test_rows": 56,
+      "new_acc": 0.41818181818181815,
+      "before_acc": 0.5636363636363636
+    },
+    {
+      "threshold": 0.75,
+      "margin": 0.15,
+      "score": 0.9369084928070577,
+      "changed_oof_rows": 110,
+      "changed_test_rows": 56,
+      "new_acc": 0.41818181818181815,
+      "before_acc": 0.5636363636363636
+    },
+    {
+      "threshold": 0.75,
+      "margin": 0.2,
+      "score": 0.9369084928070577,
+      "changed_oof_rows": 110,
+      "changed_test_rows": 56,
+      "new_acc": 0.41818181818181815,
+      "before_acc": 0.5636363636363636
+    },
+    {
+      "threshold": 0.8,
+      "margin": 0.0,
+      "score": 0.9371748191743855,
+      "changed_oof_rows": 61,
+      "changed_test_rows": 35,
+      "new_acc": 0.45901639344262296,
+      "before_acc": 0.5245901639344263
+    },
+    {
+      "threshold": 0.8,
+      "margin": 0.05,
+      "score": 0.9371748191743855,
+      "changed_oof_rows": 61,
+      "changed_test_rows": 35,
+      "new_acc": 0.45901639344262296,
+      "before_acc": 0.5245901639344263
+    },
+    {
+      "threshold": 0.8,
+      "margin": 0.1,
+      "score": 0.9371748191743855,
+      "changed_oof_rows": 61,
+      "changed_test_rows": 35,
+      "new_acc": 0.45901639344262296,
+      "before_acc": 0.5245901639344263
+    },
+    {
+      "threshold": 0.8,
+      "margin": 0.15,
+      "score": 0.9371748191743855,
+      "changed_oof_rows": 61,
+      "changed_test_rows": 35,
+      "new_acc": 0.45901639344262296,
+      "before_acc": 0.5245901639344263
+    },
+    {
+      "threshold": 0.8,
+      "margin": 0.2,
+      "score": 0.9371748191743855,
+      "changed_oof_rows": 61,
+      "changed_test_rows": 35,
+      "new_acc": 0.45901639344262296,
+      "before_acc": 0.5245901639344263
+    },
+    {
+      "threshold": 0.85,
+      "margin": 0.0,
+      "score": 0.9373345231942959,
+      "changed_oof_rows": 34,
+      "changed_test_rows": 24,
+      "new_acc": 0.5294117647058824,
+      "before_acc": 0.4411764705882353
+    },
+    {
+      "threshold": 0.85,
+      "margin": 0.05,
+      "score": 0.9373345231942959,
+      "changed_oof_rows": 34,
+      "changed_test_rows": 24,
+      "new_acc": 0.5294117647058824,
+      "before_acc": 0.4411764705882353
+    },
+    {
+      "threshold": 0.85,
+      "margin": 0.1,
+      "score": 0.9373345231942959,
+      "changed_oof_rows": 34,
+      "changed_test_rows": 24,
+      "new_acc": 0.5294117647058824,
+      "before_acc": 0.4411764705882353
+    },
+    {
+      "threshold": 0.85,
+      "margin": 0.15,
+      "score": 0.9373345231942959,
+      "changed_oof_rows": 34,
+      "changed_test_rows": 24,
+      "new_acc": 0.5294117647058824,
+      "before_acc": 0.4411764705882353
+    },
+    {
+      "threshold": 0.85,
+      "margin": 0.2,
+      "score": 0.9373345231942959,
+      "changed_oof_rows": 34,
+      "changed_test_rows": 24,
+      "new_acc": 0.5294117647058824,
+      "before_acc": 0.4411764705882353
+    },
+    {
+      "threshold": 0.9,
+      "margin": 0.0,
+      "score": 0.9371892633784545,
+      "changed_oof_rows": 11,
+      "changed_test_rows": 16,
+      "new_acc": 0.2727272727272727,
+      "before_acc": 0.6363636363636364
+    },
+    {
+      "threshold": 0.9,
+      "margin": 0.05,
+      "score": 0.9371892633784545,
+      "changed_oof_rows": 11,
+      "changed_test_rows": 16,
+      "new_acc": 0.2727272727272727,
+      "before_acc": 0.6363636363636364
+    },
+    {
+      "threshold": 0.9,
+      "margin": 0.1,
+      "score": 0.9371892633784545,
+      "changed_oof_rows": 11,
+      "changed_test_rows": 16,
+      "new_acc": 0.2727272727272727,
+      "before_acc": 0.6363636363636364
+    },
+    {
+      "threshold": 0.9,
+      "margin": 0.15,
+      "score": 0.9371892633784545,
+      "changed_oof_rows": 11,
+      "changed_test_rows": 16,
+      "new_acc": 0.2727272727272727,
+      "before_acc": 0.6363636363636364
+    },
+    {
+      "threshold": 0.9,
+      "margin": 0.2,
+      "score": 0.9371892633784545,
+      "changed_oof_rows": 11,
+      "changed_test_rows": 16,
+      "new_acc": 0.2727272727272727,
+      "before_acc": 0.6363636363636364
+    }
+  ],
+  "chosen_threshold": 0.85,
+  "chosen_margin": 0.0,
+  "current_oof_macro_f1": 0.9372681548301594,
+  "final_oof_macro_f1": 0.9373345231942959,
+  "changed_oof_rows": 34,
+  "changed_test_rows": 24,
+  "changed_oof_new_acc": 0.5294117647058824,
+  "changed_oof_before_acc": 0.4411764705882353,
+  "flow_details": [
+    {
+      "flow": "class_0:class_10",
+      "changed_oof_rows": 1,
+      "changed_test_rows": 5,
+      "new_acc": 0.0,
+      "before_acc": 1.0
+    },
+    {
+      "flow": "class_0:class_11",
+      "changed_oof_rows": 2,
+      "changed_test_rows": 1,
+      "new_acc": 0.5,
+      "before_acc": 0.5
+    },
+    {
+      "flow": "class_10:class_0",
+      "changed_oof_rows": 3,
+      "changed_test_rows": 2,
+      "new_acc": 0.3333333333333333,
+      "before_acc": 0.6666666666666666
+    },
+    {
+      "flow": "class_10:class_11",
+      "changed_oof_rows": 4,
+      "changed_test_rows": 1,
+      "new_acc": 0.75,
+      "before_acc": 0.25
+    },
+    {
+      "flow": "class_11:class_0",
+      "changed_oof_rows": 15,
+      "changed_test_rows": 14,
+      "new_acc": 0.4,
+      "before_acc": 0.5333333333333333
+    },
+    {
+      "flow": "class_11:class_10",
+      "changed_oof_rows": 9,
+      "changed_test_rows": 1,
+      "new_acc": 0.7777777777777778,
+      "before_acc": 0.2222222222222222
+    }
+  ],
+  "test_label_counts": {
+    "class_0": 1804,
+    "class_1": 846,
+    "class_10": 1540,
+    "class_11": 1213,
+    "class_2": 2012,
+    "class_3": 1858,
+    "class_4": 1520,
+    "class_5": 1817,
+    "class_6": 1745,
+    "class_7": 1540,
+    "class_8": 1948,
+    "class_9": 1597
+  },
+  "output_path": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\upload_ready_breakthrough7\\c23_c22_triad_0_10_11_best.csv",
+  "mirror_path": "C:\\budostudy\\only_for_codex\\iscc\\work\\data_security\\network_security_intelligent_classification\\submissions\\c23_c22_triad_0_10_11_best.csv",
+  "submission_validation": {
+    "row_count": 19440,
+    "sample_row_count": 19440,
+    "columns_ok": true,
+    "id_order_ok": true,
+    "null_count": 0,
+    "duplicate_id_count": 0,
+    "labels_ok": true,
+    "label_counts": {
+      "class_0": 1804,
+      "class_1": 846,
+      "class_10": 1540,
+      "class_11": 1213,
+      "class_2": 2012,
+      "class_3": 1858,
+      "class_4": 1520,
+      "class_5": 1817,
+      "class_6": 1745,
+      "class_7": 1540,
+      "class_8": 1948,
+      "class_9": 1597
+    }
+  }
+}

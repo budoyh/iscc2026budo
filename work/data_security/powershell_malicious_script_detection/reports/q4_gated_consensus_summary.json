@@ -1,0 +1,340 @@
+{
+  "created_at": "2026-05-03T12:52:11+0800",
+  "runtime_seconds": 2.139,
+  "hypothesis": "Anchor on online-best q4 label-shift; flip only low-confidence rows supported by soft-label neural, CatBoost, and prefix-weighted neural, penalizing directions matching the 0.63703 failed candidate.",
+  "soft_model": {
+    "alpha": 1.0,
+    "soft_weight": 0.7,
+    "source_decay": 3.0,
+    "dropout": 0.08,
+    "epochs": 40,
+    "seeds": [
+      20261204,
+      20261205,
+      20261206,
+      20261207,
+      20261208
+    ],
+    "path": "models/soft_label_full_decay3_proba.npy"
+  },
+  "base": {
+    "q4_counts": [
+      13039,
+      2856,
+      4105
+    ],
+    "bad_counts": [
+      13657,
+      2865,
+      3478
+    ],
+    "q4_vs_bad_diff": 2896
+  },
+  "candidates": [
+    {
+      "name": "q4_gated_consensus_balanced_v1",
+      "counts": [
+        13248,
+        2852,
+        3900
+      ],
+      "diff_vs_q4": 264,
+      "diff_vs_bad": 3082,
+      "changed_mean_q4_margin": 0.11298268823505964,
+      "changed_mean_score": 0.7973884643640622,
+      "changed_vote_hist": {
+        "2": 77,
+        "3": 187
+      },
+      "top_move_score": 1.3919048443092303,
+      "last_move_score": -0.737925832202551,
+      "final_count_violation": 2,
+      "path": "submissions\\submission_q4_gated_consensus_balanced_v1.csv",
+      "segment_counts_5000": [
+        [
+          3282,
+          989,
+          729
+        ],
+        [
+          3344,
+          860,
+          796
+        ],
+        [
+          3291,
+          553,
+          1156
+        ],
+        [
+          3331,
+          450,
+          1219
+        ]
+      ],
+      "selection_score": 1.0553471160910155,
+      "canonical_path": "submissions\\submission_q4_gated_consensus_v1.csv",
+      "root_submission": "submission.csv"
+    },
+    {
+      "name": "q4_gated_consensus_class2_v1",
+      "counts": [
+        13148,
+        2852,
+        4000
+      ],
+      "diff_vs_q4": 174,
+      "diff_vs_bad": 3015,
+      "changed_mean_q4_margin": 0.16850678393307209,
+      "changed_mean_score": 0.8396398420479951,
+      "changed_vote_hist": {
+        "2": 48,
+        "3": 126
+      },
+      "top_move_score": 1.3919048443092303,
+      "last_move_score": -0.737925832202551,
+      "final_count_violation": 7,
+      "path": "submissions\\submission_q4_gated_consensus_class2_v1.csv",
+      "segment_counts_5000": [
+        [
+          3267,
+          989,
+          744
+        ],
+        [
+          3335,
+          860,
+          805
+        ],
+        [
+          3254,
+          553,
+          1193
+        ],
+        [
+          3292,
+          450,
+          1258
+        ]
+      ],
+      "selection_score": 0.9559099605119987
+    },
+    {
+      "name": "q4_gated_consensus_strict_v1",
+      "counts": [
+        13194,
+        2856,
+        3950
+      ],
+      "diff_vs_q4": 157,
+      "diff_vs_bad": 3033,
+      "changed_mean_q4_margin": -0.09107579971808509,
+      "changed_mean_score": 1.06861236680399,
+      "changed_vote_hist": {
+        "3": 157
+      },
+      "top_move_score": 1.3919048443092303,
+      "last_move_score": -0.11701281176656642,
+      "final_count_violation": 6,
+      "path": "submissions\\submission_q4_gated_consensus_strict_v1.csv",
+      "segment_counts_5000": [
+        [
+          3270,
+          990,
+          740
+        ],
+        [
+          3340,
+          860,
+          800
+        ],
+        [
+          3267,
+          556,
+          1177
+        ],
+        [
+          3317,
+          450,
+          1233
+        ]
+      ],
+      "selection_score": 1.0001530917009975
+    },
+    {
+      "name": "q4_gated_consensus_aggressive_v1",
+      "counts": [
+        13200,
+        3000,
+        3800
+      ],
+      "diff_vs_q4": 426,
+      "diff_vs_bad": 3069,
+      "changed_mean_q4_margin": -0.7465971626873399,
+      "changed_mean_score": 1.445217555543793,
+      "changed_vote_hist": {
+        "2": 36,
+        "3": 304
+      },
+      "top_move_score": 3.4107704185844567,
+      "last_move_score": -2.590020873577841,
+      "final_count_violation": 0,
+      "path": "submissions\\submission_q4_gated_consensus_aggressive_v1.csv",
+      "segment_counts_5000": [
+        [
+          3269,
+          988,
+          743
+        ],
+        [
+          3339,
+          860,
+          801
+        ],
+        [
+          3274,
+          614,
+          1112
+        ],
+        [
+          3318,
+          538,
+          1144
+        ]
+      ],
+      "selection_score": 0.30730438888594813
+    },
+    {
+      "name": "q4_gated_consensus_wide_v1",
+      "counts": [
+        13091,
+        3309,
+        3600
+      ],
+      "diff_vs_q4": 765,
+      "diff_vs_bad": 3207,
+      "changed_mean_q4_margin": -0.8858912726379096,
+      "changed_mean_score": 1.588483155619135,
+      "changed_vote_hist": {
+        "2": 73,
+        "3": 609
+      },
+      "top_move_score": 3.4107704185844567,
+      "last_move_score": -0.04438013748801051,
+      "final_count_violation": 0,
+      "path": "submissions\\submission_q4_gated_consensus_wide_v1.csv",
+      "segment_counts_5000": [
+        [
+          3214,
+          1052,
+          734
+        ],
+        [
+          3282,
+          942,
+          776
+        ],
+        [
+          3274,
+          691,
+          1035
+        ],
+        [
+          3321,
+          624,
+          1055
+        ]
+      ],
+      "selection_score": -0.33587921109521623
+    },
+    {
+      "name": "q4_gated_consensus_class2_preserve_v1",
+      "counts": [
+        13128,
+        2839,
+        4033
+      ],
+      "diff_vs_q4": 431,
+      "diff_vs_bad": 2978,
+      "changed_mean_q4_margin": 0.3983963966285343,
+      "changed_mean_score": 0.06164365367847855,
+      "changed_vote_hist": {
+        "2": 71,
+        "3": 119
+      },
+      "top_move_score": 2.078336707509965,
+      "last_move_score": -1.570687874936561,
+      "final_count_violation": 79,
+      "path": "submissions\\submission_q4_gated_consensus_class2_preserve_v1.csv",
+      "segment_counts_5000": [
+        [
+          3253,
+          984,
+          763
+        ],
+        [
+          3296,
+          857,
+          847
+        ],
+        [
+          3261,
+          548,
+          1191
+        ],
+        [
+          3318,
+          450,
+          1232
+        ]
+      ],
+      "selection_score": 0.7304109134196195
+    }
+  ],
+  "selected": {
+    "name": "q4_gated_consensus_balanced_v1",
+    "counts": [
+      13248,
+      2852,
+      3900
+    ],
+    "diff_vs_q4": 264,
+    "diff_vs_bad": 3082,
+    "changed_mean_q4_margin": 0.11298268823505964,
+    "changed_mean_score": 0.7973884643640622,
+    "changed_vote_hist": {
+      "2": 77,
+      "3": 187
+    },
+    "top_move_score": 1.3919048443092303,
+    "last_move_score": -0.737925832202551,
+    "final_count_violation": 2,
+    "path": "submissions\\submission_q4_gated_consensus_balanced_v1.csv",
+    "segment_counts_5000": [
+      [
+        3282,
+        989,
+        729
+      ],
+      [
+        3344,
+        860,
+        796
+      ],
+      [
+        3291,
+        553,
+        1156
+      ],
+      [
+        3331,
+        450,
+        1219
+      ]
+    ],
+    "selection_score": 1.0553471160910155,
+    "canonical_path": "submissions\\submission_q4_gated_consensus_v1.csv",
+    "root_submission": "submission.csv"
+  },
+  "conclusion": "This is the next non-score-inversion breakthrough attempt: a q4-anchored gated consensus candidate with controlled but nontrivial diff."
+}

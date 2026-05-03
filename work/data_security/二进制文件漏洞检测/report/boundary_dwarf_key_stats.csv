@@ -1,0 +1,6 @@
+cols,covered,correct,wrong,acc
+left_cwe+right_cwe+ldist+rdist+entry_line+high_pc+var_lines+ptr_sig+struct_size_sig+member_sig+char_first_type+line_seq_compact,0,0,0,0.0
+left_cwe+right_cwe+entry_line+var_lines+ptr_sig+struct_size_sig+member_sig+char_first_type+line_seq_compact,8,6,2,0.75
+left_cwe+right_cwe+entry_line+var_lines+ptr_sig+struct_size_sig+line_seq_compact,8,6,2,0.75
+left_cwe+right_cwe+ptr_sig+struct_size_sig+member_sig+char_first_type+line_seq_compact,8,6,2,0.75
+left_cwe+right_cwe+entry_line+high_pc+line_seq_compact,0,0,0,0.0

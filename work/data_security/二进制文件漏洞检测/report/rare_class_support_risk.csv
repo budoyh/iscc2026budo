@@ -1,0 +1,6 @@
+﻿binary_id,sid,cwe,class_count,nearest_same_dist,near_same_count,near_labels,has_cwe_token,tokens,exact_same_near,exact_other_near,entry_line,high_pc,body_len,insn_count,calls
+BIN_8556812,41857,CWE-526,9,1,3,CWE-526@41854|CWE-526@41855|CWE-526@41856|CWE-546@41858|CWE-546@41859|CWE-546@41861|CWE-546@41862,False,,True,CWE-546@41861,17,39,39,13,getenv|printline
+BIN_3940409,41138,CWE-469,19,4,2,CWE-469@41134|CWE-469@41143,False,,False,,26,121,121,31,strchr|exit|printunsignedline
+BIN_6703706,41139,CWE-469,19,4,3,CWE-469@41134|CWE-469@41143|CWE-469@41144,False,,False,,26,122,122,31,strchr|exit|printunsignedline
+BIN_5995634,10982,CWE-123,43,4,2,CWE-123@10977|CWE-123@10978,False,,False,,52,664,664,125,memset
+BIN_2003503,10983,CWE-123,43,5,2,CWE-123@10978|CWE-123@10988,False,,False,,52,720,720,136,memset

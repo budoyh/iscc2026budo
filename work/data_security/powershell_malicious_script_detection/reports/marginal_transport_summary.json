@@ -1,0 +1,179 @@
+{
+  "created_at": "2026-05-03T10:27:19+0800",
+  "runtime_seconds": 61.178,
+  "configs": [
+    [
+      "front_frac0.35",
+      0.35
+    ],
+    [
+      "front_frac0.50",
+      0.45
+    ],
+    [
+      "decay5.0",
+      0.45
+    ]
+  ],
+  "validation": [
+    {
+      "split": "ratio_prefix",
+      "source_mode": "front_frac0.35",
+      "pair_weight": 0.35,
+      "actual_macro": 0.7286222965658816,
+      "expected_macro": 0.7286222965658816,
+      "pred_counts": [
+        8259,
+        2769,
+        2555
+      ],
+      "fit": {
+        "loss": 3.1115124225616455,
+        "counts": [
+          8802.12890625,
+          2087.735107421875,
+          2693.13623046875
+        ],
+        "count_loss": 5.6183267588494346e-05,
+        "marginal_loss": 0.0034578884951770306
+      }
+    },
+    {
+      "split": "ratio_prefix",
+      "source_mode": "front_frac0.50",
+      "pair_weight": 0.45,
+      "actual_macro": 0.7332376717673674,
+      "expected_macro": 0.7332376717673674,
+      "pred_counts": [
+        8316,
+        2761,
+        2506
+      ],
+      "fit": {
+        "loss": 3.3685247898101807,
+        "counts": [
+          8802.369140625,
+          2087.12353515625,
+          2693.507080078125
+        ],
+        "count_loss": 0.0006195122841745615,
+        "marginal_loss": 0.0037428652867674828
+      }
+    },
+    {
+      "split": "ratio_prefix",
+      "source_mode": "decay5.0",
+      "pair_weight": 0.45,
+      "actual_macro": 0.7336632805217915,
+      "expected_macro": 0.7336632805217915,
+      "pred_counts": [
+        8295,
+        2768,
+        2520
+      ],
+      "fit": {
+        "loss": 3.1123666763305664,
+        "counts": [
+          8802.26953125,
+          2087.400146484375,
+          2693.33056640625
+        ],
+        "count_loss": 0.0002889309253077954,
+        "marginal_loss": 0.003458593972027302
+      }
+    },
+    {
+      "split": "actual_prefix",
+      "source_mode": "front_frac0.35",
+      "pair_weight": 0.35,
+      "actual_macro": 0.6986757317472092,
+      "expected_macro": 0.6986757317472092,
+      "pred_counts": [
+        10736,
+        3254,
+        3864
+      ],
+      "fit": {
+        "loss": 2.964293956756592,
+        "counts": [
+          11854.125,
+          2499.4794921875,
+          3500.3955078125
+        ],
+        "count_loss": 0.00023625590256415308,
+        "marginal_loss": 0.00329416012391448
+      }
+    },
+    {
+      "split": "actual_prefix",
+      "source_mode": "front_frac0.50",
+      "pair_weight": 0.45,
+      "actual_macro": 0.7086713866274165,
+      "expected_macro": 0.7086713866274165,
+      "pred_counts": [
+        10785,
+        3249,
+        3820
+      ],
+      "fit": {
+        "loss": 2.9893341064453125,
+        "counts": [
+          11854.1796875,
+          2499.33349609375,
+          3500.486328125
+        ],
+        "count_loss": 0.0003802827268373221,
+        "marginal_loss": 0.003321828320622444
+      }
+    },
+    {
+      "split": "actual_prefix",
+      "source_mode": "decay5.0",
+      "pair_weight": 0.45,
+      "actual_macro": 0.722448924035907,
+      "expected_macro": 0.722448924035907,
+      "pred_counts": [
+        11088,
+        3249,
+        3517
+      ],
+      "fit": {
+        "loss": 2.166848659515381,
+        "counts": [
+          11854.0732421875,
+          2499.69189453125,
+          3500.23486328125
+        ],
+        "count_loss": 8.290888945339248e-05,
+        "marginal_loss": 0.002408271189779043
+      }
+    }
+  ],
+  "best_config": {
+    "source_mode": "decay5.0",
+    "pair_weight": 0.45,
+    "scores": [
+      0.7336632805217915,
+      0.722448924035907
+    ]
+  },
+  "generated": {
+    "path": "submissions\\submission_marginal_transport_v1.csv",
+    "counts": [
+      13692,
+      3324,
+      2984
+    ],
+    "diff_vs_q4": 2572,
+    "fit": {
+      "loss": 2.680220603942871,
+      "counts": [
+        13999.9970703125,
+        2499.827880859375,
+        3500.175537109375
+      ],
+      "count_loss": 3.2238323910860345e-05,
+      "marginal_loss": 0.0029787130188196898
+    }
+  }
+}

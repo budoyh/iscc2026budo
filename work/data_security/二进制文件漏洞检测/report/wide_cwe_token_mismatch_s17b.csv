@@ -1,0 +1,3 @@
+binary_id,ascii_sig,wide_sig,all_sig,top,unique,total,label,cwe_id
+BIN_1806282,CWE-122:1|CWE-135:1,,CWE-122:1|CWE-135:1,CWE-122,2,2,1,CWE-135
+BIN_7115172,CWE-121:7|CWE-135:7,,CWE-121:7|CWE-135:7,CWE-121,2,14,1,CWE-135

@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -11,7 +12,7 @@ import pandas as pd
 import torch
 from sklearn.ensemble import ExtraTreesRegressor, HistGradientBoostingRegressor
 
-from common import ROOT, TEST_PATH, TRAIN_PATH, empty_prediction, validate_submission
+from common import ROOT, TEST_PATH, TRAIN_PATH, empty_prediction, semantic_type_scores, validate_submission
 from predict_torch_boundary_ensemble import predict_one as predict_boundary_one
 from predict_torch_hybrid_ensemble import predict_one as predict_hybrid_one
 from train_torch_boundary import log_softmax_1d
@@ -38,6 +39,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--confidence-output", type=str, default="")
     parser.add_argument("--top-per-label", type=int, default=5)
     parser.add_argument("--top-per-length", type=int, default=2)
+    parser.add_argument("--text-features", action="store_true")
     parser.add_argument("--sample-neg-ratio", type=int, default=4)
     parser.add_argument("--seed", type=int, default=42)
     return parser.parse_args()
@@ -89,16 +91,67 @@ def build_length_priors(train_df: pd.DataFrame) -> dict[str, dict[int, float]]:
     return priors
 
 
+WEAK_START_PATTERN = re.compile(
+    r"\b(precursor deviation|non-decisive warning marker|stability margin narrowed|before final verify)\b",
+    re.IGNORECASE,
+)
+WEAK_END_PATTERN = re.compile(
+    r"\b(delayed closing signal|downstream normalization attempted|follow-up probe remained inconclusive|"
+    r"partial stabilization|brief stabilization)\b",
+    re.IGNORECASE,
+)
+
+
+def text_boundary_features(lines: list[str], start: int, end: int, label_name: str) -> list[float]:
+    line_count = len(lines)
+
+    def get_line(idx: int) -> str:
+        if 0 <= idx < line_count:
+            return lines[idx]
+        return ""
+
+    prev_line = get_line(start - 1)
+    start_line = get_line(start)
+    end_line = get_line(end)
+    next_line = get_line(end + 1)
+    window_lines = lines[start : end + 1]
+
+    semantic_prev = semantic_type_scores(prev_line).get(label_name, 0.0) if prev_line else 0.0
+    semantic_start = semantic_type_scores(start_line).get(label_name, 0.0) if start_line else 0.0
+    semantic_end = semantic_type_scores(end_line).get(label_name, 0.0) if end_line else 0.0
+    semantic_next = semantic_type_scores(next_line).get(label_name, 0.0) if next_line else 0.0
+    semantic_window = [semantic_type_scores(line).get(label_name, 0.0) for line in window_lines]
+    weak_start_window = sum(1 for line in window_lines if WEAK_START_PATTERN.search(line))
+    weak_end_window = sum(1 for line in window_lines if WEAK_END_PATTERN.search(line))
+
+    return [
+        float(bool(prev_line and WEAK_START_PATTERN.search(prev_line))),
+        float(bool(start_line and WEAK_START_PATTERN.search(start_line))),
+        float(bool(end_line and WEAK_END_PATTERN.search(end_line))),
+        float(bool(next_line and WEAK_END_PATTERN.search(next_line))),
+        float(weak_start_window),
+        float(weak_end_window),
+        float(semantic_prev),
+        float(semantic_start),
+        float(semantic_end),
+        float(semantic_next),
+        float(np.mean(semantic_window) if semantic_window else 0.0),
+        float(np.max(semantic_window) if semantic_window else 0.0),
+    ]
+
+
 def candidate_features(
     row: object,
     output: dict[str, np.ndarray],
     priors: dict[str, dict[int, float]],
     top_per_label: int,
     top_per_length: int,
+    text_features: bool,
     include_target: bool,
 ) -> tuple[np.ndarray, np.ndarray | None, list[tuple[int, int, str, float]]]:
     logits = output["line_logits"]
     line_count = len(logits)
+    lines = str(row.log_text).split("\n") if text_features else []
     log_probs = logits - np.logaddexp.reduce(logits, axis=1, keepdims=True)
     none_scores = log_probs[:, 0]
     start_log_probs = log_softmax_1d(output["start_logits"])
@@ -149,8 +202,7 @@ def candidate_features(
                 )
         for rank, item in enumerate(sorted(label_candidates, reverse=True)[:top_per_label]):
             raw_score, start, end, span_len, sum_diff, start_lp, end_lp, prior, win_mean, win_max, none_mean = item
-            feature_rows.append(
-                [
+            features = [
                     raw_score,
                     raw_score + 0.6 * prior,
                     raw_score + prior,
@@ -170,8 +222,10 @@ def candidate_features(
                     raw_score - (raw_score + prior),
                     win_mean - none_mean,
                     float(line_count),
-                ]
-            )
+            ]
+            if text_features:
+                features.extend(text_boundary_features(lines, start, end, label_name))
+            feature_rows.append(features)
             metas.append((start, end, label_name, raw_score))
             if include_target:
                 if true_anomaly and label_name == true_type:
@@ -194,6 +248,7 @@ def build_training_matrix(
     priors: dict[str, dict[int, float]],
     top_per_label: int,
     top_per_length: int,
+    text_features: bool,
     sample_neg_ratio: int,
     seed: int,
 ) -> tuple[np.ndarray, np.ndarray]:
@@ -206,6 +261,7 @@ def build_training_matrix(
             priors,
             top_per_label,
             top_per_length,
+            text_features,
             include_target=True,
         )
         if len(features) == 0 or targets is None:
@@ -263,6 +319,7 @@ def predict_raw_submission(
     models: list[object],
     top_per_label: int,
     top_per_length: int,
+    text_features: bool,
 ) -> tuple[pd.DataFrame, np.ndarray]:
     rows: list[dict[str, object]] = []
     confidences: list[float] = []
@@ -273,6 +330,7 @@ def predict_raw_submission(
             priors,
             top_per_label,
             top_per_length,
+            text_features,
             include_target=False,
         )
         if len(features) == 0:
@@ -317,6 +375,7 @@ def main() -> None:
         priors,
         top_per_label=args.top_per_label,
         top_per_length=args.top_per_length,
+        text_features=args.text_features,
         sample_neg_ratio=args.sample_neg_ratio,
         seed=args.seed,
     )
@@ -329,6 +388,7 @@ def main() -> None:
         models,
         top_per_label=args.top_per_label,
         top_per_length=args.top_per_length,
+        text_features=args.text_features,
     )
     submission = apply_force_count(raw_submission, confidences, args.force_count)
     errors = validate_submission(submission, expected_rows=len(test_df))
@@ -363,6 +423,7 @@ def main() -> None:
                 "train_candidates": int(features.shape[0]),
                 "top_per_label": int(args.top_per_label),
                 "top_per_length": int(args.top_per_length),
+                "text_features": bool(args.text_features),
                 "target_mean": float(targets.mean()),
                 "confidence_quantiles": {
                     str(q): float(np.quantile(confidences, q)) for q in [0.1, 0.25, 0.5, 0.75, 0.9]

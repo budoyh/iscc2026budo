@@ -1,0 +1,302 @@
+{
+  "created_at": "2026-05-03T08:39:28+0800",
+  "runtime_seconds": 194.6,
+  "device": "cuda",
+  "n_groups": 1018,
+  "score_names": [
+    "submission_blend_v1.csv",
+    "submission_blend_shift_v1.csv",
+    "submission_groupcv_compromise_v1.csv",
+    "submission_leak_cons_base_v1.csv",
+    "submission_leak_mid_block_v1.csv",
+    "submission_seen_exact_mode_group_v1.csv",
+    "submission_mlp_onehot_v1.csv",
+    "submission_blend_mlp_a020_w100105_v1.csv",
+    "sub_sklearn_hybrid.csv",
+    "submission_mlp_quota_13600_2900_3500_v1.csv",
+    "submission_mlp_labelshift_hard_q4_v1.csv",
+    "submission_leaderboard_constraint_v1.csv"
+  ],
+  "history": [
+    {
+      "step": 1,
+      "loss": 24610.58203125,
+      "score_loss": 21744.953125,
+      "count_loss": 2865.630615234375,
+      "kl": -2.544781940727603e-09,
+      "entropy": 0.6819760203361511,
+      "max_abs_score_error": 0.0955471396446228,
+      "counts": [
+        11735.107421875,
+        3778.383544921875,
+        4486.5087890625
+      ]
+    },
+    {
+      "step": 500,
+      "loss": 0.6974958181381226,
+      "score_loss": 0.2107296884059906,
+      "count_loss": 0.48540180921554565,
+      "kl": 0.14745956659317017,
+      "entropy": 0.5650106072425842,
+      "max_abs_score_error": 0.00044268369674682617,
+      "counts": [
+        13976.1064453125,
+        2527.01708984375,
+        3496.8759765625
+      ]
+    },
+    {
+      "step": 1000,
+      "loss": 0.20715168118476868,
+      "score_loss": 0.04833585023880005,
+      "count_loss": 0.15739913284778595,
+      "kl": 0.15141448378562927,
+      "entropy": 0.5696830749511719,
+      "max_abs_score_error": 0.0002454519271850586,
+      "counts": [
+        13986.09375,
+        2515.166015625,
+        3498.74072265625
+      ]
+    },
+    {
+      "step": 1500,
+      "loss": 0.09519242495298386,
+      "score_loss": 0.02188454195857048,
+      "count_loss": 0.07181185483932495,
+      "kl": 0.15696099400520325,
+      "entropy": 0.5722606778144836,
+      "max_abs_score_error": 0.00016731023788452148,
+      "counts": [
+        13990.490234375,
+        2510.151123046875,
+        3499.35888671875
+      ]
+    },
+    {
+      "step": 2000,
+      "loss": 0.0501980260014534,
+      "score_loss": 0.01141347549855709,
+      "count_loss": 0.03724624961614609,
+      "kl": 0.15996909141540527,
+      "entropy": 0.5741599202156067,
+      "max_abs_score_error": 0.00012296438217163086,
+      "counts": [
+        13993.103515625,
+        2507.270751953125,
+        3499.62646484375
+      ]
+    },
+    {
+      "step": 2500,
+      "loss": 0.02853245474398136,
+      "score_loss": 0.006331027951091528,
+      "count_loss": 0.020632516592741013,
+      "kl": 0.1621682196855545,
+      "entropy": 0.575742244720459,
+      "max_abs_score_error": 9.28044319152832e-05,
+      "counts": [
+        13994.8447265625,
+        2505.39208984375,
+        3499.7626953125
+      ]
+    },
+    {
+      "step": 3000,
+      "loss": 0.01728089340031147,
+      "score_loss": 0.004080482758581638,
+      "count_loss": 0.011603916995227337,
+      "kl": 0.1641276478767395,
+      "entropy": 0.5769473910331726,
+      "max_abs_score_error": 7.539987564086914e-05,
+      "counts": [
+        13996.1279296875,
+        2504.03857421875,
+        3499.833984375
+      ]
+    },
+    {
+      "step": 3500,
+      "loss": 0.010749965906143188,
+      "score_loss": 0.0020108825992792845,
+      "count_loss": 0.00711348420009017,
+      "kl": 0.16614842414855957,
+      "entropy": 0.5777514576911926,
+      "max_abs_score_error": 5.14984130859375e-05,
+      "counts": [
+        13996.9580078125,
+        2503.15283203125,
+        3499.888916015625
+      ]
+    },
+    {
+      "step": 4000,
+      "loss": 0.009742870926856995,
+      "score_loss": 0.004472037777304649,
+      "count_loss": 0.003617959562689066,
+      "kl": 0.16800053417682648,
+      "entropy": 0.5780894160270691,
+      "max_abs_score_error": 6.133317947387695e-05,
+      "counts": [
+        13997.8447265625,
+        2502.260986328125,
+        3499.89404296875
+      ]
+    },
+    {
+      "step": 4500,
+      "loss": 0.004998534917831421,
+      "score_loss": 0.0008358533377759159,
+      "count_loss": 0.002493513748049736,
+      "kl": 0.16907818615436554,
+      "entropy": 0.5780034065246582,
+      "max_abs_score_error": 3.3855438232421875e-05,
+      "counts": [
+        13998.18359375,
+        2501.8525390625,
+        3499.964599609375
+      ]
+    },
+    {
+      "step": 5000,
+      "loss": 0.01802816241979599,
+      "score_loss": 0.014014842920005322,
+      "count_loss": 0.0023441542871296406,
+      "kl": 0.16903884708881378,
+      "entropy": 0.5776121616363525,
+      "max_abs_score_error": 8.875131607055664e-05,
+      "counts": [
+        13998.25390625,
+        2501.81005859375,
+        3499.936279296875
+      ]
+    },
+    {
+      "step": 5500,
+      "loss": 0.004015794023871422,
+      "score_loss": 0.0011876723729074001,
+      "count_loss": 0.001170863164588809,
+      "kl": 0.16815011203289032,
+      "entropy": 0.5766617655754089,
+      "max_abs_score_error": 3.0934810638427734e-05,
+      "counts": [
+        13998.712890625,
+        2501.22509765625,
+        3500.061767578125
+      ]
+    },
+    {
+      "step": 6000,
+      "loss": 0.002855797531083226,
+      "score_loss": 0.0004128461587242782,
+      "count_loss": 0.0007913328590802848,
+      "kl": 0.16764037311077118,
+      "entropy": 0.5753246545791626,
+      "max_abs_score_error": 2.0802021026611328e-05,
+      "counts": [
+        13998.93359375,
+        2500.997314453125,
+        3500.06884765625
+      ]
+    }
+  ],
+  "soft_counts": [
+    13998.93359375,
+    2500.997314453125,
+    3500.06884765625
+  ],
+  "rounded_counts": {
+    "0": 14000,
+    "1": 2500,
+    "2": 3500
+  },
+  "expected_scores": {
+    "submission_blend_v1.csv": {
+      "target": 0.69678,
+      "fit_soft": 0.696779191493988,
+      "fit_rounded_expected": 0.696793949507887
+    },
+    "submission_blend_shift_v1.csv": {
+      "target": 0.69404,
+      "fit_soft": 0.6940460205078125,
+      "fit_rounded_expected": 0.6940311804961725
+    },
+    "submission_groupcv_compromise_v1.csv": {
+      "target": 0.69438,
+      "fit_soft": 0.6943753957748413,
+      "fit_rounded_expected": 0.6943866753774645
+    },
+    "submission_leak_cons_base_v1.csv": {
+      "target": 0.37876,
+      "fit_soft": 0.3787786364555359,
+      "fit_rounded_expected": 0.3787615092483345
+    },
+    "submission_leak_mid_block_v1.csv": {
+      "target": 0.38024,
+      "fit_soft": 0.3802236020565033,
+      "fit_rounded_expected": 0.3802466271589691
+    },
+    "submission_seen_exact_mode_group_v1.csv": {
+      "target": 0.69177,
+      "fit_soft": 0.6917652487754822,
+      "fit_rounded_expected": 0.6917798261589388
+    },
+    "submission_mlp_onehot_v1.csv": {
+      "target": 0.70201,
+      "fit_soft": 0.7020256519317627,
+      "fit_rounded_expected": 0.7020264358715632
+    },
+    "submission_blend_mlp_a020_w100105_v1.csv": {
+      "target": 0.69821,
+      "fit_soft": 0.6982113122940063,
+      "fit_rounded_expected": 0.6982041366790385
+    },
+    "sub_sklearn_hybrid.csv": {
+      "target": 0.69939,
+      "fit_soft": 0.6993966102600098,
+      "fit_rounded_expected": 0.6993807164707359
+    },
+    "submission_mlp_quota_13600_2900_3500_v1.csv": {
+      "target": 0.70441,
+      "fit_soft": 0.7044084072113037,
+      "fit_rounded_expected": 0.704413203230836
+    },
+    "submission_mlp_labelshift_hard_q4_v1.csv": {
+      "target": 0.70761,
+      "fit_soft": 0.7076013088226318,
+      "fit_rounded_expected": 0.7076131957568599
+    },
+    "submission_leaderboard_constraint_v1.csv": {
+      "target": 0.56815,
+      "fit_soft": 0.5681291818618774,
+      "fit_rounded_expected": 0.5681509929015724
+    }
+  },
+  "hard_refine": {
+    "best_objective": 0.008261532608679466,
+    "tried": 8165518,
+    "accepted": 1705333,
+    "improvements": 544,
+    "best_macros": [
+      0.6967939495078939,
+      0.6940311804961689,
+      0.6943866753774611,
+      0.3787615092483365,
+      0.3802466271589766,
+      0.6917798261589523,
+      0.7020264358715633,
+      0.698204136679032,
+      0.6993807164707315,
+      0.7044132032308343,
+      0.7076131957568665,
+      0.5681509929015355
+    ],
+    "max_abs_score_error": 1.643587156330284e-05
+  },
+  "generated_submission": {
+    "path": "submissions\\submission_combo_score_constrained_v1.csv",
+    "diff_vs_labelshift_q4": 4336
+  },
+  "conclusion": "Combo-level score-constrained inference fits leaderboard feedback only at exact-combo count level, with fixed 14000/2500/3500 class totals."
+}
